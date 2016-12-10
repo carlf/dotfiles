@@ -1,0 +1,6 @@
+[user]
+	email = carlf@photocarl.org
+	name = Carl Flippin
+	signingkey = 22A4AF98
+[commit]
+	gpgsign = true

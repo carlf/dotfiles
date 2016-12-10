@@ -1,0 +1,28 @@
+source ~/.mutt/photocarl
+
+set confirmappend = no
+
+# Account switching
+macro index <esc>1 '<sync-mailbox><enter-command>source ~/.mutt/photocarl<enter><change-folder>!<enter>'
+macro index <esc>2 '<sync-mailbox><enter-command>source ~/.mutt/opentable<enter><change-folder>!<enter>'
+
+# Mark all read
+macro index \CW '<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>
+
+# HTML is bullshit
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+set realname="Carl Flippin"
+set use_from=yes
+set edit_headers=yes
+
+macro index \CA '<tag-entry><tag-prefix><clear-flag>N<tag-prefix><save-message>=Archive<enter>'
+macro index \CJ '<tag-entry><tag-prefix><clear-flag>N<tag-prefix><save-message>=Junk<enter>'
+
+macro pager \CA '<save-message>=Archive<enter>'
+macro pager \CJ '<save-message>=Junk<enter>'
+
+set wait_key = no
+macro pager \CB '|urlscan<return>'

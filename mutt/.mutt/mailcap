@@ -1,0 +1,2 @@
+text/html; bcat %s; needsterminal
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
