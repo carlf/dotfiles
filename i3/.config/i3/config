@@ -50,7 +50,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec sakura
-bindsym $mod+Mod1+l exec i3lock-fancy
+bindsym $mod+Mod1+l exec xautolock -locknow
 
 # kill focused window
 bindsym $mod+Shift+q kill
