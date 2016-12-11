@@ -21,4 +21,4 @@ bindkey '^R' zaw-history
 bindkey '^T' zaw-cdr
 bindkey '^H' zaw-ssh-hosts
 
-eval `keychain --eval --agents ssh id_rsa id_rsa_old`
+eval `keychain --eval --agents ssh,gpg id_rsa id_rsa_old carlf@photocarl.org`
