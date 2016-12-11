@@ -182,7 +182,7 @@ bar {
     }
 }
 
-exec xautolock -time 5 -locker i3lock-fancy
+exec xautolock -time 5 -locker /usr/bin/i3lock-fancy
 exec gnome-keyring-daemon -c secrets
 exec parcellite
 exec tilda
