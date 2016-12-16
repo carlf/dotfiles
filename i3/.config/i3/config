@@ -50,7 +50,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec sakura
-bindsym $mod+Mod1+l exec xautolock -locknow
+bindsym $mod+Mod1+l exec xscreensaver-command -lock
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -184,7 +184,7 @@ bar {
     }
 }
 
-exec xautolock -time 5 -locker /usr/bin/i3lock-fancy
+exec xscreensaver -nosplash
 exec gnome-keyring-daemon -c secrets
 exec parcellite
 exec tilda
