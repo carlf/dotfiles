@@ -1,12 +1,14 @@
 #! /bin/sh
 
 sxhkd &
+polybar example &
 wmname LG3D &
 xscreensaver -nosplash &
 gnome-keyring-daemon -c secrets &
 tilda &
 dunst &
 setxkbmap -option 'ctrl:nocaps,compose:menu'
+copyq &
 davmail &
 
 
