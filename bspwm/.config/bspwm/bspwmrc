@@ -7,7 +7,6 @@ gnome-keyring-daemon -c secrets &
 tilda &
 dunst &
 setxkbmap -option 'ctrl:nocaps,compose:menu'
-remmina -i &
 davmail &
 
 
