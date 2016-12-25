@@ -184,6 +184,7 @@ bar {
     }
 }
 
+exec wmname LG3D
 exec xscreensaver -nosplash
 exec gnome-keyring-daemon -c secrets
 exec parcellite
