@@ -171,25 +171,24 @@ for_window [ title="^pdfpc - present" ] border none floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status -c ~/.config/i3status/i3status.conf
-    colors {
-           separator $black0
-           background $black3
-           statusline $violet
-           focused_workspace $green $green $white3
-           active_workspace $white3 $violet $white3
-           inactive_workspace $white1 $white1 $black3
-           urgent_workspace $magenta $magenta $white3
-    }
-}
+# bar {
+#     status_command i3status -c ~/.config/i3status/i3status.conf
+#     colors {
+#            separator $black0
+#            background $black3
+#            statusline $violet
+#            focused_workspace $green $green $white3
+#            active_workspace $white3 $violet $white3
+#            inactive_workspace $white1 $white1 $black3
+#            urgent_workspace $magenta $magenta $white3
+#     }
+# }
 
 exec wmname LG3D
 exec xscreensaver -nosplash
 exec gnome-keyring-daemon -c secrets
-exec parcellite
 exec tilda
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
-exec remmina -i
 exec davmail
+exec copyq
