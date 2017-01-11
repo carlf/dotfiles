@@ -169,8 +169,11 @@ client.unfocused $black2 $black2 $white1 $black2
 client.focused_inactive $black1 $black1 $white2 $black1
 client.urgent $magenta $magenta $white2 $magenta
 
+bindsym $mod+minus scratchpad show
+
 for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
+for_window [ title="^_scratchpad" ] move scratchpad
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -191,7 +194,7 @@ for_window [ class="xfreerdp" ] floating disable
 exec wmname LG3D
 exec xscreensaver -nosplash
 exec gnome-keyring-daemon -c secrets
-exec tilda
+exec sakura -t _scratchpad
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec davmail
