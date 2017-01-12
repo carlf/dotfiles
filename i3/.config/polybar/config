@@ -20,8 +20,8 @@ alert = #dc322f
 margin-top = 5
 margin-bottom = 5
 
-[bar/example]
-monitor = ${env:MONITOR:HDMI-1}
+[bar/main]
+monitor = eDP1
 width = 100%
 height = 27
 offset-x = 0
@@ -55,24 +55,43 @@ modules-right = volume filesystem memory cpu wlan eth battery temperature date p
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
 
-;wm-restack = bspwm
-;wm-restack = i3
+[bar/side]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
 
-;override-redirect = true
+;background = ${xrdb:color9}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+border-bottom = 2
+border-bottom-color = #333
 
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Hack:pixelsize=10;0
+font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+font-2 = siji:pixelsize=10;0
+
+modules-left = i3 xwindow
+modules-center = 
+modules-right = volume filesystem memory cpu wlan eth battery temperature date powermenu
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:75:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
