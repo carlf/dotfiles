@@ -21,6 +21,6 @@ bindkey '^R' zaw-history
 bindkey '^T' zaw-cdr
 bindkey '^H' zaw-ssh-hosts
 
-export PAGER=most
+export PATH=~/bin:~/go/bin:$PATH
 
 eval `keychain --eval --agents ssh,gpg id_rsa id_rsa_old carlf@photocarl.org`

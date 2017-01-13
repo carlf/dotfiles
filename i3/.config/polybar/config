@@ -36,7 +36,7 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-bottom = 2
+border-bottom-size = 2
 border-bottom-color = #333
 
 spacing = 1
@@ -47,7 +47,7 @@ module-margin-right = 2
 
 font-0 = Hack:pixelsize=10;0
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=10;0
+font-2 = "Wuncon Siji:pixelsize=10;0"
 
 modules-left = i3 xwindow
 modules-center = 
@@ -72,7 +72,7 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-bottom = 2
+border-bottom-size = 2
 border-bottom-color = #333
 
 spacing = 1
@@ -83,7 +83,7 @@ module-margin-right = 2
 
 font-0 = Hack:pixelsize=10;0
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=10;0
+font-2 = "Wuncon Siji:pixelsize=10;0"
 
 modules-left = i3 xwindow
 modules-center = 
