@@ -50,7 +50,7 @@ font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = "Wuncon Siji:pixelsize=10;0"
 
 modules-left = i3 xwindow
-modules-center = 
+modules-center = mpd
 modules-right = volume filesystem memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
