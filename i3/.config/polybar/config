@@ -51,7 +51,7 @@ font-2 = "Wuncon Siji:pixelsize=10;0"
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = volume filesystem memory cpu wlan eth battery temperature date powermenu
+modules-right = volume memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -86,8 +86,8 @@ font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = "Wuncon Siji:pixelsize=10;0"
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = volume filesystem memory cpu wlan eth battery temperature date powermenu
+modules-center = mpd 
+modules-right = volume memory cpu wlan eth battery temperature date
 
 [module/xwindow]
 type = internal/xwindow
@@ -170,7 +170,7 @@ type = internal/mpd
 
 format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
 
-label-song-maxlen = 25
+label-song-maxlen = 40
 label-song-ellipsis = true
 
 icon-prev = 
