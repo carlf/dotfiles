@@ -6,11 +6,10 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/z
     zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/golang
-    zgen oh-my-zsh plugins/taskwarrior
     zgen oh-my-zsh plugins/systemd
+    zgen oh-my-zsh themes/blinks
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
-    zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
     zgen load carlf/zsh-plugins rbenv
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm

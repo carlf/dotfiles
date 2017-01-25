@@ -9,25 +9,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $black3 #002b36
-set $black2 #073642
-set $black1 #586e75
-set $black0 #657b83
-set $white0 #839496
-set $white1 #93a1a1
-set $white2 #eee8d5
-set $white3 #fdf6e3
-
-set $yellow #b58900
-set $orange #cb4b16
-set $red #dc322f
-set $magenta #d33682
-set $violet #6c71c4
-set $blue #268bd2
-set $cyan #2aa198
-set $green #859900
-
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -49,7 +30,7 @@ font pango:Hack 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec sakura
+bindsym $mod+Return exec terminator
 bindsym $mod+Mod1+l exec xscreensaver-command -lock
 
 # kill focused window
@@ -164,10 +145,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused $green $green $white3 $green
-client.unfocused $black2 $black2 $white1 $black2
-client.focused_inactive $black1 $black1 $white2 $black1
-client.urgent $magenta $magenta $white2 $magenta
+client.focused          #688060 #688060 #303030 #ffcfaf
+client.focused_inactive #3f3f3f #3f3f3f #7f9f7f #3f3f3f
+client.unfocused        #3f3f3f #3f3f3f #dcdccc #3f3f3f
+client.urgent           #dca3a3 #dca3a3 #dcdccc #3f3f3f
 
 bindsym $mod+minus scratchpad show
 
@@ -175,26 +156,23 @@ for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
 for_window [ title="^_scratchpad" ] move scratchpad
 
+bar {
+    status_command i3status
+    colors {
+        background #3f3f3f
+        statusline #dcdccc
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#     status_command i3status -c ~/.config/i3status/i3status.conf
-#     colors {
-#            separator $black0
-#            background $black3
-#            statusline $violet
-#            focused_workspace $green $green $white3
-#            active_workspace $white3 $violet $white3
-#            inactive_workspace $white1 $white1 $black3
-#            urgent_workspace $magenta $magenta $white3
-#     }
-# }
+        focused_workspace  #93b3a3 #3f3f3f #93b3a3
+        active_workspace   #ffcfaf #3f3f3f #ffcfaf
+        inactive_workspace #636363 #3f3f3f #dcdccc
+        urgent_workspace   #dca3a3 #3f3f3f #dca3a3
+    }
+}
 
 exec wmname LG3D
 exec xscreensaver -nosplash
 exec gnome-keyring-daemon -c secrets
-exec sakura -t _scratchpad
+exec terminator -T _scratchpad
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec davmail

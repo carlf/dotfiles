@@ -13,7 +13,6 @@ general {
 
 order += "disk /"
 order += "run_watch DHCP"
-order += "path_exists VPN"
 order += "wireless wlp4s0"
 order += "ethernet enp0s31f6"
 order += "battery 0"
@@ -51,10 +50,6 @@ battery 1 {
 
 run_watch DHCP {
         pidfile = "/var/run/dhcpcd-*.pid"
-}
-
-path_exists VPN {
-        path = "/proc/sys/net/ipv4/conf/tun0"
 }
 
 tztime local {
