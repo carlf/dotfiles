@@ -1,3 +1,11 @@
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv pyenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=''
+POWERLEVEL9K_SHORTEN_STRATEGY='truncate_from_right'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_MODE='awesome-patched'
+
 source ~/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -19,10 +27,6 @@ fi
 bindkey '^R' zaw-history
 bindkey '^T' zaw-cdr
 bindkey '^H' zaw-ssh-hosts
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv pyenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs history status)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 export PATH=~/bin:~/go/bin:$PATH
 
