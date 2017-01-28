@@ -18,7 +18,7 @@
   [[default]]
     background_color = "#3f3f3f"
     cursor_color = "#dcdcdc"
-    font = Knack Nerd Font 10
+    font = Hack 10
     foreground_color = "#dcdcdc"
     palette = "#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc:#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc"
     scrollbar_position = hidden
