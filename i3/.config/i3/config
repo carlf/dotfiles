@@ -155,6 +155,7 @@ bindsym $mod+minus scratchpad show
 for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
 for_window [ title="^_scratchpad" ] move scratchpad
+for_window [ class="^copyq" ] border none floating enable
 
 bar {
     status_command i3status
