@@ -322,7 +322,13 @@ you should place your code here."
   (setq org-mobile-inbox-for-pull "~/Documents/org/flagged.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "chromium"))
+        browse-url-generic-program "chromium")
+  (defun my/org-add-ids-to-file ()
+    (interactive)
+    (org-map-entries 'org-id-get-create))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'my/org-add-ids-to-file nil 'local))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
