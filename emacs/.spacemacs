@@ -311,11 +311,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq org-agenda-files '("~/Documents/org/todo.org"))
+  (setq org-directory "~/Documents/org")
+  (setq org-agenda-files '("~/Documents/org"))
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Inbox")
+        '(("t" "Todo" entry (file "~/Documents/org/inbox.org")
            "* TODO %?\n  CREATED: %U\n")))
-  (setq org-refile-targets '(("todo.org" :maxlevel . 1)))
+  (setq org-refile-use-outline-path 'file)
+  (setq org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 9)))
+  (setq org-mobile-inbox-for-pull "~/Documents/org/flagged.org")
+  (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "chromium"))
 
