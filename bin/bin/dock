@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xrandr --output eDP1 --auto --pos 2560x360 --primary --output DP1 --auto --pos 4480x0 --output HDMI2 --auto --pos 0x0
+i3-msg workspace number 3
+i3-msg layout splith
+i3-msg move workspace to output HDMI2
+i3-msg workspace number 4
+i3-msg layout splith
+i3-msg move workspace to output DP1

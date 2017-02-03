@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+DEC_WIDTH=4
+DEC_HEIGHT=22
+
+SIZE=$(i3-msg -t get_workspaces | jq '.[] | select(.focused == true) | .rect.width, .rect.height')
+read -d ' ' WIDTH HEIGHT <<<$SIZE
+
+WIDTH=$(expr $WIDTH - $DEC_WIDTH)
+HEIGHT=$(expr $HEIGHT - $DEC_HEIGHT)
+
+echo $WIDTH
+echo $HEIGHT
+
+declare -a HOSTS
+for i in ~/.config/rdp/*; do
+    DOMAIN=$(basename $i)
+    for HOST in $(cat ~/.config/rdp/$DOMAIN/hosts); do
+        HOSTS+=("$DOMAIN/$HOST")
+    done
+done
+SERVER=$(printf '%s\n' "${HOSTS[@]}" | rofi -dmenu)
+
+IFS='/' read -r DOMAIN HOST <<<$SERVER
+echo $DOMAIN
+echo $HOST
+
+eval $(gpg -qd ~/.config/rdp/$DOMAIN/authinfo.gpg)
+xfreerdp +clipboard /u:$DOMAIN\\$USER "/p:$PASSWORD" /v:$HOST$SUFFIX /size:${WIDTH}x${HEIGHT} /cert-tofu /sec:tls
