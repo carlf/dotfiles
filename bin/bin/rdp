@@ -26,4 +26,4 @@ echo $DOMAIN
 echo $HOST
 
 eval $(gpg -qd ~/.config/rdp/$DOMAIN/authinfo.gpg)
-xfreerdp +clipboard /u:$DOMAIN\\$USER "/p:$PASSWORD" /v:$HOST$SUFFIX /size:${WIDTH}x${HEIGHT} /cert-tofu /sec:tls
+xfreerdp +clipboard /u:$DOMAIN\\$USER "/p:$PASSWORD" /v:$HOST$SUFFIX /size:${WIDTH}x${HEIGHT} /cert-tofu

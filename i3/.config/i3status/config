@@ -15,8 +15,7 @@ order += "disk /"
 order += "run_watch DHCP"
 order += "wireless wlp4s0"
 order += "ethernet enp0s31f6"
-order += "battery 0"
-order += "battery 1"
+order += "battery all"
 order += "cpu_temperature 0"
 order += "load"
 order += "tztime local"
@@ -33,17 +32,9 @@ ethernet enp0s31f6 {
         format_down = "E: down"
 }
 
-battery 0 {
+battery all {
         format = "%status %percentage %remaining"
-        path = "/sys/class/power_supply/BAT0/uevent"
-        status_chr = "⚇ CHR"
-        status_bat = "⚡ BAT"
-        status_full= "☻ FULL"
-}
-
-battery 1 {
-        format = "%status %percentage %remaining"
-        path = "/sys/class/power_supply/BAT1/uevent"
+        path = "/sys/class/power_supply/BAT%d/uevent"
         status_chr = "⚇ CHR"
         status_bat = "⚡ BAT"
         status_full= "☻ FULL"
