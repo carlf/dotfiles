@@ -178,3 +178,4 @@ exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec davmail
 exec copyq
+exec run_keybase
