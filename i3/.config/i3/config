@@ -160,7 +160,7 @@ for_window [ class="^copyq" ] border none floating enable
 bar {
   status_command i3status
   colors {
-    separator #dc322f
+    separator #859900
     background #002b36
     statusline #268bd2
     focused_workspace   #fdf6e3 #859900 #fdf6e3
