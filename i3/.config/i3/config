@@ -31,7 +31,6 @@ floating_modifier $mod
 
 # Set up gaps
 gaps inner 10
-gaps outer 10
 
 # start a terminal
 bindsym $mod+Return exec terminator
@@ -184,3 +183,4 @@ exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec davmail
 exec copyq
 exec run_keybase
+exec feh --bg-scale ~/.config/i3/wallpaper.png
