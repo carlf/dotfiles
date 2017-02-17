@@ -29,6 +29,10 @@ font pango:Knack Nerd Font 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Set up gaps
+gaps inner 10
+gaps outer 10
+
 # start a terminal
 bindsym $mod+Return exec terminator
 bindsym $mod+Mod1+l exec xscreensaver-command -lock
@@ -155,6 +159,7 @@ bindsym $mod+minus scratchpad show
 for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
 for_window [ title="^_scratchpad" ] move scratchpad
+for_window [ class="^.*" ] border pixel 2
 for_window [ class="^copyq" ] border none floating enable
 
 bar {
