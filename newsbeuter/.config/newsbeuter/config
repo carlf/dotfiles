@@ -7,3 +7,7 @@ color listfocus_unread    color11 color0 bold
 color background          color12 color8
 color info                color10 color0 bold
 color article             color12 color8
+
+urls-source "ttrss"
+ttrss-url "https://carlf.io/tt-rss/"
+ttrss-mode "multi"
