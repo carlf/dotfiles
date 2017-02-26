@@ -3,6 +3,7 @@
   suppress_multiple_term_dialog = True
   tab_position = hidden
   title_transmit_bg_color = "#d30102"
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -16,6 +17,7 @@
 [plugins]
 [profiles]
   [[default]]
+    audible_bell = True
     background_color = "#002b36"
     background_darkness = 0.23
     cursor_color = "#dcdcdc"

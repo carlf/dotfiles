@@ -1,4 +1,4 @@
-POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_MODE='nerdfont-fontconfig'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv pyenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
@@ -22,7 +22,7 @@ if ! zgen saved; then
     zgen load carlf/zsh-plugins rbenv
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm
-    zgen load bhilburn/powerlevel9k powerlevel9k
+    zgen load bhilburn/powerlevel9k powerlevel9k next
     zgen save
 fi
 

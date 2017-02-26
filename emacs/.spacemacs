@@ -39,13 +39,8 @@ values."
      go
      php
      yaml
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      ivy
-     ;; auto-completion
+     auto-completion
      better-defaults
      emacs-lisp
      git
@@ -61,6 +56,7 @@ values."
      github
      ruby-on-rails
      scheme
+     restclient
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -145,7 +141,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Knack Nerd Font"
-                               :size 14
+                               :size 13
                                :weight normal
                                :width normal)
    ;; The leader key
@@ -346,7 +342,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ws-butler web-mode use-package toc-org spacemacs-theme spaceline rubocop rspec-mode request racer puppet-mode pug-mode projectile-rails persp-mode orgit org org-plus-contrib org-download neotree move-text live-py-mode intero info+ hide-comnt help-fns+ go-guru gitattributes-mode git-messenger git-gutter-fringe geiser expand-region evil-surround evil-nerd-commenter evil-mc evil-matchit evil-escape evil-anzu drupal-mode counsel-projectile counsel column-enforce-mode cargo rust-mode auto-compile packed auctex company smartparens highlight flycheck haskell-mode go-mode helm helm-core skewer-mode js2-mode simple-httpd pcache magit magit-popup git-commit with-editor alert projectile hydra yasnippet php-mode inf-ruby haml-mode ivy zenburn-theme yapfify yaml-mode window-numbering which-key wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen toml-mode tagedit swiper smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode robe restart-emacs rbenv rake rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort powerline popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets paradox org-projectile org-present org-pomodoro org-bullets open-junk-file mwim mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum log4e livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra inflections indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-make haskell-snippets google-translate golden-ratio go-eldoc gnuplot gntp gitignore-mode github-search github-clone github-browse-file gitconfig-mode git-timemachine git-link git-gutter-fringe+ git-gutter gist gh-md flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery eyebrowse exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-search-highlight-persist evil-numbers evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-ediff evil-args eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word cython-mode csv-mode company-ghci company-ghc coffee-mode cmm-mode clean-aindent-mode chruby bundler bind-key auto-highlight-symbol auto-dictionary auctex-latexmk async anzu anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link))))
+    (yaml-mode which-key web-mode use-package spacemacs-theme restart-emacs racer pyvenv puppet-mode phpunit persp-mode org-plus-contrib org-download neotree move-text mmm-mode live-py-mode intero info+ indent-guide hide-comnt help-fns+ helm-make helm helm-core go-eldoc git-link expand-region exec-path-from-shell evil-nerd-commenter evil-mc evil-ediff counsel-projectile counsel swiper ace-window anaconda-mode company smartparens highlight evil flycheck flyspell-correct haskell-mode go-mode ivy multiple-cursors avy alert magit magit-popup git-commit async yasnippet php-mode inf-ruby haml-mode js2-mode dash yapfify ws-butler with-editor window-numbering wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen undo-tree toml-mode toc-org tagedit spaceline solarized-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient request rbenv rainbow-delimiters quelpa pytest pyenv-mode py-isort pug-mode projectile-rails popwin pip-requirements phpcbf php-extras php-auto-yasnippets paradox orgit org-projectile org-present org-pomodoro org-bullets open-junk-file ob-http mwim minitest markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum log4e livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra ido-vertical-mode hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation haskell-snippets goto-chg google-translate golden-ratio go-guru gnuplot gntp gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gist gh-md geiser flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery eyebrowse evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump drupal-mode diminish diff-hl define-word cython-mode csv-mode company-web company-tern company-statistics company-go company-ghci company-ghc company-cabal company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
