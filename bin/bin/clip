@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-FILENAME=$(mktemp)
-maim -s --format png $FILENAME
+FILENAME=$(mktemp --suffix=.png)
+maim -s -f png $FILENAME
 cat $FILENAME | xclip -selection clipboard -t image/png
 rm $FILENAME
