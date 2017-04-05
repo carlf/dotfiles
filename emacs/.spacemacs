@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     windows-scripts
      rust
      haskell
      html
@@ -57,6 +58,10 @@ values."
      ruby-on-rails
      scheme
      restclient
+     java
+     nim
+     common-lisp
+     semantic
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -340,9 +345,7 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (yaml-mode which-key web-mode use-package spacemacs-theme restart-emacs racer pyvenv puppet-mode phpunit persp-mode org-plus-contrib org-download neotree move-text mmm-mode live-py-mode intero info+ indent-guide hide-comnt help-fns+ helm-make helm helm-core go-eldoc git-link expand-region exec-path-from-shell evil-nerd-commenter evil-mc evil-ediff counsel-projectile counsel swiper ace-window anaconda-mode company smartparens highlight evil flycheck flyspell-correct haskell-mode go-mode ivy multiple-cursors avy alert magit magit-popup git-commit async yasnippet php-mode inf-ruby haml-mode js2-mode dash yapfify ws-butler with-editor window-numbering wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen undo-tree toml-mode toc-org tagedit spaceline solarized-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient request rbenv rainbow-delimiters quelpa pytest pyenv-mode py-isort pug-mode projectile-rails popwin pip-requirements phpcbf php-extras php-auto-yasnippets paradox orgit org-projectile org-present org-pomodoro org-bullets open-junk-file ob-http mwim minitest markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum log4e livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra ido-vertical-mode hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation haskell-snippets goto-chg google-translate golden-ratio go-guru gnuplot gntp gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gist gh-md geiser flyspell-correct-ivy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery eyebrowse evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump drupal-mode diminish diff-hl define-word cython-mode csv-mode company-web company-tern company-statistics company-go company-ghci company-ghc company-cabal company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-link ac-ispell))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
