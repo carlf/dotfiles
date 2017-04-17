@@ -17,6 +17,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/golang
     zgen oh-my-zsh plugins/systemd
+    zgen oh-my-zsh plugins/tmuxinator
     zgen load willghatch/zsh-cdr
     zgen load zsh-users/zaw
     zgen load carlf/zsh-plugins rbenv
