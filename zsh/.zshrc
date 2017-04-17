@@ -8,6 +8,8 @@ POWERLEVEL9K_SHORTEN_DELIMITER=''
 POWERLEVEL9K_SHORTEN_STRATEGY='truncate_from_right'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
+export DISABLE_AUTO_TITLE=true
+
 source ~/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -32,5 +34,7 @@ bindkey '^T' zaw-cdr
 bindkey '^H' zaw-ssh-hosts
 
 export PATH=~/bin:~/go/bin:$PATH
+
+alias mux=tmuxinator
 
 eval `keychain --eval --agents ssh,gpg id_rsa id_rsa_old carlf@photocarl.org`
