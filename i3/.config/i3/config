@@ -186,6 +186,5 @@ exec gnome-keyring-daemon -c secrets
 exec terminator -T _scratchpad
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
-exec davmail
 exec copyq
 exec feh --bg-scale ~/.config/i3/wallpaper.png
