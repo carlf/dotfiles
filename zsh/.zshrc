@@ -20,8 +20,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/golang
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/tmuxinator
-    zgen load willghatch/zsh-cdr
-    zgen load zsh-users/zaw
     zgen load carlf/zsh-plugins rbenv
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm
@@ -29,12 +27,14 @@ if ! zgen saved; then
     zgen save
 fi
 
-bindkey '^R' zaw-history
-bindkey '^T' zaw-cdr
-bindkey '^H' zaw-ssh-hosts
-
 export PATH=~/bin:~/go/bin:$PATH
 
 alias mux=tmuxinator
 
-eval `keychain --eval --agents ssh,gpg id_rsa id_rsa_old carlf@photocarl.org`
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+    eval `ssh-agent`
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
