@@ -187,4 +187,5 @@ exec terminator -T _scratchpad
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec copyq
+exec nm-applet
 exec feh --bg-scale ~/.config/i3/wallpaper.png
