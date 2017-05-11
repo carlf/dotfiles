@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall -USR1 dunst
+i3lock -c 073642 -n
+killall -USR2 dunst

@@ -24,6 +24,7 @@ if ! zgen saved; then
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm
     zgen load bhilburn/powerlevel9k powerlevel9k next
+    zgen load Tarrasch/zsh-autoenv
     zgen save
 fi
 
@@ -32,7 +33,7 @@ export PATH=~/bin:~/go/bin:$PATH
 alias mux=tmuxinator
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-    eval `ssh-agent`
+    eval "$(ssh-agent)"
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock

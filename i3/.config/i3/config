@@ -34,7 +34,7 @@ gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec terminator
-bindsym $mod+Mod1+l exec killall -USR1 dunst && i3lock -c 073642 && killall -USR1 dunst
+bindsym $mod+Mod1+l exec ~/bin/lock
 
 # kill focused window
 bindsym $mod+Shift+q kill
