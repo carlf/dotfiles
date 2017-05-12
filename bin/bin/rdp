@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-DEC_WIDTH=4
-DEC_HEIGHT=22
+DEC_WIDTH=24
+DEC_HEIGHT=53
 
 SIZE=$(i3-msg -t get_workspaces | jq '.[] | select(.focused == true) | .rect.width, .rect.height')
 read -d ' ' WIDTH HEIGHT <<<$SIZE
@@ -19,7 +19,7 @@ for i in ~/.config/rdp/*; do
         HOSTS+=("$DOMAIN/$HOST")
     done
 done
-SERVER=$(printf '%s\n' "${HOSTS[@]}" | rofi -dmenu)
+SERVER=$(printf '%s\n' "${HOSTS[@]}" | rofi -dmenu -i)
 
 IFS='/' read -r DOMAIN HOST <<<$SERVER
 echo $DOMAIN
