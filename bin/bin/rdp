@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 DEC_WIDTH=24
-DEC_HEIGHT=53
+DEC_HEIGHT=24
 
 SIZE=$(i3-msg -t get_workspaces | jq '.[] | select(.focused == true) | .rect.width, .rect.height')
 read -d ' ' WIDTH HEIGHT <<<$SIZE
