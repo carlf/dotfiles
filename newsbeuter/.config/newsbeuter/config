@@ -8,8 +8,6 @@ color background          color12 color8
 color info                color10 color0 bold
 color article             color12 color8
 
-urls-source "ttrss"
-ttrss-url "https://carlf.io/tt-rss/"
-ttrss-mode "multi"
-ttrss-login "`~/bin/get_username carlf.io`"
-ttrss-password "`~/bin/get_password carlf.io`"
+urls-source "oldreader"
+oldreader-login "`~/bin/get_username oldreader`"
+oldreader-password "`~/bin/get_password oldreader`"
