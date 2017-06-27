@@ -24,7 +24,6 @@ if ! zgen saved; then
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm
     zgen load bhilburn/powerlevel9k powerlevel9k next
-    zgen load Tarrasch/zsh-autoenv
     zgen save
 fi
 
