@@ -24,6 +24,7 @@ if ! zgen saved; then
     zgen load carlf/zsh-plugins emacs
     zgen load lukechilds/zsh-nvm
     zgen load bhilburn/powerlevel9k powerlevel9k next
+    zgen load andrewferrier/fzf-z
     zgen save
 fi
 
@@ -38,3 +39,5 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey '^N' fzfz-file-widget
