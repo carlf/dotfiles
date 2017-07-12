@@ -40,6 +40,9 @@
   (scroll-bar-mode -1)
   (load-theme 'solarized-dark t))
 
+;; Window change undos
+(winner-mode 1)
+
 (use-package ivy
   :ensure t
   :config
