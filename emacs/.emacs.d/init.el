@@ -89,6 +89,11 @@
   :config
   (global-set-key (kbd "M-p") 'ace-window))
 
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 (use-package undo-tree
   :ensure t
   :config
