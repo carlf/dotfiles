@@ -26,7 +26,10 @@
  version-control t)
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (setq vc-handled-backends nil)
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; Make things pretty
 (use-package solarized-theme
@@ -124,6 +127,11 @@
   :ensure t
   :mode ("\\.csv\\'" . csv-mode)
   :interpreter ("csv" . csv-mode))
+
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yaml'" . yaml-mode)
+  :interpreter ("yaml" . yaml-mode))
   
 (provide 'init)
 ;;; init.el ends here
