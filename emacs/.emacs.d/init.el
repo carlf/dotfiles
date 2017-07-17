@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; See inline comments
 ;;; Code:
-(package-initialize)
-
 ;; Run emacs server
 (server-start)
+
+(package-initialize)
 
 ;; Keep custom-* out of main config
 (setq custom-file "~/.emacs.d/custom.el")
@@ -25,11 +25,15 @@
  kept-old-versions 2
  version-control t)
 
+(use-package yasnippet
+  :ensure t
+  :config (yas-global-mode 1))
+
 (use-package magit
   :ensure t
+  :bind ("C-x g" . magit-status)
   :config
-  (setq vc-handled-backends nil)
-  (global-set-key (kbd "C-x g") 'magit-status))
+  (setq vc-handled-backends nil))
 
 ;; Make things pretty
 (use-package solarized-theme
@@ -45,6 +49,13 @@
 
 ;; Window change undos
 (winner-mode 1)
+
+(use-package smex
+  :ensure t)
+
+(use-package smartparens
+  :ensure t
+  :config (smartparens-global-mode 1))
 
 (use-package ivy
   :ensure t
