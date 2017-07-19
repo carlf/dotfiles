@@ -55,7 +55,9 @@
 
 (use-package smartparens
   :ensure t
-  :config (smartparens-global-mode 1))
+  :config
+  (smartparens-global-mode 1)
+  (require 'smartparens-config))
 
 (use-package ivy
   :ensure t
@@ -132,7 +134,9 @@
 (use-package go-mode
   :ensure t
   :mode ("\\.go\\'" . go-mode)
-  :interpreter ("go" . go-mode))
+  :interpreter ("go" . go-mode)
+  :config
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 (use-package csv-mode
   :ensure t
