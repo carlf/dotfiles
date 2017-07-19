@@ -56,8 +56,10 @@
 (use-package smartparens
   :ensure t
   :config
-  (smartparens-global-mode 1)
-  (require 'smartparens-config))
+  (smartparens-global-strict-mode 1)
+  (smartparens-strict-mode)
+  (require 'smartparens-config)
+  (show-smartparens-global-mode 1))
 
 (use-package ivy
   :ensure t
