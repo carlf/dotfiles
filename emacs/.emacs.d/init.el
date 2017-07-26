@@ -159,6 +159,13 @@
   :ensure t
   :mode ("\\.yaml'" . yaml-mode)
   :interpreter ("yaml" . yaml-mode))
+
+(use-package org
+  :ensure t
+  :config
+  (setq org-refile-targets
+	'((org-agenda-files :maxlevel . 3)))
+  (global-set-key (kbd "C-c a") 'org-agenda))
   
 (provide 'init)
 ;;; init.el ends here
