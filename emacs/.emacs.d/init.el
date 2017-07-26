@@ -165,7 +165,10 @@
   :config
   (setq org-refile-targets
 	'((org-agenda-files :maxlevel . 3)))
-  (global-set-key (kbd "C-c a") 'org-agenda))
+  (setq org-directory "~/Documents/org")
+  (setq org-default-notes-file "inbox.org")
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture))
   
 (provide 'init)
 ;;; init.el ends here
