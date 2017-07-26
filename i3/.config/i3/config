@@ -172,4 +172,5 @@ exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:menu'
 exec greenclip daemon
 exec nm-applet
+exec dropbox
 exec feh --bg-scale ~/.config/i3/wallpaper.png

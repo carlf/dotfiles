@@ -47,6 +47,11 @@
   (scroll-bar-mode -1)
   (load-theme 'solarized-dark t))
 
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (sml/setup))
+
 ;; Window change undos
 (winner-mode 1)
 
@@ -119,6 +124,11 @@
   :ensure t
   :config
   (global-undo-tree-mode))
+
+(use-package browse-kill-ring
+  :ensure t
+  :config
+  (browse-kill-ring-default-keybindings))
 
 (use-package flycheck
   :ensure t
