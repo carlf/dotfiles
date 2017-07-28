@@ -168,7 +168,8 @@
   (setq org-directory "~/Documents/org")
   (setq org-default-notes-file "inbox.org")
   (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture))
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq org-log-done 'time))
   
 (provide 'init)
 ;;; init.el ends here
