@@ -169,7 +169,10 @@
   (setq org-default-notes-file "inbox.org")
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
-  (setq org-log-done 'time))
+  (setq org-log-done 'time)
+  (setq org-capture-templates
+	'(("t" "Todo" entry (file "")
+	   "* TODO %?\n  CREATED: %T"))))
   
 (provide 'init)
 ;;; init.el ends here
