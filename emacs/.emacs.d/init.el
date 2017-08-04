@@ -27,6 +27,13 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(defun back-to-indentation-or-beginning ()
+  "Move alternately between beginning of line and back to indentation."
+  (interactive)
+       (if (= (point) (progn (back-to-indentation) (point)))
+	   (beginning-of-line)))
+(global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
+
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode 1))
@@ -164,6 +171,7 @@
 
 (use-package org
   :ensure t
+  :defines org-capture-templates
   :config
   (setq org-refile-targets
 	'((org-agenda-files :maxlevel . 3)))
