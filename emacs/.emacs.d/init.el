@@ -34,6 +34,12 @@
 	   (beginning-of-line)))
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 
+(defun my/xdg-open-shim (url &optional new-window)
+  "Open URL in xdg-open.  The argument NEW-WINDOW is ignored."
+  (start-process (concat "xdg-open " url) nil "xdg-open" url))
+
+(setq browse-url-browser-function 'my/xdg-open-shim)
+
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode 1))
@@ -183,6 +189,10 @@
   (setq org-capture-templates
 	'(("t" "Todo" entry (file "")
 	   "* TODO %?\n  CREATED: %T"))))
+
+(use-package auctex
+  :ensure t
+  :defer t)
 
 (provide 'init)
 ;;; init.el ends here
