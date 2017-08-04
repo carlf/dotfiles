@@ -25,6 +25,8 @@
  kept-old-versions 2
  version-control t)
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode 1))
@@ -173,6 +175,6 @@
   (setq org-capture-templates
 	'(("t" "Todo" entry (file "")
 	   "* TODO %?\n  CREATED: %T"))))
-  
+
 (provide 'init)
 ;;; init.el ends here
