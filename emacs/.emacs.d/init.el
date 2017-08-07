@@ -194,5 +194,12 @@
   :ensure t
   :defer t)
 
+(use-package slime
+  :ensure t
+  :commands slime
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (setq slime-contribs '(slime-fancy)))
+
 (provide 'init)
 ;;; init.el ends here
