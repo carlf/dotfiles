@@ -104,7 +104,9 @@
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
 
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :config
+  (setq counsel-rg-base-command "rg -i --no-heading --line-number --hidden --color never %s ."))
 
 (use-package swiper
   :ensure t)
