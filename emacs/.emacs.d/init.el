@@ -117,7 +117,8 @@
 (use-package counsel-projectile
   :ensure t
   :config
-  (counsel-projectile-on))
+  (counsel-projectile-on)
+  (global-set-key (kbd "C-c p s r") 'counsel-projectile-rg))
 
 (use-package avy
   :ensure t
