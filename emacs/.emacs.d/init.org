@@ -59,18 +59,11 @@
   (setq browse-url-browser-function 'my/xdg-open-shim)
 #+END_SRC
 
+* Pretty things up a little
+  Lots of stuff in here. Loading the solarized-dark theme, turning off
+  most of the UI, turning on smart-mode-line, and disabling the
+  variable size fonts in org mode that give me the fits.
 #+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
-    :ensure t
-    :config (yas-global-mode 1))
-
-  (use-package magit
-    :ensure t
-    :bind ("C-x g" . magit-status)
-    :config
-    (setq vc-handled-backends nil))
-
-  ;; Make things pretty
   (use-package solarized-theme
     :ensure t
     :config
@@ -86,6 +79,19 @@
     :ensure t
     :config
     (sml/setup))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config (yas-global-mode 1))
+
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit-status)
+    :config
+    (setq vc-handled-backends nil))
+
 
   ;; Window change undos
   (winner-mode 1)
