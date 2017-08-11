@@ -81,24 +81,21 @@
     (sml/setup))
 #+END_SRC
 
+* Load magit
+  Magit is mandatory. Don't leave home without it.
 #+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
-    :ensure t
-    :config (yas-global-mode 1))
-
   (use-package magit
     :ensure t
     :bind ("C-x g" . magit-status)
     :config
     (setq vc-handled-backends nil))
+#+END_SRC
 
-
-  ;; Window change undos
-  (winner-mode 1)
-
-  (use-package smex
-    :ensure t)
-
+* Load smartparens
+  Smartparens in strict mode makes like with lisp and lispy things
+  much nicer. No more wondering if your braces are matched. It's
+  impossible to unbalance them.
+#+BEGIN_SRC emacs-lisp
   (use-package smartparens
     :ensure t
     :config
@@ -106,7 +103,14 @@
     (smartparens-strict-mode)
     (require 'smartparens-config)
     (show-smartparens-global-mode 1))
+#+END_SRC
 
+* Fancy searchy stuff
+  I'm firmly entrenched in the counsel/ivy/projectile world. Search
+  all the things. Autocompletes everywhere. Of particular note is the
+  shortcut for ripgrep which is crazy fast. I change the search
+  command to include dotfiles because sometimes you need that.
+#+BEGIN_SRC emacs-lisp
   (use-package ivy
     :ensure t
     :config
@@ -147,6 +151,15 @@
     :config
     (counsel-projectile-on)
     (global-set-key (kbd "C-c p s r") 'counsel-projectile-rg))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config (yas-global-mode 1))
+
+  ;; Window change undos
+  (winner-mode 1)
 
   (use-package avy
     :ensure t
