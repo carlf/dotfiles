@@ -1,0 +1,229 @@
+* Start the emacs server
+#+BEGIN_SRC emacs-lisp
+  (server-start)
+#+END_SRC
+
+* Stash all the custom stuff in custom.el
+  Some stuff, notably org mode agenda stuff and the installed packages
+  has to line in customize variables. This stuff mucks up the init.el
+  so we stash it in a separate file
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file "~/.emacs.d/custom.el")
+  (load custom-file)
+#+END_SRC
+
+* Make backups nice and neat
+  Emacs likes to litter the filesystem with tons of backup files. We
+  stash them away in a nice invisible directory
+#+BEGIN_SRC emacs-lisp
+  (setq
+   backup-by-copying t
+   backup-directory-alist '(("." . "~/.saves"))
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)
+#+END_SRC
+
+* Clean up trailing whitespace
+  Trailing whitespace is crappy and sometimes break things. Remove it
+  with a before-save-hook.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+
+* Start of line hack
+  One of the few things I miss from vi is the distinction between 0
+  and ^. It's nice to be able to jump to the first character and
+  sometimes necessary to jump to the first column. This toggles
+  between both which makes things nice and easy.
+#+BEGIN_SRC emacs-lisp
+  (defun back-to-indentation-or-beginning ()
+    "Move alternately between beginning of line and back to indentation."
+    (interactive)
+         (if (= (point) (progn (back-to-indentation) (point)))
+             (beginning-of-line)))
+  (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
+#+END_SRC
+
+* Use xdg-open
+  I'm not clear at all on why this is not default behavior. It's
+  standard most everywhere but emacs wants to be a special little
+  snowflake. This opens URLs with xdg-open which should usually do the
+  right thing.
+#+BEGIN_SRC emacs-lisp
+  (defun my/xdg-open-shim (url &optional new-window)
+    "Open URL in xdg-open.  The argument NEW-WINDOW is ignored."
+    (start-process (concat "xdg-open " url) nil "xdg-open" url))
+
+  (setq browse-url-browser-function 'my/xdg-open-shim)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config (yas-global-mode 1))
+
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit-status)
+    :config
+    (setq vc-handled-backends nil))
+
+  ;; Make things pretty
+  (use-package solarized-theme
+    :ensure t
+    :config
+    (setq solarized-use-variable-pitch nil)
+    (setq solarized-scale-org-headlines nil)
+    (set-frame-font "Knack Nerd Font-10")
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)
+    (load-theme 'solarized-dark t))
+
+  (use-package smart-mode-line
+    :ensure t
+    :config
+    (sml/setup))
+
+  ;; Window change undos
+  (winner-mode 1)
+
+  (use-package smex
+    :ensure t)
+
+  (use-package smartparens
+    :ensure t
+    :config
+    (smartparens-global-strict-mode 1)
+    (smartparens-strict-mode)
+    (require 'smartparens-config)
+    (show-smartparens-global-mode 1))
+
+  (use-package ivy
+    :ensure t
+    :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (global-set-key "\C-s" 'swiper)
+    (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    (global-set-key (kbd "<f6>") 'ivy-resume)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    (global-set-key (kbd "<f1> l") 'counsel-find-library)
+    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c k") 'counsel-ag)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+
+  (use-package counsel
+    :ensure t
+    :config
+    (setq counsel-rg-base-command "rg -i --no-heading --line-number --hidden --color never %s ."))
+
+  (use-package swiper
+    :ensure t)
+
+  (use-package projectile
+    :ensure t
+    :config
+    (projectile-mode))
+
+  (use-package counsel-projectile
+    :ensure t
+    :config
+    (counsel-projectile-on)
+    (global-set-key (kbd "C-c p s r") 'counsel-projectile-rg))
+
+  (use-package avy
+    :ensure t
+    :config
+    (global-set-key (kbd "C-:") 'avy-goto-char)
+    (global-set-key (kbd "C-'") 'avy-goto-char-timer))
+
+  (use-package ace-window
+    :ensure t
+    :config
+    (global-set-key (kbd "M-p") 'ace-window))
+
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode))
+
+  (use-package undo-tree
+    :ensure t
+    :config
+    (global-undo-tree-mode))
+
+  (use-package browse-kill-ring
+    :ensure t
+    :config
+    (browse-kill-ring-default-keybindings))
+
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
+
+  (use-package rbenv
+    :ensure t
+    :init (global-rbenv-mode))
+
+  (use-package puppet-mode
+    :ensure t
+    :mode ("\\.pp\\'" . puppet-mode)
+    :interpreter ("puppet" . puppet-mode))
+
+  (use-package go-mode
+    :ensure t
+    :mode ("\\.go\\'" . go-mode)
+    :interpreter ("go" . go-mode)
+    :config
+    (add-hook 'before-save-hook #'gofmt-before-save))
+
+  (use-package csv-mode
+    :ensure t
+    :mode ("\\.csv\\'" . csv-mode)
+    :interpreter ("csv" . csv-mode))
+
+  (use-package yaml-mode
+    :ensure t
+    :mode ("\\.yaml'" . yaml-mode)
+    :interpreter ("yaml" . yaml-mode))
+
+  (use-package org
+    :ensure t
+    :defines org-capture-templates
+    :config
+    (setq org-refile-targets
+          '((org-agenda-files :maxlevel . 3)))
+    (setq org-directory "~/Documents/org")
+    (setq org-default-notes-file "inbox.org")
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
+    (setq org-log-done 'time)
+    (setq org-capture-templates
+          '(("t" "Todo" entry (file "")
+             "* TODO %?\n  CREATED: %T"))))
+
+  (use-package auctex
+    :ensure t
+    :defer t)
+
+  (use-package slime
+    :ensure t
+    :commands slime
+    :config
+    (setq inferior-lisp-program "/usr/bin/sbcl")
+    (setq slime-contribs '(slime-fancy)))
+
+  (provide 'init)
+  ;;; init.el ends here
+#+END_SRC
