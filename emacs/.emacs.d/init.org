@@ -109,7 +109,11 @@
   I'm firmly entrenched in the counsel/ivy/projectile world. Search
   all the things. Autocompletes everywhere. Of particular note is the
   shortcut for ripgrep which is crazy fast. I change the search
-  command to include dotfiles because sometimes you need that.
+  command to include dotfiles because sometimes you need that. For
+  more info on ivy, counsel, and swiper, see [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][here]].
+*** Load [[https://github.com/abo-abo/swiper#ivy][ivy]] itself.
+    Ivy is the general completion framework used by the other stuff
+    below. The ivy config is pulled straight from the README.md.
 #+BEGIN_SRC emacs-lisp
   (use-package ivy
     :ensure t
@@ -132,15 +136,27 @@
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+#+END_SRC
 
+*** Load [[https://github.com/abo-abo/swiper#swiper][swiper]].
+    Swiper is the isearch replacement that uses ivy for
+    autocomplete. It's fast and it's efficient.
+#+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :ensure t)
+#+END_SRC
+
+*** Load [[https://github.com/abo-abo/swiper#counsel][counsel]].
+    Counsel wraps a bunch of functions with versions made to work well
+    with ivy.
+#+BEGIN_SRC emacs-lisp
   (use-package counsel
     :ensure t
     :config
     (setq counsel-rg-base-command "rg -i --no-heading --line-number --hidden --color never %s ."))
+#+END_SRC
 
-  (use-package swiper
-    :ensure t)
-
+#+BEGIN_SRC emacs-lisp
   (use-package projectile
     :ensure t
     :config
