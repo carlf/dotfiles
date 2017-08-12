@@ -11,6 +11,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(org-babel-load-file (expand-file-name "~/.emacs.d/init.org"))
+(org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 (provide 'init)
 ;;; init.el ends here
