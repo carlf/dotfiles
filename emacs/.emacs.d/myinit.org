@@ -190,10 +190,11 @@
     :config (yas-global-mode 1))
 #+END_SRC
 
+* Include avy and ace-window
+  For quick navigation, [[https://github.com/abo-abo/avy][avy]] is very fast and very intuitive. For
+  windows, [[https://github.com/abo-abo/ace-window][ace-window]] does the same making short keystrokes to do big
+  things.
 #+BEGIN_SRC emacs-lisp
-  ;; Window change undos
-  (winner-mode 1)
-
   (use-package avy
     :ensure t
     :config
@@ -204,12 +205,24 @@
     :ensure t
     :config
     (global-set-key (kbd "M-p") 'ace-window))
+#+END_SRC
 
-  (use-package which-key
+* which-key
+  The [[https://github.com/justbur/emacs-which-key][which-key]] package makes handy completion buffers as you enter
+  key chords allowing you to find things more easily.  (use-package
+#+BEGIN_SRC emacs-lisp
+  which-key
     :ensure t
     :config
     (which-key-mode))
+#+END_SRC
 
+* Load undo-tree and browse-kill-ring
+  The [[http://www.dr-qubit.org/undo-tree/undo-tree.el][undo-tree]] module allows you to have a complete tree of changes
+  to navigate while undoing. The [[https://github.com/browse-kill-ring/browse-kill-ring][browse-kill-ring]] module tracks your
+  kill ring and lets you explicitly choose the what you want to yank
+  rather than cycling through the ring.
+#+BEGIN_SRC emacs-lisp
   (use-package undo-tree
     :ensure t
     :config
@@ -219,7 +232,9 @@
     :ensure t
     :config
     (browse-kill-ring-default-keybindings))
+#+END_SRC
 
+#+BEGIN_SRC
   (use-package flycheck
     :ensure t
     :init (global-flycheck-mode))
