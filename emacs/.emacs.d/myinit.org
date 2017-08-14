@@ -181,11 +181,16 @@
   (fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
 
+* Include yasnippet
+  The [[https://github.com/joaotavora/yasnippet][yasnippet]] library makes it easy to automate a log of boilerplate
+  with smiple template expansion.
 #+BEGIN_SRC emacs-lisp
   (use-package yasnippet
     :ensure t
     :config (yas-global-mode 1))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
   ;; Window change undos
   (winner-mode 1)
 
