@@ -243,16 +243,18 @@
     :init (global-flycheck-mode))
 #+END_SRC
 
+* Load puppet-mode on demand
+  The puppet-mode module makes life with puppet much easier. Of
+  particular note is the handy align arrows functionality available
+  with C-c C-a.
 #+BEGIN_SRC emacs-lisp
-  (use-package rbenv
-    :ensure t
-    :init (global-rbenv-mode))
-
   (use-package puppet-mode
     :ensure t
     :mode ("\\.pp\\'" . puppet-mode)
     :interpreter ("puppet" . puppet-mode))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
   (use-package go-mode
     :ensure t
     :mode ("\\.go\\'" . go-mode)
