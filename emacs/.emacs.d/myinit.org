@@ -1,3 +1,7 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+STARTUP: odd
+
 * Start the emacs server
 #+BEGIN_SRC emacs-lisp
   (server-start)
