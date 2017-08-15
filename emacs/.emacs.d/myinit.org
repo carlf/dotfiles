@@ -254,6 +254,9 @@
     :interpreter ("puppet" . puppet-mode))
 #+END_SRC
 
+* Load go-mode
+  The go-mode module is very nice. In particular, this is rigged such
+  that it will run gofmt on save which keeps things nice and neat.
 #+BEGIN_SRC emacs-lisp
   (use-package go-mode
     :ensure t
@@ -261,23 +264,30 @@
     :interpreter ("go" . go-mode)
     :config
     (add-hook 'before-save-hook #'gofmt-before-save))
+#+END_SRC
 
-  (use-package csv-mode
-    :ensure t
-    :mode ("\\.csv\\'" . csv-mode)
-    :interpreter ("csv" . csv-mode))
-
+* Load yaml-mode
+  This just gets me some nice syntax highlighting for yaml.
+#+BEGIN_SRC emacs-lisp
   (use-package yaml-mode
     :ensure t
     :mode ("\\.yaml'" . yaml-mode)
     :interpreter ("yaml" . yaml-mode))
+#+END_SRC
 
+* Org-Mode
+  Org mode is the swiss army knife of my workflow. My general
+  structure is having a todo.org with all tasks and an inbox for
+  capture. I log times on create and complete. There's a minimal
+  capture template for TODOs that takes out some of the trickery in
+  the defaults.
+#+BEGIN_SRC emacs-lisp
   (use-package org
     :ensure t
     :defines org-capture-templates
     :config
     (setq org-refile-targets
-          '((org-agenda-files :maxlevel . 3)))
+          '((org-agenda-files :maxlevel . 2)))
     (setq org-directory "~/Documents/org")
     (setq org-default-notes-file "inbox.org")
     (global-set-key (kbd "C-c a") 'org-agenda)
@@ -286,7 +296,9 @@
     (setq org-capture-templates
           '(("t" "Todo" entry (file "")
              "* TODO %?\n  CREATED: %T"))))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
   (use-package auctex
     :ensure t
     :defer t)
@@ -297,7 +309,4 @@
     :config
     (setq inferior-lisp-program "/usr/bin/sbcl")
     (setq slime-contribs '(slime-fancy)))
-
-  (provide 'init)
-  ;;; init.el ends here
 #+END_SRC
