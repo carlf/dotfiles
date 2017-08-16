@@ -302,15 +302,10 @@
              "* TODO %?\n  CREATED: %T"))))
 #+END_SRC
 
+* AUCTeX
+  This venerable TeX/LaTeX mode makes typsetting much easier
 #+BEGIN_SRC emacs-lisp
   (use-package auctex
     :ensure t
     :defer t)
-
-  (use-package slime
-    :ensure t
-    :commands slime
-    :config
-    (setq inferior-lisp-program "/usr/bin/sbcl")
-    (setq slime-contribs '(slime-fancy)))
 #+END_SRC
