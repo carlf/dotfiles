@@ -215,7 +215,7 @@
   The [[https://github.com/justbur/emacs-which-key][which-key]] package makes handy completion buffers as you enter
   key chords allowing you to find things more easily.  (use-package
 #+BEGIN_SRC emacs-lisp
-  (which-key
+  (use-package which-key
     :ensure t
     :config
     (which-key-mode))
