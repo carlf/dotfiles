@@ -169,7 +169,7 @@ exec polybar main
 exec gnome-keyring-daemon -c secrets
 exec terminator -T _scratchpad
 exec dunst
-exec setxkbmap -option 'ctrl:nocaps,compose:menu'
+exec setxkbmap -option 'ctrl:nocaps,compose:rctrl'
 exec greenclip daemon
 exec nm-applet
 exec dropbox

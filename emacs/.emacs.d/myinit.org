@@ -309,3 +309,12 @@
     :ensure t
     :defer t)
 #+END_SRC
+
+* Dired+
+  This package extends dired in a variety of ways. More information
+  [[http://wikemacs.org/wiki/Dired%252B][here]].
+#+BEGIN_SRC emacs-lisp
+  (use-package dired+
+    :ensure t
+    )
+#+END_SRC
