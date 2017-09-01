@@ -1,5 +1,6 @@
 #!/bin/bash
 
 killall -USR1 dunst
-i3lock -c 458f88 -n
+sleep 0.5
+slock
 killall -USR2 dunst
