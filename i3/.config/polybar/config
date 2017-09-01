@@ -8,13 +8,16 @@
 ;=====================================================
 
 [colors]
-background = #002b36
-background-alt = #073642
-foreground = #93a1a1
-foreground-alt = #586e75
-primary = #b58900
-secondary = #cb4b16
-alert = #dc322f
+background     = #282828
+background-alt = #3c3836
+foreground     = #ebdbb2
+foreground-alt = #bdae93
+red	       = #cc241d
+green          = #98971a
+yellow         = #d79921
+blue           = #458588
+purple         = #b16286
+aqua           = #689d6a
 
 [global/wm]
 margin-top = 5
@@ -49,8 +52,8 @@ font-0 = Hack:size=10
 font-1 = Wuncon Siji
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = volume filesystem memory cpu wlan eth battery0 battery1 temperature date
+modules-center =
+modules-right = volume memory cpu wlan battery0 battery1 temperature date
 
 tray-position = right
 tray-padding = 2
@@ -85,7 +88,7 @@ font-1 = Wuncon Siji
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = volume filesystem memory cpu wlan eth battery0 battery1 temperature date
+modules-right = volume memory cpu wlan battery0 battery1 temperature date
 
 [module/xwindow]
 type = internal/xwindow
@@ -109,24 +112,23 @@ index-sort = true
 wrapping-scroll = false
 
 label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.primary}
+label-focused-underline = ${colors.green}
 label-focused-padding = 2
 
 label-unfocused = %index%
 label-unfocused-padding = 2
 
 label-urgent = %index%!
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
 label-visible = %index%
 label-visible-background = ${colors.background-alt}
-label-visible-underline = ${colors.primary}
 label-visible-padding = 2
 
 [module/mpd]
@@ -145,7 +147,7 @@ icon-pause = 
 icon-next = 
 icon-seekf = 
 
-icon-random = 
+icon-random =
 icon-repeat =
 
 toggle-on-foreground = ${colors.primary}
@@ -156,7 +158,6 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #dc322f
 label = %percentage%
 
 [module/memory]
@@ -164,7 +165,6 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #2aa198
 label = %percentage_used%
 
 [module/wlan]
@@ -173,8 +173,6 @@ interface = wlp4s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #6c71c4
-format-disconnected-underline = ${self.format-connected-underline}
 
 label-connected = %essid%
 label-disconnected = %ifname% disconnected
@@ -197,7 +195,6 @@ format-connected-prefix = " "
 format-connected-foreground-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
-format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -211,9 +208,8 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix =  
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #268bd2
 
 label = %date% %time%
 
@@ -221,8 +217,8 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume =  
-label-volume-foreground = ${root.foreground}
+label-volume = 
+label-volume-foreground = ${colors.foreground-alt}
 
 format-muted-prefix = " "
 format-muted-prefix-font = 1
@@ -230,16 +226,16 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #859900
-bar-volume-foreground-1 = #859900
-bar-volume-foreground-2 = #859900
-bar-volume-foreground-3 = #859900
-bar-volume-foreground-4 = #859900
-bar-volume-foreground-5 = #b58900
-bar-volume-foreground-6 = #dc322f
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.yellow}
+bar-volume-foreground-4 = ${colors.yellow}
+bar-volume-foreground-5 = ${colors.red}
+bar-volume-foreground-6 = ${colors.red}
 bar-volume-gradient = false
 bar-volume-indicator = │
-bar-volume-indicator-foreground = #ff
+bar-volume-indicator-foreground = ${colors.foreground-alt}
 bar-volume-fill = ─
 bar-volume-empty = ─
 bar-volume-empty-foreground = ${colors.foreground-alt}
@@ -251,14 +247,11 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.primary}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -266,8 +259,8 @@ ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
-animation-charging-1 =  
-animation-charging 2 =  
+animation-charging-1 = 
+animation-charging 2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -278,14 +271,11 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.primary}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -293,8 +283,8 @@ ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
-animation-charging-1 =  
-animation-charging 2 =  
+animation-charging-1 = 
+animation-charging 2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -304,10 +294,8 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
-format-underline = #dc322f
 format-warn = <label-warn>
-format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label =  %temperature%
+label-warn =  %temperature%
+label-warn-foreground = ${colors.red}

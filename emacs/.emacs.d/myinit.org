@@ -68,16 +68,14 @@
   most of the UI, turning on [[https://github.com/Malabarba/smart-mode-line][smart-mode-line]], and disabling the
   variable size fonts in org mode that give me the fits.
 #+BEGIN_SRC emacs-lisp
-  (use-package solarized-theme
+  (use-package gruvbox-theme
     :ensure t
     :config
-    (setq solarized-use-variable-pitch nil)
-    (setq solarized-scale-org-headlines nil)
     (set-frame-font "Knack Nerd Font-10")
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)
-    (load-theme 'solarized-dark t))
+    (load-theme 'gruvbox-dark-medium t))
 
   (use-package smart-mode-line
     :ensure t
