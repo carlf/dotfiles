@@ -36,20 +36,6 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
 
-* Start of line hack
-  One of the few things I miss from vi is the distinction between 0
-  and ^. It's nice to be able to jump to the first character and
-  sometimes necessary to jump to the first column. This toggles
-  between both which makes things nice and easy.
-#+BEGIN_SRC emacs-lisp
-  (defun back-to-indentation-or-beginning ()
-    "Move alternately between beginning of line and back to indentation."
-    (interactive)
-         (if (= (point) (progn (back-to-indentation) (point)))
-             (beginning-of-line)))
-  (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
-#+END_SRC
-
 * Use xdg-open
   I'm not clear at all on why this is not default behavior. It's
   standard most everywhere but emacs wants to be a special little
@@ -71,7 +57,7 @@
   (use-package gruvbox-theme
     :ensure t
     :config
-    (set-frame-font "Knack Nerd Font-10")
+    (set-frame-font "DejaVu Sans Mono-10")
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)
@@ -327,4 +313,16 @@
   (use-package flycheck-ledger
     :ensure t
     )
+#+END_SRC
+
+* GNUS
+  This is handy for reading newsgroups. Maybe someday I'll be free of
+  Exchange and can use it for my email as well.
+#+BEGIN_SRC emacs-lisp
+  (use-package gnus
+    :ensure t
+    :config
+    (setq user-mail-address "carlf@photocarl.org"
+          user-full-name "Carl Flippin"
+          gnus-select-method '(nntp "news.giganews.com")))
 #+END_SRC
