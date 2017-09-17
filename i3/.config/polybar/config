@@ -48,12 +48,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = InputMono:size=10
-font-1 = Wuncon Siji
+font-0 = Input Sans:size=10
+font-1 = Wuncon Siji:size=10
 
 modules-left = i3 xwindow
-modules-center =
-modules-right = volume memory cpu wlan battery0 battery1 temperature date
+modules-center = mpd
+modules-right = volume memory cpu battery0 battery1 temperature date
 
 tray-position = right
 tray-padding = 2
@@ -88,7 +88,7 @@ font-1 = Wuncon Siji
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = volume memory cpu wlan battery0 battery1 temperature date
+modules-right = volume memory cpu battery0 battery1 temperature date
 
 [module/xwindow]
 type = internal/xwindow
@@ -156,14 +156,14 @@ toggle-off-foreground = #66
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "%{T2}%{T-} "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "%{T2}%{T-} "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage_used%
 
@@ -172,7 +172,7 @@ type = internal/network
 interface = wlp4s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = "%{T2}<ramp-signal>%{T-} <label-connected>"
 
 label-connected = %essid%
 label-disconnected = %ifname% disconnected
@@ -191,7 +191,7 @@ interface = enp0s31f6
 interval = 3.0
 
 format-connected-underline = #859900
-format-connected-prefix = " "
+format-connected-prefix = "%{T2}%{T-} "
 format-connected-foreground-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -208,7 +208,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = "%{T2}%{T-}"
 format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
