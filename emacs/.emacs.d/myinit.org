@@ -324,5 +324,10 @@
     :config
     (setq user-mail-address "carlf@photocarl.org"
           user-full-name "Carl Flippin"
-          gnus-select-method '(nntp "news.giganews.com")))
+          gnus-select-method '(nntp "news.giganews.com"))
+    (add-to-list 'gnus-secondary-select-methods
+                 '(nnimap "photocarl"
+                          (nnimap-address "imap.fastmail.com")
+                          (nnimap-server-port 993)
+                          (nnimap-stream-ssl))))
 #+END_SRC
