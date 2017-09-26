@@ -69,6 +69,20 @@
     (sml/setup))
 #+END_SRC
 
+* Dashboard
+  This loads [[https://github.com/rakanalh/emacs-dashboard][emacs-dashboard]] which makes a nice easy to use splash
+  page when emacs starts up. It's a little like the spacemacs splash
+  page.
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (setq dashboard-items '((recents . 10)
+                            (projects . 10)
+                            (agenda . 10)))
+    (dashboard-setup-startup-hook))
+#+END_SRC
+
 * Load magit
   [[https://magit.vc/][Magit]] is mandatory. Don't leave home without it.
 #+BEGIN_SRC emacs-lisp
