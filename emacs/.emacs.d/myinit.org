@@ -284,26 +284,26 @@
   capture template for TODOs that takes out some of the trickery in
   the defaults.
 #+BEGIN_SRC emacs-lisp
-    (use-package org
-      :ensure t
-      :defines org-capture-templates
-      :config
-      (setq org-refile-targets
-            '((org-agenda-files :maxlevel . 2)))
-      (setq org-directory "~/Documents/org")
-      (setq org-default-notes-file "inbox.org")
-      (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture)
-      (setq org-log-done 'time)
-      (setq org-capture-templates
-            '(("t" "Todo" entry (file "")
-               "* TODO %?\n  CREATED: %T")))
-      (setq org-src-fontify-natively t)
-      (org-babel-do-load-languages
-       'org-babel-load-languages
-       (append org-babel-load-languages
-               '((sh . t)
-                 (python . t)))))
+  (use-package org
+    :ensure t
+    :defines org-capture-templates
+    :config
+    (setq org-refile-targets
+          '((org-agenda-files :maxlevel . 2)))
+    (setq org-directory "~/Documents/org")
+    (setq org-default-notes-file "inbox.org")
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
+    (setq org-log-done 'time)
+    (setq org-capture-templates
+          '(("t" "Todo" entry (file "")
+             "* TODO %?\n  CREATED: %T")))
+    (setq org-src-fontify-natively t)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     (append org-babel-load-languages
+             '((sh . t)
+               (python . t)))))
 #+END_SRC
 
 * AUCTeX
@@ -342,10 +342,10 @@
   Exchange and can use it for my email as well.
 #+BEGIN_SRC emacs-lisp
   (require 'mu4e)
-  (setq mu4e-maildir (expand-file-name "~/Mail/photocarl"))
-  (setq mu4e-sent-folder "/Sent")
-  (setq mu4e-drafts-folder "/Drafts")
-  (setq mu4e-trash-folder "/Trash")
-  (setq mu4e-get-mail-command "mbsync -a")
-  (setq mu4e-use-fancy-chars t)
+  (setq mu4e-maildir (expand-file-name "~/Mail/photocarl")
+        mu4e-sent-folder "/Sent"
+        mu4e-drafts-folder "/Drafts"
+        mu4e-trash-folder "/Trash"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-use-fancy-chars nil)
 #+END_SRC
