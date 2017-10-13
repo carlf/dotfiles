@@ -288,17 +288,16 @@
     :ensure t
     :defines org-capture-templates
     :config
-    (setq org-refile-targets
-          '((org-agenda-files :maxlevel . 2)))
-    (setq org-directory "~/Documents/org")
-    (setq org-default-notes-file "inbox.org")
     (global-set-key (kbd "C-c a") 'org-agenda)
     (global-set-key (kbd "C-c c") 'org-capture)
-    (setq org-log-done 'time)
-    (setq org-capture-templates
-          '(("t" "Todo" entry (file "")
-             "* TODO %?\n  CREATED: %T")))
-    (setq org-src-fontify-natively t)
+    (setq org-refile-targets
+          '((org-agenda-files :maxlevel . 2))
+          org-directory "~/Documents/org"
+          org-default-notes-file "inbox.org"
+          org-log-done 'time
+          org-capture-templates '(("t" "Todo" entry (file "")
+                                   "* TODO %?\n  CREATED: %T"))
+          org-src-fontify-natively t)
     (org-babel-do-load-languages
      'org-babel-load-languages
      (append org-babel-load-languages
