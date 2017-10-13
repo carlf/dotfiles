@@ -337,12 +337,15 @@
     :ensure t)
 #+END_SRC
 
-* mu43
+* COMMENT mu4e
   This is handy for reading newsgroups. Maybe someday I'll be free of
   Exchange and can use it for my email as well.
 #+BEGIN_SRC emacs-lisp
-  (use-package mu4e
-    :ensure t
-    :config
-    (setq mu4e-maildir (expand-file-name ~/Mail/photocarl)))
+  (require 'mu4e)
+  (setq mu4e-maildir (expand-file-name "~/Mail/photocarl"))
+  (setq mu4e-sent-folder "/Sent")
+  (setq mu4e-drafts-folder "/Drafts")
+  (setq mu4e-trash-folder "/Trash")
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-use-fancy-chars t)
 #+END_SRC

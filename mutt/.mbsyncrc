@@ -3,27 +3,15 @@ Remove Both
 SyncState *
 
 IMAPAccount photocarl
-Host mail.photocarl.org
+Host imap.fastmail.com
 Port 993
-User carlf
-PassCmd "echo ${PASSWORD:-$(gpg --no-tty -qd ~/.authinfo.gpg | sed -n 's,^machine mail.photocarl.org .*password \\([^ ]*\\).*,\\1,p')}"
+User carlf@carlf.io
+PassCmd "echo ${PASSWORD:-$(gpg --no-tty -qd ~/.authinfo.gpg | sed -n 's,^machine imap.fastmail.com .*password \\([^ ]*\\).*,\\1,p')}"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPAccount opentable
-Host 127.0.0.1
-Port 1143
-User cflippin@opentable.com
-PassCmd "echo ${PASSWORD:-$(gpg --no-tty -qd ~/.authinfo.gpg | sed -n 's,^machine outlook.office365.com .*password \\([^ ]*\\).*,\\1,p')}"
-SSLType None
-AuthMechs LOGIN
-
 IMAPStore photocarl-remote
 Account photocarl
-UseNamespace yes
-
-IMAPStore opentable-remote
-Account opentable
 UseNamespace yes
 
 MaildirStore photocarl-local
@@ -32,20 +20,8 @@ Inbox ~/Mail/photocarl/INBOX
 AltMap no
 Flatten .
 
-MaildirStore opentable-local
-Path ~/Mail/opentable/
-Inbox ~/Mail/opentable/INBOX
-AltMap no
-Flatten .
-
 Channel photocarl
 Master :photocarl-remote:
 Slave :photocarl-local:
-Patterns *
-Expunge Both
-
-Channel opentable
-Master :opentable-remote:
-Slave :opentable-local:
 Patterns *
 Expunge Both
