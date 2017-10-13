@@ -336,9 +336,8 @@
     :ensure t)
 #+END_SRC
 
-* COMMENT mu4e
-  This is handy for reading newsgroups. Maybe someday I'll be free of
-  Exchange and can use it for my email as well.
+* mu4e
+  I switched to this from GNUS because it's faster and more flexible.
 #+BEGIN_SRC emacs-lisp
   (require 'mu4e)
   (setq mu4e-maildir (expand-file-name "~/Mail/photocarl")
