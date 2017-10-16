@@ -1,9 +1,0 @@
-set mbox_type=Maildir
-set folder="~/Mail/opentable"
-set spoolfile="~/Mail/opentable/INBOX"
-unmailboxes *
-mailboxes =INBOX =Archive =github =JIRA =Junk =Sent
-set sendmail="/usr/bin/msmtp -a opentable"
-set from="cflippin@opentable.com"
-set copy=no
-set record=""

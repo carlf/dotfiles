@@ -1,9 +1,0 @@
-set mbox_type=Maildir
-set folder="~/Mail/photocarl"
-set spoolfile="~/Mail/photocarl/INBOX"
-unmailboxes *
-mailboxes =INBOX =Archive =arch-dev =bugtraq =Junk =nanog =oss-security =rabbitmq =time-nuts
-set sendmail="/usr/bin/msmtp -a photocarl"
-set from="carlf@photocarl.org"
-set copy=yes
-set record="=Sent"

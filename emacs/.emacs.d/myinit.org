@@ -348,3 +348,22 @@
         mu4e-use-fancy-chars nil
         mu4e-change-filenames-when-moving t)
 #+END_SRC
+
+* Markdown mode
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode
+    :ensure t
+    :commands (markdown-mode gfm-mode)
+    :mode (("README\\.md\\'" . gfm-mode)
+           ("\\.md\\'" . markdown-mode)
+           ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
+#+END_SRC
+
+* TLDR mode
+  This mode allows searching the simplified man pages [[https://github.com/tldr-pages/tldr][here]] giving you
+  more condensed and useful information for various man pages.
+#+BEGIN_SRC emacs-lisp
+  (use-package tldr
+    :ensure t)
+#+END_SRC

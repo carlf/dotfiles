@@ -6,7 +6,7 @@ IMAPAccount photocarl
 Host imap.fastmail.com
 Port 993
 User carlf@carlf.io
-PassCmd "echo ${PASSWORD:-$(gpg --no-tty -qd ~/.authinfo.gpg | sed -n 's,^machine imap.fastmail.com .*password \\([^ ]*\\).*,\\1,p')}"
+PassCmd "~/bin/get_password imap.fastmail.com"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
