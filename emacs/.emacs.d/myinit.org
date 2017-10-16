@@ -349,7 +349,8 @@
         mu4e-change-filenames-when-moving t
         mu4e-maildir-shortcuts '(("/INBOX" . ?i)
                                  ("/Archive" . ?a)
-                                 ("/Sent" . ?s)))
+                                 ("/Sent" . ?s)
+                                 ("/Spam" . ?j)))
 #+END_SRC
 
 * Markdown mode
