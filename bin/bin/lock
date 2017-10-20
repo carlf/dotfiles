@@ -1,8 +1,6 @@
 #!/bin/bash
 
-export XAUTHORITY=/home/cflippin/.Xauthority
-export DISPLAY=:0
 killall -USR1 dunst
 sleep 0.5
-/usr/bin/sudo -u cflippin /usr/bin/i3lock-fancy
+slock
 killall -USR2 dunst
