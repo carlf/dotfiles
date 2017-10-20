@@ -1270,7 +1270,7 @@ c.url.start_pages = 'https://start.duckduckgo.com'
 ## the current web page. * `{backend}`: Either ''webkit'' or
 ## ''webengine'' * `{private}` : Indicates when private mode is enabled.
 ## Type: FormatString
-# c.window.title_format = 'qutebrowser {perc}{title}{title_sep}{host}'
+c.window.title_format = 'qutebrowser {title}{title_sep}{current_url}'
 
 ## The default zoom level.
 ## Type: Perc
