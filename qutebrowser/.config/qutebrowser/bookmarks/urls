@@ -59,3 +59,11 @@ https://vsphere-qa.otenv.com vsphere-qa
 https://vsphere-sc.otenv.com vsphere-sc
 https://wiki.otcorp.opentable.com wiki
 http://mesos.ot.tools Dude where's my task
+http://kafka-manager.prod-uswest2.otenv.com/ Kafka Manager prod-uswest2
+http://kafka-manager.pp-uswest2.otenv.com/ Kafka Manager pp-uswest2
+https://theoldreader.com/posts/all The Old Reader
+https://secret.otenv.com/SecretServer/dashboard.aspx Secret Server
+https://github.com/opentable/puppet-modules puppet-modules opentable
+https://github.com/carlf/puppet-modules puppet-modules carlf
+https://opentable.pagerduty.com Pagerduty
+https://opentable.atlassian.net JIRA
