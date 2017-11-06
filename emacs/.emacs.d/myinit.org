@@ -317,6 +317,7 @@
     (global-set-key (kbd "C-c c") 'org-capture)
     (setq org-refile-targets
           '((org-agenda-files :maxlevel . 2))
+          org-export-with-sub-superscripts nil
           org-directory "~/Documents/org"
           org-default-notes-file "inbox.org"
           org-log-done 'time
