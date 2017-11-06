@@ -3,4 +3,4 @@
 
 config_version: 1
 global:
-  hints.mode: word
+  content.host_blocking.enabled: false

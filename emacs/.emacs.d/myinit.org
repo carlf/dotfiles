@@ -412,3 +412,13 @@
     :config
     (add-to-path (expand-file-name "~/.pyenv/libexec")))
 #+END_SRC
+
+* SLIME
+  The SLIME list interaction mode is awesome
+#+BEGIN_SRC emacs-lisp
+  (use-package slime
+    :ensure t
+    :config
+    (setq inferior-lisp-program "/usr/bin/sbcl")
+    (setq slime-contribs '(slime-fancy)))
+#+END_SRC
