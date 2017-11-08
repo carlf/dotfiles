@@ -8,3 +8,5 @@
 	insteadOf = https://github.com/
 [magit]
 	hideCampaign = true
+[github]
+	user = carlf

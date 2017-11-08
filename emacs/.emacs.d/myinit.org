@@ -106,6 +106,7 @@
     (setq vc-handled-backends nil))
   (use-package magithub
     :after magit
+    :ensure t
     :config (magithub-feature-autoinject t))
 #+END_SRC
 
