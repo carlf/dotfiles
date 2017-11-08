@@ -96,13 +96,17 @@
 #+END_SRC
 
 * Load magit
-  [[https://magit.vc/][Magit]] is mandatory. Don't leave home without it.
+  [[https://magit.vc/][Magit]] is mandatory. Don't leave home without it. Also include
+  [[https://github.com/vermiculus/magithub][magithub]].
 #+BEGIN_SRC emacs-lisp
   (use-package magit
     :ensure t
     :bind ("C-x g" . magit-status)
     :config
     (setq vc-handled-backends nil))
+  (use-package magithub
+    :after magit
+    :config (magithub-feature-autoinject t))
 #+END_SRC
 
 * Set SSH_AUTH_SOCK
