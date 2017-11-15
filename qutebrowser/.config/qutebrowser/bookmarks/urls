@@ -68,3 +68,7 @@ https://github.com/carlf/puppet-modules puppet-modules carlf
 https://opentable.pagerduty.com Pagerduty
 https://opentable.atlassian.net JIRA
 https://outlook.office365.com/owa Mail
+http://ipplan.otcorp.opentable.com/ipplan IPPlan
+https://outlook.office.com/owa/?path=/calendar/view/Month Calendar - cflippin@opentable.com
+https://www.bitium.com/opentable.com Bitium
+https://teamcity.otenv.com/admin/editProject.html?projectId=Umami_BackEnd_MeasurementService&tab=projectVcsRoots Measurement Service Project > VCS Roots — TeamCity
