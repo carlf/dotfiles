@@ -40,9 +40,9 @@ bindsym $mod+Mod1+l exec ~/bin/lock
 bindsym $mod+Shift+q kill
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 10%+
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 10%-
-bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec bash -c "amixer -q sset Master 10%+ && pkill -USR1 i3status"
+bindsym XF86AudioLowerVolume exec bash -c "amixer -q sset Master 10%- && pkill -USR1 i3status"
+bindsym XF86AudioMute exec bash -c "amixer -q sset Master toggle && pkill -USR1 i3status"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
@@ -152,6 +152,8 @@ bindsym $mod+r mode "resize"
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
+set $bgalt #3c3836
+set $fg #ebdbb2
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
@@ -167,6 +169,25 @@ client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
 
 bindsym $mod+minus scratchpad show
+
+bar {
+    colors {
+    	   background $bg
+	   statusline $fg
+	   separator $aqua
+
+	   focused_workspace $green $bgalt $fg
+	   inactive_workspace $bg $bg $fg
+	   active_workspace $bg $bg $fg
+	   urgent_workspace $red $bgalt $fg
+    }
+    mode dock
+    position top
+    tray_output primary
+    font pango:InputMono Regular 10
+    separator_symbol ":|:"
+    status_command i3status
+}
 
 for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
