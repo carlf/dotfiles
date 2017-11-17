@@ -122,7 +122,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Shift+b exec clipster -s
+bindsym $mod+Shift+b exec copyq show
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -189,11 +189,11 @@ bar {
     status_command i3status
 }
 
-for_window [ title="^pdfpc - present" ] border none floating enable
 for_window [ class="xfreerdp" ] floating disable
 for_window [ title="^_scratchpad" ] move scratchpad
 for_window [ class="^.*" ] border pixel 2
 for_window [ class="Pinentry" ] floating enable
+for_window [ class="copyq" ] floating enable
 
 exec wmname LG3D
 exec xrandr --output DP1 --off --output HDMI2 --off --output eDP1 --primary
@@ -202,8 +202,8 @@ exec gnome-keyring-daemon -c secrets
 exec terminator -T _scratchpad
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:rctrl'
-exec clipster -d
 exec nm-applet
+exec copyq
 exec dropbox
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec xss-lock --ignore-sleep -- /bin/bash /home/cflippin/bin/lock

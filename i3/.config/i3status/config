@@ -10,7 +10,7 @@ order += "cpu_temperature 0"
 order += "tztime local"
 
 battery all {
-        format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage %remaining"
         format_down = "No battery"
         status_chr = "⚡ CHR"
         status_bat = "🔋 BAT"
@@ -24,6 +24,8 @@ battery all {
 
 tztime local {
         format = "%Y-%m-%d %H:%M"
+	align = "left"
+	min_width = 150
 }
 
 cpu_temperature 0 {
