@@ -1,10 +1,6 @@
 #!/bin/bash
 
-killall polybar
-
 xrandr --output DP1 --off --output HDMI2 --off --output eDP1 --primary
-
-polybar main&
 
 feh --bg-scale ~/.config/i3/wallpaper.png
 

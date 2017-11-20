@@ -637,7 +637,7 @@ c.content.plugins = True
 ## Valid values:
 ##   - system: Use the system wide proxy.
 ##   - none: Don't use any proxy
-# c.content.proxy = 'system'
+c.content.proxy = 'none'
 
 ## Send DNS requests over the configured proxy.
 ## Type: Bool

@@ -1,12 +1,6 @@
 #!/bin/bash
 
-killall polybar
-
 xrandr --output eDP1 --auto --pos 2560x360 --primary --output DP1 --auto --pos 4480x0 --output HDMI2 --auto --pos 0x0
-
-polybar main&
-MONITOR=DP1 polybar side&
-MONITOR=HDMI2 polybar side&
 
 feh --bg-scale ~/.config/i3/wallpaper.png
 
