@@ -17,6 +17,8 @@ User cflippin@opentable.com
 PassCmd "~/bin/get_password outlook.office365.com"
 SSLType None
 AuthMechs LOGIN
+PipelineDepth 1
+Timeout 0
 
 IMAPStore photocarl-remote
 Account photocarl
