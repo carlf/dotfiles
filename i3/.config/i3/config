@@ -206,3 +206,4 @@ exec nm-applet
 exec copyq
 exec dropbox
 exec feh --bg-scale ~/.config/i3/wallpaper.png
+exec xss-lock --ignore-sleep -- /bin/bash /home/cflippin/bin/lock
