@@ -34,7 +34,7 @@ gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+Mod1+l exec ~/bin/lock
+bindsym $mod+Mod1+l exec xset s activate
 
 # kill focused window
 bindsym $mod+Shift+q kill
