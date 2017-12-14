@@ -154,6 +154,11 @@
     (setq ivy-use-virtual-buffers t)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
     (global-set-key (kbd "<f6>") 'ivy-resume))
+  (use-package hydra
+    :ensure t)
+  (use-package ivy-hydra
+    :ensure t
+    :after (ivy hydra))
 #+END_SRC
 
 *** Load [[https://github.com/abo-abo/swiper#swiper][swiper]].
@@ -427,4 +432,10 @@
     :config
     (setq inferior-lisp-program "/usr/bin/sbcl")
     (setq slime-contribs '(slime-fancy)))
+#+END_SRC
+
+* Counsel World Clock
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel-world-clock
+    :ensure t)
 #+END_SRC
