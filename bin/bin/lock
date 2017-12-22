@@ -2,5 +2,5 @@
 
 killall -USR1 dunst
 sleep 0.5
-slock
+light-locker-command -l
 killall -USR2 dunst

@@ -3,4 +3,5 @@
 
 config_version: 1
 global:
+  content.host_blocking.enabled: false
   content.proxy: none
