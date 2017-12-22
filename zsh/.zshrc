@@ -22,7 +22,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/tmuxinator
     zgen load carlf/zsh-plugins rbenv
     zgen load carlf/zsh-plugins emacs
-    zgen load lukechilds/zsh-nvm
     zgen load bhilburn/powerlevel9k powerlevel9k next
     zgen load andrewferrier/fzf-z
     zgen save
