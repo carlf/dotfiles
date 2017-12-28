@@ -184,7 +184,7 @@ bar {
     mode dock
     position top
     tray_output primary
-    font pango:InputMono Regular 10
+    font pango:FantasqueSansMono Regular 12
     separator_symbol ":|:"
     status_command i3status
 }
