@@ -717,39 +717,39 @@ c.editor.command = ['emacsclient', '{}']
 
 ## Font used in the completion categories.
 ## Type: Font
-c.fonts.completion.category = 'bold 12pt FantasqueSansMono'
+c.fonts.completion.category = 'bold 10pt FantasqueSansMono'
 
 ## Font used in the completion widget.
 ## Type: Font
-c.fonts.completion.entry = '12pt Input Mono'
+c.fonts.completion.entry = '10pt Input Mono'
 
 ## Font used for the debugging console.
 ## Type: QtFont
-c.fonts.debug_console = '12pt FantasqueSansMono'
+c.fonts.debug_console = '10pt FantasqueSansMono'
 
 ## Font used for the downloadbar.
 ## Type: Font
-c.fonts.downloads = '12pt FantasqueSansMono'
+c.fonts.downloads = '10pt FantasqueSansMono'
 
 ## Font used for the hints.
 ## Type: Font
-c.fonts.hints = 'bold 12pt FantasqueSansMono'
+c.fonts.hints = 'bold 10pt FantasqueSansMono'
 
 ## Font used in the keyhint widget.
 ## Type: Font
-c.fonts.keyhint = '12pt FantasqueSansMono'
+c.fonts.keyhint = '10pt FantasqueSansMono'
 
 ## Font used for error messages.
 ## Type: Font
-c.fonts.messages.error = '12pt FantasqueSansMono'
+c.fonts.messages.error = '10pt FantasqueSansMono'
 
 ## Font used for info messages.
 ## Type: Font
-c.fonts.messages.info = '12pt FantasqueSansMono'
+c.fonts.messages.info = '10pt FantasqueSansMono'
 
 ## Font used for warning messages.
 ## Type: Font
-c.fonts.messages.warning = '12pt FantasqueSansMono'
+c.fonts.messages.warning = '10pt FantasqueSansMono'
 
 ## Default monospace fonts. Whenever "monospace" is used in a font
 ## setting, it's replaced with the fonts listed here.
@@ -762,11 +762,11 @@ c.fonts.prompts = '8pt sans-serif'
 
 ## Font used in the statusbar.
 ## Type: Font
-c.fonts.statusbar = '12pt FantasqueSansMono'
+c.fonts.statusbar = '10pt FantasqueSansMono'
 
 ## Font used in the tab bar.
 ## Type: QtFont
-c.fonts.tabs = '12pt FantasqueSansMono'
+c.fonts.tabs = '10pt FantasqueSansMono'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
