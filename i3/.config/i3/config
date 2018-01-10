@@ -207,6 +207,5 @@ exec nm-applet
 exec copyq
 exec dropbox
 exec light-locker
-exec davmail
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec xss-lock --ignore-sleep -- /bin/bash /home/cflippin/bin/lock
