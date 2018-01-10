@@ -124,6 +124,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym $mod+Shift+b exec copyq show
 
+bindsym $mod+Shift+p exec rofi-pass
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -190,7 +192,7 @@ bar {
 }
 
 for_window [ class="xfreerdp" ] floating disable
-for_window [ title="^_scratchpad" ] move scratchpad
+for_window [ title="^_scratchpad" ] move scratchpad, move position center
 for_window [ class="^.*" ] border pixel 2
 for_window [ class="Pinentry" ] floating enable
 for_window [ class="copyq" ] floating enable

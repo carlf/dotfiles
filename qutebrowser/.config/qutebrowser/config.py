@@ -721,7 +721,7 @@ c.fonts.completion.category = 'bold 10pt FantasqueSansMono'
 
 ## Font used in the completion widget.
 ## Type: Font
-c.fonts.completion.entry = '10pt Input Mono'
+c.fonts.completion.entry = '10pt FantasqueSansMono'
 
 ## Font used for the debugging console.
 ## Type: QtFont

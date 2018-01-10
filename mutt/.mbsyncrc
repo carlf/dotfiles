@@ -11,11 +11,11 @@ SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount opentable
-Host 127.0.0.1
-Port 1143
+Host outlook.office365.com
+Port 993
 User cflippin@opentable.com
 PassCmd "~/bin/get_password outlook.office365.com"
-SSLType None
+SSLType IMAPS
 AuthMechs LOGIN
 PipelineDepth 1
 Timeout 0
