@@ -1,7 +1,7 @@
 [user]
 	email = carlf@photocarl.org
 	name = Carl Flippin
-	signingkey = 22A4AF98
+	signingkey = D8DA314EDE8F8D1CC8EEF1B4CF044B4FD87EE569
 [commit]
 	gpgsign = true
 [url "git@github.com:"]

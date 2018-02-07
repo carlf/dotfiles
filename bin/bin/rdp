@@ -15,7 +15,7 @@ echo $HEIGHT
 declare -a HOSTS
 for i in ~/.config/rdp/*; do
     DOMAIN=$(basename $i)
-    for HOST in $(cat ~/.config/rdp/$DOMAIN/hosts); do
+    for HOST in $(cat ~/.config/rdp/$DOMAIN/hosts | sort -u); do
         HOSTS+=("$DOMAIN/$HOST")
     done
 done
