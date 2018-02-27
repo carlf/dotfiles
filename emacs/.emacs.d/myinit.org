@@ -104,10 +104,6 @@
     :bind ("C-x g" . magit-status)
     :config
     (setq vc-handled-backends nil))
-  (use-package magithub
-    :after magit
-    :ensure t
-    :config (magithub-feature-autoinject t))
 #+END_SRC
 
 * Set SSH_AUTH_SOCK
