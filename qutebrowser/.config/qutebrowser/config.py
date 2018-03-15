@@ -1545,3 +1545,7 @@ config.bind('f', 'hint all normal')
 
 ## Bindings for register mode
 # config.bind('<Escape>', 'leave-mode', mode='register')
+
+# with config.pattern('*://theoldreader.com') as p:
+#     p.config.unbind('j', mode='normal')
+#     p.config.unbind('k', mode='normal')
