@@ -10,44 +10,18 @@ PassCmd "~/bin/get_password imap.fastmail.com"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPAccount opentable
-Host outlook.office365.com
-Port 993
-User cflippin@opentable.com
-PassCmd "~/bin/get_password outlook.office365.com"
-SSLType IMAPS
-AuthMechs LOGIN
-PipelineDepth 1
-Timeout 0
-
 IMAPStore photocarl-remote
 Account photocarl
 UseNamespace yes
 
-IMAPStore opentable-remote
-Account opentable
-UseNamespace yes
-
 MaildirStore photocarl-local
-Path ~/Mail/photocarl/
-Inbox ~/Mail/photocarl/INBOX
-AltMap no
-Flatten .
-
-MaildirStore opentable-local
-Path ~/Mail/opentable/
-Inbox ~/Mail/opentable/INBOX
+Path ~/Mail/
+Inbox ~/Mail/INBOX
 AltMap no
 Flatten .
 
 Channel photocarl
 Master :photocarl-remote:
 Slave :photocarl-local:
-Patterns *
-Expunge Both
-
-Channel opentable
-Master :opentable-remote:
-Slave :opentable-local:
 Patterns *
 Expunge Both

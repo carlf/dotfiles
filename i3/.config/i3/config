@@ -209,4 +209,4 @@ exec dropbox
 exec light-locker
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec xss-lock --ignore-sleep -- /bin/bash /home/cflippin/bin/lock
-exec compton -i 0.85 -c -b
+exec compton -i 0.9 -c -b

@@ -4,9 +4,9 @@ xrandr --output eDP1 --auto --pos 2560x360 --primary --output DP1 --auto --pos 4
 
 feh --bg-scale ~/.config/i3/wallpaper.png
 
-i3-msg workspace number 3
+i3-msg workspace number 2
 i3-msg layout splith
 i3-msg move workspace to output HDMI2
-i3-msg workspace number 4
+i3-msg workspace number 3
 i3-msg layout splith
 i3-msg move workspace to output DP1
