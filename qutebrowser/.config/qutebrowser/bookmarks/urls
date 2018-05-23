@@ -61,7 +61,6 @@ https://wiki.otcorp.opentable.com wiki
 http://mesos.ot.tools Dude where's my task
 http://kafka-manager.prod-uswest2.otenv.com/ Kafka Manager prod-uswest2
 http://kafka-manager.pp-uswest2.otenv.com/ Kafka Manager pp-uswest2
-https://theoldreader.com/posts/all The Old Reader
 https://secret.otenv.com/SecretServer/dashboard.aspx Secret Server
 https://github.com/opentable/puppet-modules puppet-modules opentable
 https://github.com/carlf/puppet-modules puppet-modules carlf
@@ -72,4 +71,6 @@ http://ipplan.otcorp.opentable.com/ipplan IPPlan
 https://outlook.office.com/owa/?path=/calendar/view/Month Calendar - cflippin@opentable.com
 https://www.bitium.com/opentable.com Bitium
 https://teamcity.otenv.com/admin/editProject.html?projectId=Umami_BackEnd_MeasurementService&tab=projectVcsRoots Measurement Service Project > VCS Roots — TeamCity
-https://f5-prod-sc.otenv.com/xui/ BIG-IP® - f5-4-prod-sc.otenv.com (127.0.0.1)
+https://sc-xclarity-01.otsql.opentable.com/ XClarity prod-sc
+https://sf-xclarity-01.otcorp.opentable.com/ XClarity qa-sf
+https://www.inoreader.com/all_articles inoreader

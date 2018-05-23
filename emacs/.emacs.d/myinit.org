@@ -331,19 +331,19 @@
     (global-set-key (kbd "C-c a") 'org-agenda)
     (global-set-key (kbd "C-c c") 'org-capture)
     (setq org-refile-targets
-          '((org-agenda-files :maxlevel . 2))
-          org-export-with-sub-superscripts nil
-          org-directory "~/Documents/org"
-          org-default-notes-file "inbox.org"
-          org-log-done 'time
-          org-capture-templates '(("t" "Todo" entry (file "")
-                                   "* TODO %?\n  CREATED: %T"))
-          org-src-fontify-natively t)
+	  '((org-agenda-files :maxlevel . 2))
+	  org-export-with-sub-superscripts nil
+	  org-directory "~/Documents/org"
+	  org-default-notes-file "~/Documents/org/inbox.org"
+	  org-log-done 'time
+	  org-capture-templates '(("t" "Todo" entry (file "")
+				   "* TODO %?\n  CREATED: %T"))
+	  org-src-fontify-natively t)
     (org-babel-do-load-languages
      'org-babel-load-languages
      (append org-babel-load-languages
-             '((sh . t)
-               (python . t)))))
+	     '((shell . t)
+	       (python . t)))))
 #+END_SRC
 
 * AUCTeX
@@ -374,22 +374,24 @@
 #+BEGIN_SRC emacs-lisp
   (require 'mu4e)
   (setq mu4e-maildir (expand-file-name "~/Mail")
-        mu4e-sent-folder "/Sent"
-        mu4e-drafts-folder "/Drafts"
-        mu4e-trash-folder "/Trash"
-        mu4e-get-mail-command "mbsync -a"
-        mu4e-use-fancy-chars nil
-        mu4e-change-filenames-when-moving t
-        mu4e-maildir-shortcuts '(("/INBOX" . ?i)
-                                 ("/Archive" . ?a)
-                                 ("/Sent" . ?s)
-                                 ("/Spam" . ?j))
-        message-send-mail-function 'smtpmail-send-it
-        mu4e-reply-to-address "carlf@carlf.io"
-        user-mail-address "carlf@carlf.io"
-        user-full-name  "Carl Flippin"
-        smtpmail-smtp-server "smtp.fastmail.com"
-        smtpmail-smtp-service 587)
+	mu4e-sent-folder "/Sent"
+	mu4e-drafts-folder "/Drafts"
+	mu4e-trash-folder "/Trash"
+	mu4e-get-mail-command "mbsync -a"
+	mu4e-use-fancy-chars nil
+	mu4e-change-filenames-when-moving t
+	mu4e-maildir-shortcuts '(("/INBOX" . ?i)
+				 ("/Archive" . ?a)
+				 ("/Sent" . ?s)
+				 ("/Spam" . ?j))
+	message-send-mail-function 'smtpmail-send-it
+	mu4e-reply-to-address "carlf@carlf.io"
+	user-mail-address "carlf@carlf.io"
+	user-full-name  "Carl Flippin"
+	smtpmail-smtp-server "smtp.fastmail.com"
+	smtpmail-smtp-service 587
+	mu4e-index-cleanup nil
+	mu4e-index-lazy-check t)
 #+END_SRC
 
 * Markdown mode
@@ -437,8 +439,24 @@
     (setq slime-contribs '(slime-fancy)))
 #+END_SRC
 
-* Counsel World Clock
+* web-mode
+  This enables editing erb files sanely
 #+BEGIN_SRC emacs-lisp
-  (use-package counsel-world-clock
+  (use-package web-mode
     :ensure t)
+#+END_SRC
+
+* world-time-mode
+  This gives me a nice world clock
+#+BEGIN_SRC emacs-lisp
+  (use-package world-time-mode
+    :ensure t
+    :config
+    (setq  display-time-world-list
+	   '(("America/Los_Angeles" "Los Angeles")
+	     ("Etc/UTC" "UTC")
+	     ("Europe/London" "London")
+	     ("Europe/Amsterdam" "Amsterdam")
+	     ("Asia/Kolkata" "Mumbai")
+	     ("Australia/Melbourne" "Melbourne"))))
 #+END_SRC
