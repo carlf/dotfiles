@@ -7,6 +7,7 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (require 'package)
+(package-initialize)
 (add-to-list 'package-archives (cons "melpa"
 				     "https://melpa.org/packages/"))
 
