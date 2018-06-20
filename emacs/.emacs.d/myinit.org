@@ -460,3 +460,11 @@
 	     ("Asia/Kolkata" "Mumbai")
 	     ("Australia/Melbourne" "Melbourne"))))
 #+END_SRC
+
+* haskell-mode
+  Handy haskell mode for syntax highlighting
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode
+    :ensure t
+    :defer t)
+#+END_SRC
