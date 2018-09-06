@@ -3,8 +3,3 @@
 xrandr --output DP1 --off --output HDMI2 --off --output eDP1 --primary
 
 feh --bg-scale ~/.config/i3/wallpaper.png
-
-i3-msg workspace number 2
-i3-msg layout tabbed
-i3-msg workspace number 3
-i3-msg layout tabbed

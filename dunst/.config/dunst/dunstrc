@@ -1,5 +1,5 @@
 [global]
-    font = Knack Nerd Font 14
+    font = Fantasque Sans Mono 14
 
     format = "%a: %s %b"
     sort = yes
@@ -31,7 +31,7 @@
 
 [frame]
     width = 3
-    color = "#458588"
+    color = "#5e81ac"
 
 [shortcuts]
     close = mod4+x
@@ -39,18 +39,19 @@
     history = mod4+grave
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1d2021"
-    foreground = "#a89984"
-    timeout = 5
+     # IMPORTANT: colors have to be defined in quotation marks.
+     # Otherwise the "#" and following would be interpreted as a comment.
+     background = "#2e3440"
+     foreground = "#d8dee9"
+     timeout = 5
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    timeout = 5
+     background = "#2e3440"
+     foreground = "#d8dee9"
+     timeout = 5
 
 [urgency_critical]
-    background = "#1d2021"
-    foreground = "#cc241d"
+    background = "#2e3440"
+    foreground = "#ffffff"
+    frame_color = "#bf616a"
     timeout = 0
