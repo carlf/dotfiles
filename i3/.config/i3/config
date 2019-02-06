@@ -11,6 +11,30 @@
 
 set $mod Mod4
 
+# Colours
+# Colours
+set $bg_active                  #16C2FB
+set $bg_inactive                #007095
+set $bg_urgent                  #FF2800
+
+set $border_active              #16C2FB
+set $border_inactive            $bg_inactive
+set $border_urgent              $B27B78
+
+set $text_active                #FDFEFF
+set $text_inactive              #212121
+
+set $bg_active_workspace        #383E47
+set $bg_inactive_workspace      #C48D62
+
+set $bg_bar                     #002B36
+set $indicator                  #03C0FF
+
+client.focused          "#002b36" "#586e75" "#fdf6e3" "#268bd2"
+client.focused_inactive "#002b36" "#073642" "#839496" "#073642"
+client.unfocused        "#002b36" "#073642" "#839496" "#073642"
+client.urgent           "#002b36" "#dc322f" "#fdf6e3" "#002b36"
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:FantasqueSansMono Regular 12
@@ -33,7 +57,7 @@ floating_modifier $mod
 gaps inner 10
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1.0 alacritty
 bindsym $mod+Mod1+l exec i3lock -c 2E3440
 
 # kill focused window
@@ -154,55 +178,27 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $nord0   #2E3440
-set $nord1   #3B4252
-set $nord2   #434C5E
-set $nord3   #4C566A
-set $nord4   #D8DEE9
-set $nord5   #E5E9F0
-set $nord6   #ECEFF4
-set $nord7   #8FBCBB
-set $nord8   #88C0D0
-set $nord9   #81A1C1
-set $nord10  #5E81AC
-set $nord11  #BF616A
-set $nord12  #D08770
-set $nord13  #EBCB8B
-set $nord14  #A3BE8C
-set $nord15  #B48EAD
+for_window [ class="xfreerdp" ] floating disable
+for_window [ class="^.*" ] border pixel 2
+for_window [ class="Pinentry" ] floating enable
+for_window [ class="copyq" ] floating enable
 
-bindsym $mod+minus scratchpad show
+assign [ class="Google-chrome-beta" ] 1
 
 bar {
-    colors {
-        # background #222828
-        # statusline #616D59
-	# focused_workspace  #5A8DBD #383134
-        # active_workspace   #5A8DBD #383134
-        # inactive_workspace #A9B8B5 #616D59
-        # urgent_workspace   #E93E38 #383134
-
-        background $nord0
-        statusline $nord8
-        focused_workspace  $nord3  $nord8
-	active_workspace   $nord3  $nord8
-	inactive_workspace $nord8  $nord3
-	urgent_workspace   $nord3 $nord15
-    }
-
-    mode dock
+    status_command i3status
     position top
     tray_output primary
     font pango:FantasqueSansMono Regular 12
     separator_symbol ":|:"
-    status_command i3status
+    colors {
+        background          $bg_bar
+        statusline          #839496
+		    focused_workspace   $bg_active                $bg_active_workspace    $text_active
+        inactive_workspace  $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
+        active_workspace    $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
+ 	  }
 }
-
-for_window [ class="xfreerdp" ] floating disable
-for_window [ title="^_scratchpad" ] move scratchpad, move position center
-for_window [ class="^.*" ] border pixel 2
-for_window [ class="Pinentry" ] floating enable
-for_window [ class="copyq" ] floating enable
 
 exec wmname LG3D
 exec xrandr --output DP1 --off --output HDMI2 --off --output eDP1 --primary
@@ -213,4 +209,3 @@ exec nm-applet
 exec copyq
 exec dropbox
 exec feh --bg-scale ~/.config/i3/wallpaper.png
-exec compton --inactive-dim 0.2 -c -b

@@ -24,14 +24,14 @@
 
     separator_height = 2;
 
-    separator_color = auto
+    separator_color = "#93a1a1"
 
     padding = 1
     horizontal_padding = 9
 
 [frame]
     width = 3
-    color = "#5e81ac"
+    color = "#93a1a1"
 
 [shortcuts]
     close = mod4+x
@@ -39,19 +39,16 @@
     history = mod4+grave
 
 [urgency_low]
-     # IMPORTANT: colors have to be defined in quotation marks.
-     # Otherwise the "#" and following would be interpreted as a comment.
-     background = "#2e3440"
-     foreground = "#d8dee9"
-     timeout = 5
+    background = "#586e75"
+    foreground = "#eee8d5"
+    timeout = 10
 
 [urgency_normal]
-     background = "#2e3440"
-     foreground = "#d8dee9"
-     timeout = 5
+    background = "#073642"
+    foreground = "#eee8d5"
+    timeout = 5
 
 [urgency_critical]
-    background = "#2e3440"
-    foreground = "#ffffff"
-    frame_color = "#bf616a"
+    background = "#dc322f"
+    foreground = "#eee8d5"
     timeout = 0

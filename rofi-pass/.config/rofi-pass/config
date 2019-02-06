@@ -39,7 +39,7 @@ wait=0.2
 
 ## Programs to be used
 # Editor
-EDITOR='gvim -f'
+EDITOR='emacsclient'
 
 # Browser
 BROWSER='xdg-open'
@@ -49,7 +49,7 @@ BROWSER='xdg-open'
 default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'
-default_autotype='user :tab pass'
+default_autotype='user :delay :tab pass'
 
 # color of the help messages
 # leave empty for autodetection
