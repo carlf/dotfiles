@@ -21,7 +21,7 @@
 
 * Stash all the custom stuff in custom.el
   Some stuff, notably org mode agenda stuff and the installed packages
-  has to line in customize variables. This stuff mucks up the init.el
+  has to live in customize variables. This stuff mucks up the init.el
   so we stash it in a separate file
 #+BEGIN_SRC emacs-lisp
   (setq custom-file "~/.emacs.d/custom.el")
@@ -496,4 +496,14 @@
    smtpmail-smtp-service 587
    mu4e-change-filenames-when-moving t
    mu4e-html2text-command "html2text --body-width=72 --reference-links --no-wrap-links")
+#+END_SRC
+
+* PlantUML
+  This is for writing UML inside of emacs
+#+BEGIN_SRC emacs-lisp
+  (use-package plantuml-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+    (setq plantuml-jar-path "/opt/plantuml/plantuml.jar"))
 #+END_SRC

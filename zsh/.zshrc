@@ -1,6 +1,10 @@
 export DISABLE_AUTO_TITLE=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+export SPACESHIP_CHAR_SYMBOL='$ '
+export SPACESHIP_PYENV_SHOW=false
+export SPACESHIP_RUBY_SHOW=false
+
 source ~/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -12,7 +16,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/emacs
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh themes/gnzh
+    zgen load denysdovhan/spaceship-prompt spaceship
     zgen save
 fi
 
