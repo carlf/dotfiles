@@ -4,6 +4,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export SPACESHIP_CHAR_SYMBOL='$ '
 export SPACESHIP_PYENV_SHOW=false
 export SPACESHIP_RUBY_SHOW=false
+export SPACESHIP_EXIT_CODE_SHOW=true
 
 source ~/.zgen/zgen.zsh
 
