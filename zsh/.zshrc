@@ -17,6 +17,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/emacs
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/pyenv
+    zgen load chisui/zsh-nix-shell
     zgen load spwhitt/nix-zsh-completions
     zgen load denysdovhan/spaceship-prompt spaceship
     zgen save
