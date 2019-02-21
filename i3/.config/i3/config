@@ -207,5 +207,5 @@ exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:ralt'
 exec nm-applet
 exec copyq
-exec dropbox
 exec feh --bg-scale ~/.config/i3/wallpaper.png
+exec pasystray
