@@ -188,7 +188,6 @@ assign [ class="Google-chrome-beta" ] 1
 bar {
     status_command i3status
     position top
-    tray_output primary
     font pango:FantasqueSansMono Regular 12
     separator_symbol ":|:"
     colors {
