@@ -6,6 +6,8 @@ export SPACESHIP_PYENV_SHOW=false
 export SPACESHIP_RUBY_SHOW=false
 export SPACESHIP_EXIT_CODE_SHOW=true
 
+export ZSH_TMUX_AUTOSTART=true
+
 source ~/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -16,6 +18,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/pyenv
+    zgen oh-my-zsh plugins/tmux
     zgen load carlf/zsh-plugins emacs
     zgen load chisui/zsh-nix-shell
     zgen load spwhitt/nix-zsh-completions
