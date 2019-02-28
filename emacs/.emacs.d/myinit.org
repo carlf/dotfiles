@@ -342,6 +342,7 @@
 	  org-export-with-sub-superscripts nil
 	  org-directory "~/Documents/org"
 	  org-default-notes-file "~/Documents/org/inbox.org"
+	  org-agenda-files '("~/Documents/org")
 	  org-log-done 'time
 	  org-capture-templates '(("t" "Todo" entry (file "")
 				   "* TODO %?\n  CREATED: %T"))
