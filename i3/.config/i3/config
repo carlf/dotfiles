@@ -190,13 +190,14 @@ bar {
     position top
     font pango:FantasqueSansMono Regular 12
     separator_symbol ":|:"
+    tray_output primary
     colors {
         background          $bg_bar
         statusline          #839496
-		    focused_workspace   $bg_active                $bg_active_workspace    $text_active
+        focused_workspace   $bg_active                $bg_active_workspace    $text_active
         inactive_workspace  $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
         active_workspace    $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
- 	  }
+    }
 }
 
 exec wmname LG3D
