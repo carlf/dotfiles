@@ -8,7 +8,7 @@ export SPACESHIP_EXIT_CODE_SHOW=true
 
 export ZSH_TMUX_AUTOSTART=true
 
-source ~/.zgen/zgen.zsh
+source /usr/share/zsh/share/zgen.zsh
 
 if ! zgen saved; then
     zgen oh-my-zsh
@@ -20,8 +20,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/tmux
     zgen load carlf/zsh-plugins emacs
-    zgen load chisui/zsh-nix-shell
-    zgen load spwhitt/nix-zsh-completions
     zgen load denysdovhan/spaceship-prompt spaceship
     zgen save
 fi
