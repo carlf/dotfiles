@@ -6,22 +6,35 @@ export SPACESHIP_PYENV_SHOW=false
 export SPACESHIP_RUBY_SHOW=false
 export SPACESHIP_EXIT_CODE_SHOW=true
 
-export ZSH_TMUX_AUTOSTART=true
+source /usr/share/zsh/scripts/zplug/init.zsh
 
-source /usr/share/zsh/share/zgen.zsh
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
 
-if ! zgen saved; then
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/z
-    zgen oh-my-zsh plugins/golang
-    zgen oh-my-zsh plugins/systemd
-    zgen oh-my-zsh plugins/rbenv
-    zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh plugins/tmux
-    zgen load carlf/zsh-plugins emacs
-    zgen load denysdovhan/spaceship-prompt spaceship
-    zgen save
+zplug "plugins/git",        from:oh-my-zsh
+zplug "plugins/golang",     from:oh-my-zsh
+zplug "plugins/systemd",    from:oh-my-zsh
+zplug "plugins/rbenv",      from:oh-my-zsh
+zplug "plugins/pyenv",      from:oh-my-zsh
+zplug "plugins/kubectl",    from:oh-my-zsh
+zplug "plugins/fzf",        from:oh-my-zsh
+zplug "plugins/fasd",       from:oh-my-zsh
+zplug "plugins/tmuxinator", from:oh-my-zsh
+zplug "plugins/tmux-cssh",  from:oh-my-zsh
+zplug "carlf/zsh-plugins", use:"emacs/*.zsh"
+zplug "carlf/zsh-plugins", use:"dircolors/*.zsh"
+zplug "denysdovhan/spaceship-prompt", as:theme
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
+
+zplug load
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
