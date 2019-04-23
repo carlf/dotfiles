@@ -205,7 +205,7 @@ exec gnome-keyring-daemon -c secrets
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:ralt'
 exec nm-applet
-exec parcellite
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec dropbox
 exec pasystray
+exec greenclip daemon
