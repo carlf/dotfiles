@@ -66,26 +66,26 @@
   most of the UI, turning on [[https://github.com/Malabarba/smart-mode-line][smart-mode-line]], and disabling the
   variable size fonts in org mode that give me the fits.
 #+BEGIN_SRC emacs-lisp
-  (use-package solarized-theme
-    :ensure t
-    :config
-    (set-frame-font "FantasqueSansMono-11")
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)
-    (setq solarized-height-minus-1 1.0)
-    (setq solarized-height-plus-1 1.0)
-    (setq solarized-height-plus-2 1.0)
-    (setq solarized-height-plus-3 1.0)
-    (setq solarized-height-plus-4 1.0)
-    (setq solarized-use-variable-pitch nil)
-    (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-    (load-theme 'solarized-dark t))
+  (use-package base16-theme
+	:ensure t
+	:config
+	(set-frame-font "FantasqueSansMono-11")
+	(menu-bar-mode -1)
+	(tool-bar-mode -1)
+	(scroll-bar-mode -1)
+	(setq solarized-height-minus-1 1.0)
+	(setq solarized-height-plus-1 1.0)
+	(setq solarized-height-plus-2 1.0)
+	(setq solarized-height-plus-3 1.0)
+	(setq solarized-height-plus-4 1.0)
+	(setq solarized-use-variable-pitch nil)
+	(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+	(load-theme 'base16-outrun-dark t))
 
   (use-package smart-mode-line
-    :ensure t
-    :config
-    (sml/setup))
+	:ensure t
+	:config
+	(sml/setup))
 #+END_SRC
 
 * Dashboard
@@ -140,6 +140,17 @@
   (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 #+END_SRC
 
+* Load SmartTabs
+  SmartTabs uses tabs for indentation and spaces for alignment. For
+  more on the dogma involved, see [[https://www.emacswiki.org/emacs/TabsAreEvil][here]].
+#+BEGIN_SRC emacs-lisp
+  (use-package smart-tabs-mode
+    :ensure t
+    :config
+    (smart-tabs-insinuate 'c 'javascript 'python)
+    (setq-default tab-width 4)
+    )
+#+END_SRC
 * Fancy searchy stuff
   I'm firmly entrenched in the counsel/ivy/projectile world. Search
   all the things. Autocompletes everywhere. Of particular note is the
