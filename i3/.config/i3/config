@@ -64,8 +64,8 @@ floating_modifier $mod
 gaps inner 10
 
 # start a terminal
-bindsym $mod+Return exec terminator
-bindsym $mod+Mod1+l exec i3lock -c 2E3440
+bindsym $mod+Return exec kitty
+bindsym $mod+Mod1+l exec i3lock -c 20204A
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -218,7 +218,7 @@ exec gnome-keyring-daemon -c secrets
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:ralt'
 exec nm-applet
-exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec dropbox
 exec pasystray
 exec greenclip daemon
+exec autorandr undocked
