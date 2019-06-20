@@ -17,7 +17,6 @@ zplug "plugins/pyenv",                     from:oh-my-zsh
 zplug "plugins/kubectl",                   from:oh-my-zsh
 zplug "plugins/fzf",                       from:oh-my-zsh
 zplug "plugins/fasd",                      from:oh-my-zsh
-zplug "plugins/tmuxinator",                from:oh-my-zsh
 zplug "plugins/tmux-cssh",                 from:oh-my-zsh
 zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
@@ -33,5 +32,11 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+KUBECONFIG=""
+for C in `ls ~/.kube/configs`; do
+    KUBECONFIG=$KUBECONFIG:~/.kube/configs/$C
+done
+export KUBECONFIG
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
