@@ -1,11 +1,6 @@
 export DISABLE_AUTO_TITLE=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-export SPACESHIP_CHAR_SYMBOL='$ '
-export SPACESHIP_PYENV_SHOW=false
-export SPACESHIP_RUBY_SHOW=false
-export SPACESHIP_EXIT_CODE_SHOW=true
-
 source /usr/share/zsh/scripts/zplug/init.zsh
 
 HISTFILE=~/.zsh_history
@@ -26,7 +21,8 @@ zplug "plugins/tmuxinator",                from:oh-my-zsh
 zplug "plugins/tmux-cssh",                 from:oh-my-zsh
 zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
-zplug "denysdovhan/spaceship-prompt",      as:theme
+zplug "mafredri/zsh-async",                from:github
+zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 if ! zplug check --verbose; then
