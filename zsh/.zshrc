@@ -1,5 +1,6 @@
 export DISABLE_AUTO_TITLE=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PURE_PROMPT_SYMBOL="λ"
 
 source /usr/share/zsh/scripts/zplug/init.zsh
 

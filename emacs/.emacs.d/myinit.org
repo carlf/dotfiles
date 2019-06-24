@@ -257,15 +257,20 @@
   things.
 #+BEGIN_SRC emacs-lisp
   (use-package avy
-    :ensure t
-    :config
-    (global-set-key (kbd "C-:") 'avy-goto-char)
-    (global-set-key (kbd "C-'") 'avy-goto-char-timer))
+	:ensure t
+	:config
+	(global-set-key (kbd "C-:") 'avy-goto-char)
+	(global-set-key (kbd "M-g g") 'avy-goto-line))
 
   (use-package ace-window
-    :ensure t
-    :config
-    (global-set-key (kbd "M-p") 'ace-window))
+  :ensure t
+	:config
+	(global-set-key (kbd "M-p") 'ace-window))
+
+  (use-package frog-jump-buffer
+	:ensure t
+	:config
+	(global-set-key (kbd "C-x b") 'frog-jump-buffer))
 #+END_SRC
 
 * which-key
