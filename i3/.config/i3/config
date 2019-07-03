@@ -222,3 +222,4 @@ exec dropbox
 exec pasystray
 exec greenclip daemon
 exec autorandr undocked
+exec xset s off -dpms
