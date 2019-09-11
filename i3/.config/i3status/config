@@ -7,30 +7,37 @@ general {
 order += "volume master"
 order += "battery all"
 order += "cpu_temperature 0"
+order += "wireless wlp3s0"
 order += "tztime local"
 
 battery all {
-        format = "%status %percentage %remaining"
-        format_down = "No battery"
-        status_chr = "CHR"
-        status_bat = "BAT"
-        status_unk = "UNK"
-        status_full = "FULL"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
+    format = "%status %percentage %remaining"
+    format_down = "No battery"
+    status_chr = "CHR"
+    status_bat = "BAT"
+    status_unk = "UNK"
+    status_full = "FULL"
+    path = "/sys/class/power_supply/BAT%d/uevent"
+    low_threshold = 10
 	last_full_capacity = true
 	integer_battery_capacity = true
 }
 
 tztime local {
-        format = "%a %Y-%m-%d %H:%M"
+    format = "%a %Y-%m-%d %H:%M"
 	align = "left"
 	min_width = 150
 }
 
 cpu_temperature 0 {
-        format = "T: %degrees °C"
+    format = "T: %degrees °C"
 	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
+}
+
+wireless wlp3s0 {
+    format_up = "W: %quality at %essid, %bitrate / %frequency"
+	format_down = "W: down"
+	format_quality = "%03d%s"
 }
 
 volume master {
