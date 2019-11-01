@@ -1,7 +1,9 @@
 [global]
     font = Fantasque Sans Mono 14
 
-    format = "%s %b"
+    format = "<b>%s</b>\n%b"
+	icon_position = left
+	max_icon_size = 32
     sort = yes
     indicate_hidden = yes
     alignment = left

@@ -7,7 +7,7 @@ general {
 order += "volume master"
 order += "battery all"
 order += "cpu_temperature 0"
-order += "wireless wlp3s0"
+order += "wireless wlan0"
 order += "tztime local"
 
 battery all {
@@ -34,7 +34,7 @@ cpu_temperature 0 {
 	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
 }
 
-wireless wlp3s0 {
+wireless wlan0 {
     format_up = "W: %quality at %essid, %bitrate / %frequency"
 	format_down = "W: down"
 	format_quality = "%03d%s"

@@ -126,7 +126,7 @@
 #+END_SRC
 
 * Load smartparens
-  [[https://github.com/Fuco1/smartparens][Smartparens]] in strict mode makes like with lisp and lispy things
+  [[https://github.com/Fuco1/smartparens][Smartparens]] in strict mode makes life with lisp and lispy things
   much nicer. No more wondering if your braces are matched. It's
   impossible to unbalance them. More documentation [[https://ebzzry.io/en/emacs-pairs/][here]].
 #+BEGIN_SRC emacs-lisp
@@ -145,12 +145,12 @@
   more on the dogma involved, see [[https://www.emacswiki.org/emacs/TabsAreEvil][here]].
 #+BEGIN_SRC emacs-lisp
   (use-package smart-tabs-mode
-    :ensure t
-    :config
-    (smart-tabs-insinuate 'c 'javascript 'python)
-    (setq-default tab-width 4)
-    )
+	:ensure t
+	:config
+	(smart-tabs-insinuate 'c 'javascript 'python)
+	(setq-default tab-width 4))
 #+END_SRC
+
 * Fancy searchy stuff
   I'm firmly entrenched in the counsel/ivy/projectile world. Search
   all the things. Autocompletes everywhere. Of particular note is the
@@ -168,11 +168,6 @@
     (setq ivy-use-virtual-buffers t)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
     (global-set-key (kbd "<f6>") 'ivy-resume))
-  (use-package hydra
-    :ensure t)
-  (use-package ivy-hydra
-    :ensure t
-    :after (ivy hydra))
 #+END_SRC
 
 *** Load [[https://github.com/abo-abo/swiper#swiper][swiper]].
@@ -190,19 +185,10 @@
     with ivy.
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
-    :ensure t
-    :config
-    (setq counsel-rg-base-command "rg -i --no-heading --line-number --hidden --color never %s .")
-    (global-set-key (kbd "M-x") 'counsel-M-x)
-    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    (global-set-key (kbd "<f1> l") 'counsel-find-library)
-    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-    (global-set-key (kbd "C-c k") 'counsel-ag)
-    (global-set-key (kbd "C-x l") 'counsel-locate)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+	:ensure t
+	:config
+	(setq counsel-rg-base-command "rg -i --no-heading --line-number --hidden --color never %s .")
+	(counsel-mode 1))
 #+END_SRC
 *** Load [[https://github.com/masasam/emacs-counsel-tramp/tree/d4c35e1aca724af6a0084362a027fdd70876d2c8][counsel-tramp]]
     The counsel-tramp package brings all the counsel goodness to TRAMP
@@ -240,39 +226,6 @@
   for typing y-e-s with just y.
 #+BEGIN_SRC emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
-#+END_SRC
-
-* Include yasnippet
-  The [[https://github.com/joaotavora/yasnippet][yasnippet]] library makes it easy to automate a log of boilerplate
-  with smiple template expansion.
-#+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
-	:ensure t
-	:config (yas-global-mode 1))
-  (use-package yasnippet-snippets
-	:ensure t)
-#+END_SRC
-
-* Include avy and ace-window
-  For quick navigation, [[https://github.com/abo-abo/avy][avy]] is very fast and very intuitive. For
-  windows, [[https://github.com/abo-abo/ace-window][ace-window]] does the same making short keystrokes to do big
-  things.
-#+BEGIN_SRC emacs-lisp
-  (use-package avy
-	:ensure t
-	:config
-	(global-set-key (kbd "C-:") 'avy-goto-char)
-	(global-set-key (kbd "M-g g") 'avy-goto-line))
-
-  (use-package ace-window
-  :ensure t
-	:config
-	(global-set-key (kbd "M-p") 'ace-window))
-
-  (use-package frog-jump-buffer
-	:ensure t
-	:config
-	(global-set-key (kbd "C-x b") 'frog-jump-buffer))
 #+END_SRC
 
 * which-key

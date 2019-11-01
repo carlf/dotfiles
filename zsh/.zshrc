@@ -18,6 +18,7 @@ zplug "plugins/pyenv",                     from:oh-my-zsh
 zplug "plugins/kubectl",                   from:oh-my-zsh
 zplug "plugins/fzf",                       from:oh-my-zsh
 zplug "plugins/fasd",                      from:oh-my-zsh
+zplug "plugins/nvm",                       from:oh-my-zsh
 zplug "plugins/tmux-cssh",                 from:oh-my-zsh
 zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
