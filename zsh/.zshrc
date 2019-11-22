@@ -22,6 +22,8 @@ zplug "plugins/nvm",                       from:oh-my-zsh
 zplug "plugins/tmux-cssh",                 from:oh-my-zsh
 zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
+zplug "carlf/zsh-plugins",                 use:"edit-command-line/*.zsh"
+zplug "carlf/zsh-plugins",                 use:"kubeconfig/*.zsh"
 zplug "mafredri/zsh-async",                from:github
 zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -34,11 +36,5 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
-
-KUBECONFIG=""
-for C in `ls ~/.kube/configs`; do
-    KUBECONFIG=$KUBECONFIG:~/.kube/configs/$C
-done
-export KUBECONFIG
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

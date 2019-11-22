@@ -71,8 +71,10 @@ bindsym $mod+Mod1+l exec i3lock -c 20204A
 bindsym $mod+Shift+q kill
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec bash -c "amixer -q sset Master 10%+ && pkill -USR1 i3status"
-bindsym XF86AudioLowerVolume exec bash -c "amixer -q sset Master 10%- && pkill -USR1 i3status"
+bindsym XF86AudioRaiseVolume exec bash -c "pactl set-sink-volume 0 +5% && pkill -USR1 i3status"
+bindsym XF86AudioLowerVolume exec bash -c "pactl set-sink-volume 0 -5% && pkill -USR1 i3status"
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioMute exec bash -c "amixer -q sset Master toggle && pkill -USR1 i3status"
 
 # start dmenu (a program launcher)

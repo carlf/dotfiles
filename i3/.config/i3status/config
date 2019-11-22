@@ -11,7 +11,7 @@ order += "wireless wlan0"
 order += "tztime local"
 
 battery all {
-    format = "%status %percentage %remaining"
+    format = "B: %status %percentage %remaining"
     format_down = "No battery"
     status_chr = "CHR"
     status_bat = "BAT"
@@ -41,7 +41,7 @@ wireless wlan0 {
 }
 
 volume master {
-       format = "%volume"
+       format = "V: %volume"
        format_muted = "muted (%volume)"
        device = "pulse"
 }
