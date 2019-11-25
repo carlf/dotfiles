@@ -15,7 +15,6 @@ zplug "plugins/golang",                    from:oh-my-zsh
 zplug "plugins/systemd",                   from:oh-my-zsh
 zplug "plugins/rbenv",                     from:oh-my-zsh
 zplug "plugins/pyenv",                     from:oh-my-zsh
-zplug "plugins/kubectl",                   from:oh-my-zsh
 zplug "plugins/fzf",                       from:oh-my-zsh
 zplug "plugins/fasd",                      from:oh-my-zsh
 zplug "plugins/nvm",                       from:oh-my-zsh
@@ -24,6 +23,7 @@ zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"edit-command-line/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"kubeconfig/*.zsh"
+zplug "ahmetb/kubectl-aliases",            use:".kubectl_aliases"
 zplug "mafredri/zsh-async",                from:github
 zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
