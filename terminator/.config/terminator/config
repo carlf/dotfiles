@@ -1,0 +1,35 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+  inactive_color_offset = 1.0
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = f7e1f2eb-d9ca-4e3f-aba2-503d2604778d
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 1285:32
+      size = 626, 1394
+      title = ~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = f7e1f2eb-d9ca-4e3f-aba2-503d2604778d
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    cursor_color = "#aaaaaa"
+    font = Fantasque Sans Mono 12
+    foreground_color = "#839496"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
