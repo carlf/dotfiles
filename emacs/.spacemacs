@@ -45,7 +45,10 @@ values."
     lsp
     themes-megapack
     pdf
-    (treemacs :variables treemacs-use-git-mode 'simple)
+    (treemacs
+     :variables
+     treemacs-use-git-mode 'simple
+     treemacs-use-filewatch-mode t)
     )
   ;; List of additional packages that will be installed without being
   ;; wrapped in a layer. If you need some configuration for these
