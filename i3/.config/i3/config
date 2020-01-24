@@ -45,7 +45,7 @@ gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec terminator
-bindsym $mod+Mod1+l exec i3lock -c 002B36
+bindsym $mod+Mod1+l exec i3lock -c 002b36
 
 # kill focused window
 bindsym $mod+Shift+q kill
