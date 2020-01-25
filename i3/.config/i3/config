@@ -202,3 +202,4 @@ exec pasystray
 exec greenclip daemon
 exec autorandr undocked
 exec xset s off -dpms
+exec xss-lock -- i3lock -n -c 002b36
