@@ -197,7 +197,7 @@ exec gnome-keyring-daemon -c secrets
 exec dunst
 exec setxkbmap -option 'ctrl:nocaps,compose:ralt'
 exec nm-applet
-exec dropbox
+exec nextcloud
 exec pasystray
 exec greenclip daemon
 exec autorandr undocked
