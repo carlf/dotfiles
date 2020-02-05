@@ -2,8 +2,8 @@
     font = Fantasque Sans Mono 14
 
     format = "<b>%s</b>\n%b"
-	icon_position = left
-	max_icon_size = 32
+	  icon_position = left
+	  max_icon_size = 32
     sort = yes
     indicate_hidden = yes
     alignment = left
@@ -30,7 +30,9 @@
     horizontal_padding = 9
 
     markup = full
-	separator_color = "#D0D0FA"
+
+    frame_color = "#93a1a1"
+    separator_color = "#93a1a1"
 
 [frame]
     width = 3
@@ -41,18 +43,17 @@
     close_all = mod4+ctrl+x
     history = mod4+grave
 
-
 [base16_low]
     msg_urgency = low
-    background = "#20204A"
-    foreground = "#50507A"
+    background = "#073642"
+    foreground = "#657b83"
 
 [base16_normal]
     msg_urgency = normal
-    background = "#30305A"
-    foreground = "#D0D0FA"
+    background = "#586e75"
+    foreground = "#93a1a1"
 
 [base16_critical]
     msg_urgency = critical
-    background = "#FF4242"
-    foreground = "#E0E0FF"
+    background = "#dc322f"
+    foreground = "#eee8d5"
