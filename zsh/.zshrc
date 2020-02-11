@@ -1,7 +1,3 @@
-export DISABLE_AUTO_TITLE=true
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PURE_PROMPT_SYMBOL="λ"
-
 source /usr/share/zsh/scripts/zplug/init.zsh
 
 HISTFILE=~/.zsh_history
@@ -24,7 +20,6 @@ zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"edit-command-line/*.zsh"
 zplug "ahmetb/kubectl-aliases",            use:".kubectl_aliases"
 zplug "mafredri/zsh-async",                from:github
-zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 if ! zplug check --verbose; then
@@ -37,3 +32,4 @@ fi
 zplug load
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+eval "$(starship init zsh)"
