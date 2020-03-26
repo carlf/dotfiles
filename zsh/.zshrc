@@ -1,5 +1,7 @@
 source /usr/share/zsh/scripts/zplug/init.zsh
 
+bindkey -v
+
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
@@ -16,8 +18,8 @@ zplug "plugins/fasd",                      from:oh-my-zsh
 zplug "plugins/nvm",                       from:oh-my-zsh
 zplug "plugins/tmux-cssh",                 from:oh-my-zsh
 zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
-zplug "carlf/zsh-plugins",                 use:"dircolors/*.zsh"
 zplug "carlf/zsh-plugins",                 use:"edit-command-line/*.zsh"
+zplug "carlf/zsh-plugins",                 use:"aliases/*.zsh"
 zplug "ahmetb/kubectl-aliases",            use:".kubectl_aliases"
 zplug "mafredri/zsh-async",                from:github
 zplug "zsh-users/zsh-syntax-highlighting", defer:2

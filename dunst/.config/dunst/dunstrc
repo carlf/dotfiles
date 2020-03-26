@@ -2,6 +2,7 @@
     font = Fantasque Sans Mono 14
 
     format = "<b>%s</b>\n%b"
+    follow = keyboard
 	  icon_position = left
 	  max_icon_size = 32
     sort = yes

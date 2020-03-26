@@ -314,6 +314,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+(setq org-refile-targets
+      '((org-agenda-files :maxlevel . 2))
+      org-export-with-sub-superscripts nil
+      org-directory "~/Documents/org"
+      org-default-notes-file "~/Documents/org/inbox.org"
+      org-agenda-files '("~/Documents/org")
+      org-log-done 'time
+      org-capture-templates '(("t" "Todo" entry (file "")
+                               "* TODO %?\n  CREATED: %T"))
+      org-src-fontify-natively t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
