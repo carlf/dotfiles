@@ -1,7 +1,5 @@
 source /usr/share/zsh/scripts/zplug/init.zsh
 
-bindkey -v
-
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
