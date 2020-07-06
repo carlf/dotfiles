@@ -6,6 +6,8 @@ SAVEHIST=5000
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
+autoload -U zmv
+
 zplug "plugins/git",                       from:oh-my-zsh
 zplug "plugins/golang",                    from:oh-my-zsh
 zplug "plugins/systemd",                   from:oh-my-zsh
