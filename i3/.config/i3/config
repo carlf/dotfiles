@@ -45,7 +45,7 @@ gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec terminator
-bindsym $mod+Mod1+l exec i3lock -c 002b36
+bindsym $mod+Mod1+l exec lock
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -202,4 +202,4 @@ exec pasystray
 exec greenclip daemon
 exec autorandr undocked
 exec xset s off -dpms
-exec xss-lock -- i3lock -n -c 002b36
+exec xss-lock -- lock
