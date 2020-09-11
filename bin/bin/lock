@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 alpha='dd'
 base02='#073642'
 base01='#586e75'
@@ -7,7 +8,9 @@ magenta='#d33682'
 blue='#268bd2'
 green='#859900'
 
+killall -SIGUSR1 dunst
 i3lock \
+  --nofork \
   --insidevercolor=$base02$alpha \
   --insidewrongcolor=$base02$alpha \
   --insidecolor=$base02$alpha \
@@ -46,3 +49,4 @@ i3lock \
   --pass-media-keys \
   --pass-screen-keys \
   --pass-volume-keys
+killall -SIGUSR2 dunst
