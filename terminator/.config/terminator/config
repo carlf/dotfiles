@@ -2,34 +2,19 @@
   borderless = True
   extra_styling = False
   inactive_color_offset = 1.0
-[keybindings]
-[layouts]
-  [[default]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = f7e1f2eb-d9ca-4e3f-aba2-503d2604778d
-      last_active_window = True
-      maximised = False
-      order = 0
-      parent = ""
-      position = 1285:32
-      size = 626, 1394
-      title = ~
-      type = Window
-    [[[terminal1]]]
-      order = 0
-      parent = child0
-      profile = default
-      type = Terminal
-      uuid = f7e1f2eb-d9ca-4e3f-aba2-503d2604778d
-[plugins]
+  title_inactive_bg_color = "#4C566A"
+  title_inactive_fg_color = "#D8DEE9"
+  title_receive_bg_color = "#8FBCBB"
+  title_receive_fg_color = "#2E3440"
+  title_transmit_bg_color = "#88C0D0"
+  title_transmit_fg_color = "#2E3440"
 [profiles]
   [[default]]
-    background_color = "#002b36"
-    cursor_color = "#aaaaaa"
+    background_color = "#2E3440"
+    cursor_color = "#D8DEE9"
+    foreground_color = "#D8DEE9"
+    palette = "#3B4252:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#88C0D0:#E5E9F0:#4C566A:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#8FBCBB:#ECEFF4"
     font = Fantasque Sans Mono 12
-    foreground_color = "#839496"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False

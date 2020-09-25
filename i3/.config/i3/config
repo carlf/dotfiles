@@ -11,16 +11,29 @@
 
 set $mod Mod4
 
-## Base16 Outrun Dark
-# Author: Hugo Delahousse (http://github.com/hugodelahousse/)
-#
-# You can use these variables anywhere in the i3 configuration file.
+set $nord0   #2e3440
+set $nord1   #3b4252
+set $nord2   #434c5e
+set $nord3   #4c566a
+set $nord4   #d8dee9
+set $nord5   #e5e9f0
+set $nord6   #eceff4
+set $nord7   #8fbcbb
+set $nord8   #88c0d0
+set $nord9   #81a1c1
+set $nord10  #5e81ac
+set $nord11  #bf616a
+set $nord12  #d08770
+set $nord13  #ebcb8b
+set $nord14  #a3be8c
+set $nord15  #b48ead
 
-# Basic color configuration using the Base16 variables for windows and borders.
-client.focused          #002b36 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #002b36 #073642 #839496 #073642
-client.unfocused        #002b36 #073642 #839496 #073642
-client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+# class                  border       backgr     text         indicator   child_border
+client.focused           $nord3       $nord0     $nord4       $nord9      $nord14
+client.focused_inactive  $nord3       $nord0     $nord4       $nord9      $nord1
+client.unfocused         $nord0       $nord0     $nord4       $nord9      $nord1
+client.urgent            $nord0       $nord0     $nord4       $nord9      $nord11
+client.placeholder       $background    #282D37    $background  $background
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -180,15 +193,15 @@ bar {
     font pango:FantasqueSansMono Regular 12
     separator_symbol ":|:"
     tray_output primary
-
     colors {
-           background #002b36
-           statusline #839496
-           separator  #586e75
-           focused_workspace  #b58900 #b58900 #002b36
-           active_workspace   #586e75 #586e75 #002b36
-           inactive_workspace #073642 #002b36 #839496
-           urgent_workspace   #dc322f #dc322f #fdf6e3
+        background $nord0
+        statusline $nord4
+        separator  $nord3
+
+        focused_workspace  $nord14 $nord0 $nord4
+        active_workspace   $nord1  $nord0 $nord4
+        inactive_workspace $nord3  $nord0 $nord4
+        urgent_workspace   $nord11 $nord0 $nord4
     }
 }
 

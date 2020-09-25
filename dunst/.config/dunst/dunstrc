@@ -31,12 +31,12 @@
 
     markup = full
 
-    frame_color = "#93a1a1"
-    separator_color = "#93a1a1"
+    frame_color = "#4c566a"
+    separator_color = "4c566a"
 
 [frame]
     width = 3
-    color = "D0D0FA"
+    color = "4c566a"
 
 [shortcuts]
     close = mod4+x
@@ -45,15 +45,15 @@
 
 [base16_low]
     msg_urgency = low
-    background = "#073642"
-    foreground = "#657b83"
+    background = "#2e3440"
+    foreground = "#4c566a"
 
 [base16_normal]
     msg_urgency = normal
-    background = "#586e75"
-    foreground = "#93a1a1"
+    background = "#2e3440"
+    foreground = "#d8dee9"
 
 [base16_critical]
     msg_urgency = critical
-    background = "#dc322f"
-    foreground = "#eee8d5"
+    background = "#2e3440"
+    foreground = "#ebcb8b"
