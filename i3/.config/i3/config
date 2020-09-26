@@ -179,12 +179,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [ class="xfreerdp" ] floating disable
 for_window [ class="^.*" ] border pixel 2
 for_window [ class="Pinentry" ] floating enable
-for_window [ class="copyq" ] floating enable
-
-assign [ class="Google-chrome-beta" ] 1
 
 bar {
     status_command i3status
