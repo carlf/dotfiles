@@ -30,10 +30,9 @@ set $nord15  #b48ead
 
 # class                  border       backgr     text         indicator   child_border
 client.focused           $nord3       $nord0     $nord4       $nord9      $nord14
-client.focused_inactive  $nord3       $nord0     $nord4       $nord9      $nord1
-client.unfocused         $nord0       $nord0     $nord4       $nord9      $nord1
+client.focused_inactive  $nord0       $nord0     $nord4       $nord9      $nord0
+client.unfocused         $nord0       $nord0     $nord4       $nord9      $nord0
 client.urgent            $nord0       $nord0     $nord4       $nord9      $nord11
-client.placeholder       $background    #282D37    $background  $background
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -200,7 +199,7 @@ bar {
 
         focused_workspace  $nord14 $nord0 $nord4
         active_workspace   $nord1  $nord0 $nord4
-        inactive_workspace $nord3  $nord0 $nord4
+        inactive_workspace $nord1  $nord0 $nord4
         urgent_workspace   $nord11 $nord0 $nord4
     }
 }
