@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 alpha='dd'
-base02='#073642'
-base01='#586e75'
-orange='#cb4b16'
-red='#dc322f'
-magenta='#d33682'
-blue='#268bd2'
-green='#859900'
+base02='#2e3440'
+base01='#434c5e'
+orange='#d08770'
+red='#bf616a'
+magenta='#b48ead'
+blue='#81a1c1'
+green='#a3be8c'
 
 killall -SIGUSR1 dunst
 i3lock \
@@ -44,7 +44,7 @@ i3lock \
   --layout-font="Helvetica" \
   --verif-font="Helvetica" \
   --wrong-font="Helvetica" \
-  --radius=100 \
+  --radius=120 \
   --ring-width=20 \
   --pass-media-keys \
   --pass-screen-keys \
