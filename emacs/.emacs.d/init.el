@@ -38,6 +38,7 @@
 
 ;; Use a fancy dashboard
 (straight-use-package 'dashboard)
+(setq dashboard-startup-banner 'logo)
 (dashboard-setup-startup-hook)
 
 ;; Keep backup files nice and neat
@@ -72,6 +73,7 @@
 
 ;; Load smartparens
 (straight-use-package 'smartparens)
+(require 'smartparens-config)
 (show-smartparens-global-mode t)
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'markdown-mode-hook 'turn-on-smart-parens-strict-mode)
