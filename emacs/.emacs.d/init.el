@@ -41,6 +41,14 @@
 (setq dashboard-startup-banner 'logo)
 (dashboard-setup-startup-hook)
 
+;; Powerline modeline
+(straight-use-package 'powerline)
+(powerline-default-theme)
+
+;; Show whitespace
+(straight-use-package 'whitespace)
+(whitespace-mode)
+
 ;; Keep backup files nice and neat
 (setq backup-by-copying t
       backup-directory-alist '(("." . "~/.saves"))
@@ -90,6 +98,11 @@
 ;; Load undo-tree
 (straight-use-package 'undo-tree)
 (global-undo-tree-mode)
+
+;; Load avy
+(straight-use-package 'avy)
+(global-set-key (kbd "C-:") 'avy-goto-char)
+(global-set-key (kbd "C-'") 'avy-goto-char-2)
 
 ;; Load ivy
 (straight-use-package 'ivy)
@@ -141,4 +154,12 @@
 ;; YAML mode
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; Deft
+(straight-use-package 'deft)
+(setq deft-directory "~/Documents/notes"
+	  deft-extensions '("org"))
+(global-set-key (kbd "C-c d") 'deft)
+(global-set-key (kbd "C-x C-g") 'deft-find-file)
+
 ;;; init.el ends here
