@@ -47,7 +47,7 @@
 
 ;; Show whitespace
 (straight-use-package 'whitespace)
-(whitespace-mode)
+(global-whitespace-mode)
 
 ;; Keep backup files nice and neat
 (setq backup-by-copying t
@@ -104,6 +104,12 @@
 (global-set-key (kbd "C-:") 'avy-goto-char)
 (global-set-key (kbd "C-'") 'avy-goto-char-2)
 
+;; Load ace-window
+(straight-use-package 'ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
+(setq aw-dispatch-always t
+	  aw-keys '(?a ?s ?d ?f ?g ?h))
+
 ;; Load ivy
 (straight-use-package 'ivy)
 (ivy-mode 1)
@@ -133,9 +139,9 @@
 (setq org-refile-targets
 	  '((org-agenda-files :maxlevel . 2))
 	  org-export-with-sub-superscripts nil
-	  org-directory "~/Documents/org"
-	  org-default-notes-file "~/Documents/org/inbox.org"
-	  org-agenda-files '("~/Documents/org")
+	  org-directory "~/Documents/org-roam"
+	  org-default-notes-file "~/Documents/org-roam/inbox.org"
+	  org-agenda-files '("~/Documents/org-roam")
 	  org-log-done 'time
 	  org-capture-templates '(("t" "Todo" entry (file "")
 							   "* TODO %?\n  CREATED: %T"))
@@ -146,6 +152,19 @@
 		 '((shell . t)
 		   (python . t))))
 
+;; Org Roam
+(straight-use-package 'org-roam)
+(setq org-roam-directory "~/Documents/org-roam"
+	  org-roam-db-location "~/Documents/org-roam/org-roam.db")
+
+;; Org Journal
+(straight-use-package 'org-journal)
+(setq org-journal-date-prefix "#+title: "
+	  org-journal-file-format "%Y-%m-%d.org"
+	  org-journal-dir "~/Documents/org-roam"
+	  org-journal-date-format "%A, %d %B %Y"
+	  org-journal-file-type 'daily)
+
 ;; Flycheck
 (straight-use-package 'flycheck)
 (global-flycheck-mode)
@@ -154,12 +173,4 @@
 ;; YAML mode
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
-;; Deft
-(straight-use-package 'deft)
-(setq deft-directory "~/Documents/notes"
-	  deft-extensions '("org"))
-(global-set-key (kbd "C-c d") 'deft)
-(global-set-key (kbd "C-x C-g") 'deft-find-file)
-
 ;;; init.el ends here
