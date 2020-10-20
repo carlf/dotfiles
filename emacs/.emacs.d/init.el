@@ -156,6 +156,11 @@
 (straight-use-package 'org-roam)
 (setq org-roam-directory "~/Documents/org-roam"
 	  org-roam-db-location "~/Documents/org-roam/org-roam.db")
+(global-set-key (kbd "C-c n r") 'org-roam-buffer-toggle-display)
+(global-set-key (kbd "C-c n i") 'org-roam-insert)
+(global-set-key (kbd "C-c n /") 'org-roam-find-file)
+(global-set-key (kbd "C-c n b") 'org-roam-switch-to-buffer)
+(global-set-key (kbd "C-c n d") 'org-roam-find-directory)
 
 ;; Org Journal
 (straight-use-package 'org-journal)
