@@ -47,7 +47,6 @@
 
 ;; Show whitespace
 (straight-use-package 'whitespace)
-(global-whitespace-mode)
 
 ;; Keep backup files nice and neat
 (setq backup-by-copying t
@@ -62,22 +61,22 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Set up my SSH key
-(defun string-trim-final-newline (string)
+(defun cf/string-trim-final-newline (string)
   "Strip a trailing newline from the passed in STRING."
   (let ((len (length string)))
     (cond
      ((and (> len 0) (eql (aref string (- len 1)) ?\n))
       (substring string 0 (- len 1)))
      (t string))))
-(setenv "SSH_AUTH_SOCK" (string-trim-final-newline
+(setenv "SSH_AUTH_SOCK" (cf/string-trim-final-newline
                          (shell-command-to-string "/usr/bin/gpgconf --list-dirs agent-ssh-socket")))
 
 ;; Use xdg-open
-(defun my/xdg-open-shim (url &optional new-window)
+(defun cf/xdg-open-shim (url &optional new-window)
   "Open URL in xdg-open.  The argument NEW-WINDOW is ignored."
   (start-process (concat "xdg-open " url) nil "xdg-open" url))
 
-(setq browse-url-browser-function 'my/xdg-open-shim)
+(setq browse-url-browser-function 'cf/xdg-open-shim)
 
 ;; Load smartparens
 (straight-use-package 'smartparens)
@@ -85,11 +84,6 @@
 (show-smartparens-global-mode t)
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'markdown-mode-hook 'turn-on-smart-parens-strict-mode)
-
-;;Load smarttabs
-(straight-use-package 'smart-tabs-mode)
-(smart-tabs-insinuate 'c 'javascript 'python)
-(setq-default tab-width 4)
 
 ;; Load which-key
 (straight-use-package 'which-key)
@@ -124,6 +118,10 @@
 (straight-use-package 'counsel)
 (counsel-mode 1)
 
+;; Load company-mode
+(straight-use-package 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; Load projectile
 (straight-use-package 'projectile)
 (projectile-mode +1)
@@ -139,9 +137,9 @@
 (setq org-refile-targets
 	  '((org-agenda-files :maxlevel . 2))
 	  org-export-with-sub-superscripts nil
-	  org-directory "~/Documents/org-roam"
-	  org-default-notes-file "~/Documents/org-roam/inbox.org"
-	  org-agenda-files '("~/Documents/org-roam")
+	  org-directory "~/Documents/org"
+	  org-default-notes-file "~/Documents/org/inbox.org"
+	  org-agenda-files '("~/Documents/org")
 	  org-log-done 'time
 	  org-capture-templates '(("t" "Todo" entry (file "")
 							   "* TODO %?\n  CREATED: %T"))
@@ -174,6 +172,32 @@
 (straight-use-package 'flycheck)
 (global-flycheck-mode)
 (provide 'init)
+
+;; yasnippet
+(straight-use-package 'yasnippet)
+(straight-use-package 'yasnippet-snippets)
+(yas-global-mode)
+
+;; Python
+(straight-use-package 'pipenv)
+(add-hook 'python-mode-hook 'pipenv-mode)
+(setq pipenv-projectile-after-switch-function
+      #'pipenv-projectile-after-switch-default)
+
+;; Go
+(straight-use-package 'go-mode)
+(defun my/lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'my/lsp-go-install-save-hooks)
+
+;; LSP
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(straight-use-package 'company-lsp)
+(defvar company-backends '())
+(push 'company-capf company-backends)
 
 ;; YAML mode
 (straight-use-package 'yaml-mode)
