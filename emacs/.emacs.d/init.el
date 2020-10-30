@@ -38,6 +38,7 @@
 
 ;; Use a fancy dashboard
 (straight-use-package 'dashboard)
+(defvar dashboard-startup-banner)
 (setq dashboard-startup-banner 'logo)
 (dashboard-setup-startup-hook)
 
@@ -198,6 +199,8 @@
 (straight-use-package 'company-lsp)
 (defvar company-backends '())
 (push 'company-capf company-backends)
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp)
 
 ;; YAML mode
 (straight-use-package 'yaml-mode)
