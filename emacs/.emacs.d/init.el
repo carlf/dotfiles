@@ -25,9 +25,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Load nord theme
-(straight-use-package 'nord-theme)
-(load-theme 'nord t)
+;; Load dracula theme
+(straight-use-package 'dracula-theme)
+(load-theme 'dracula t)
 
 ;; Clean up the style of emacs
 (set-frame-font "FantasqueSansMono-11")
@@ -45,6 +45,9 @@
 ;; Powerline modeline
 (straight-use-package 'powerline)
 (powerline-default-theme)
+
+;; minimap
+(straight-use-package 'minimap)
 
 ;; Show whitespace
 (straight-use-package 'whitespace)
@@ -160,14 +163,7 @@
 (global-set-key (kbd "C-c n /") 'org-roam-find-file)
 (global-set-key (kbd "C-c n b") 'org-roam-switch-to-buffer)
 (global-set-key (kbd "C-c n d") 'org-roam-find-directory)
-
-;; Org Journal
-(straight-use-package 'org-journal)
-(setq org-journal-date-prefix "#+title: "
-	  org-journal-file-format "%Y-%m-%d.org"
-	  org-journal-dir "~/Documents/org-roam"
-	  org-journal-date-format "%A, %d %B %Y"
-	  org-journal-file-type 'daily)
+(global-set-key (kbd "C-c n n") 'org-roam-dailies-today)
 
 ;; Flycheck
 (straight-use-package 'flycheck)
