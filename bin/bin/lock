@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 alpha='dd'
-base02='#2e3440'
+base02='#282A36'
 base01='#434c5e'
-orange='#d08770'
-red='#bf616a'
+orange='#FFB86C'
+red='#FF5555'
 magenta='#b48ead'
-blue='#81a1c1'
-green='#a3be8c'
+blue='#BD93F9'
+green='#50FA7B'
 
 killall -SIGUSR1 dunst
 i3lock \

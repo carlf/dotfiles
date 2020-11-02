@@ -23,6 +23,7 @@ zplug "carlf/zsh-plugins",                 use:"aliases/*.zsh"
 zplug "ahmetb/kubectl-aliases",            use:".kubectl_aliases"
 zplug "mafredri/zsh-async",                from:github
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "dracula/zsh",                       as:theme
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -34,4 +35,3 @@ fi
 zplug load
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-eval "$(starship init zsh)"
