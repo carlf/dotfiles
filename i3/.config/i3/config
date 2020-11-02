@@ -58,6 +58,11 @@ floating_modifier $mod
 # Set up gaps
 gaps inner 10
 
+# Rounded corners
+smart_borders on
+smart_borders no_gaps
+border_radius 2
+
 # start a terminal
 bindsym $mod+Return exec kitty
 bindsym $mod+Mod1+l exec lock
