@@ -42,9 +42,9 @@
 (setq dashboard-startup-banner 'logo)
 (dashboard-setup-startup-hook)
 
-;; Powerline modeline
-(straight-use-package 'powerline)
-(powerline-default-theme)
+;; powerline
+;; (straight-use-package 'powerline)
+;; (powerline-default-theme)
 
 ;; minimap
 (straight-use-package 'minimap)
@@ -145,6 +145,7 @@
 	  org-default-notes-file "~/Documents/org/inbox.org"
 	  org-agenda-files '("~/Documents/org")
 	  org-log-done 'time
+	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p)" "|" "CANCELLED(c)" "DONE(d)"))
 	  org-capture-templates '(("t" "Todo" entry (file "")
 							   "* TODO %?\n  CREATED: %T"))
 	  org-src-fontify-natively t)
@@ -158,6 +159,7 @@
 (straight-use-package 'org-roam)
 (setq org-roam-directory "~/Documents/org-roam"
 	  org-roam-db-location "~/Documents/org-roam/org-roam.db")
+(org-roam-mode)
 (global-set-key (kbd "C-c n r") 'org-roam-buffer-toggle-display)
 (global-set-key (kbd "C-c n i") 'org-roam-insert)
 (global-set-key (kbd "C-c n /") 'org-roam-find-file)
