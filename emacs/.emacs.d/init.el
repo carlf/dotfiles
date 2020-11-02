@@ -170,6 +170,10 @@
 (global-flycheck-mode)
 (provide 'init)
 
+;; Flyspell
+(straight-use-package 'flyspell)
+(add-hook 'text-mode-hook (lambda () (flyspell-mode 1)))
+
 ;; yasnippet
 (straight-use-package 'yasnippet)
 (straight-use-package 'yasnippet-snippets)
