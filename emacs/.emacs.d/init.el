@@ -65,6 +65,10 @@
 (straight-use-package 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(straight-use-package 'forge)
+(with-eval-after-load 'magit
+  (require 'forge))
+
 ;; Set up my SSH key
 (defun cf/string-trim-final-newline (string)
   "Strip a trailing newline from the passed in STRING."
@@ -194,6 +198,10 @@
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'my/lsp-go-install-save-hooks)
+
+;; Scheme
+(straight-use-package 'geiser)
+(setq geiser-active-implementations '(racket))
 
 ;; LSP
 (straight-use-package 'lsp-mode)

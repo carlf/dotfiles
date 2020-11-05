@@ -8,3 +8,5 @@
 	insteadOf = https://github.com/
 [pull]
 	rebase = false
+[github]
+	user = carlf
