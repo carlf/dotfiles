@@ -27,6 +27,7 @@
 
 ;; Load dracula theme
 (straight-use-package 'dracula-theme)
+(setq dracula-enlarge-headings nil)
 (load-theme 'dracula t)
 
 ;; Clean up the style of emacs
@@ -52,6 +53,9 @@
 
 ;; Show whitespace
 (straight-use-package 'whitespace)
+
+;; Turn on autofill for text modes
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Keep backup files nice and neat
 (setq backup-by-copying t
@@ -150,9 +154,10 @@
 	  org-default-notes-file "~/Documents/org/inbox.org"
 	  org-agenda-files '("~/Documents/org")
 	  org-log-done 'time
-	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p)" "|" "CANCELLED(c)" "DONE(d)"))
+	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p!)" "|" "CANCELLED(c@)" "DELEGATED(d@)" "FINISHED(f!)"))
+	  org-log-into-drawer t
 	  org-capture-templates '(("t" "Todo" entry (file "")
-							   "* TODO %?\n  CREATED: %T"))
+				   "* TODO %?\nCREATED: %T"))
 	  org-src-fontify-natively t)
 (org-babel-do-load-languages
  'org-babel-load-languages
