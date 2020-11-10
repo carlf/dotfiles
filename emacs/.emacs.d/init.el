@@ -103,6 +103,7 @@
 (which-key-mode)
 
 ;; Configure dired
+(setq dired-listing-switches "-aBhl --group-directories-first")
 (add-hook 'dired-load-hook
 	  (function (lambda () (load "dired-x"))))
 (straight-use-package 'dired+)
