@@ -102,6 +102,11 @@
 (straight-use-package 'which-key)
 (which-key-mode)
 
+;; Configure dired
+(add-hook 'dired-load-hook
+	  (function (lambda () (load "dired-x"))))
+(straight-use-package 'dired+)
+
 ;; Load undo-tree
 (straight-use-package 'undo-tree)
 (global-undo-tree-mode)
