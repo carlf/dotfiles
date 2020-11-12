@@ -103,10 +103,11 @@
 (which-key-mode)
 
 ;; Configure dired
-(setq dired-listing-switches "-aBhl --group-directories-first")
-(add-hook 'dired-load-hook
-	  (function (lambda () (load "dired-x"))))
-(straight-use-package 'dired+)
+;; (setq dired-listing-switches "-aBhl --group-directories-first")
+;; (add-hook 'dired-load-hook
+;; 	  (function (lambda () (load "dired-x"))))
+;; (add-hook 'dired-load-hook 'dired-omit-mode)
+;; (straight-use-package 'dired+)
 
 ;; Load undo-tree
 (straight-use-package 'undo-tree)
@@ -143,11 +144,10 @@
 
 ;; Load projectile
 (straight-use-package 'projectile)
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
 (straight-use-package 'counsel-projectile)
-(counsel-projectile-mode)
+(projectile-mode +1)
+(counsel-projectile-mode t)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Org Mode
 (straight-use-package 'org)
