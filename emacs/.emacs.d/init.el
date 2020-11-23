@@ -57,6 +57,13 @@
 ;; Turn on autofill for text modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; Origami
+(straight-use-package 'origami)
+
+;; Never let the scratch buffer get killed
+(straight-use-package 'unkillable-scratch)
+(unkillable-scratch t)
+
 ;; Keep backup files nice and neat
 (setq backup-by-copying t
       backup-directory-alist '(("." . "~/.saves"))
@@ -103,11 +110,10 @@
 (which-key-mode)
 
 ;; Configure dired
-;; (setq dired-listing-switches "-aBhl --group-directories-first")
-;; (add-hook 'dired-load-hook
-;; 	  (function (lambda () (load "dired-x"))))
-;; (add-hook 'dired-load-hook 'dired-omit-mode)
-;; (straight-use-package 'dired+)
+(setq dired-listing-switches "-aBhl --group-directories-first")
+(add-hook 'dired-load-hook
+	  (function (lambda () (load "dired-x"))))
+(straight-use-package 'dired+)
 
 ;; Load undo-tree
 (straight-use-package 'undo-tree)
@@ -149,10 +155,16 @@
 (counsel-projectile-mode t)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+;; pdf-tools
+(straight-use-package 'pdf-tools)
+(pdf-tools-install)
+
 ;; Org Mode
 (straight-use-package 'org)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+(require 'org)
+(require 'org-install)
 (setq org-refile-targets
 	  '((org-agenda-files :maxlevel . 2))
 	  org-export-with-sub-superscripts nil
@@ -163,8 +175,14 @@
 	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p!)" "|" "CANCELLED(c@)" "DELEGATED(d@)" "FINISHED(f!)"))
 	  org-log-into-drawer t
 	  org-capture-templates '(("t" "Todo" entry (file "")
-				   "* TODO %?\nCREATED: %T"))
-	  org-src-fontify-natively t)
+				   "* TODO %?"))
+	  org-src-fontify-natively t
+	  org-latex-listings 'minted
+	  org-latex-packages-alist '(("" "minted"))
+	  org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+(add-to-list 'org-modules 'org-habit)
+(straight-use-package 'org-alert)
+(setq alert-default-style 'libnotify)
 (org-babel-do-load-languages
  'org-babel-load-languages
  (append org-babel-load-languages
@@ -174,8 +192,20 @@
 ;; Org Roam
 (straight-use-package 'org-roam)
 (setq org-roam-directory "~/Documents/org-roam"
-	  org-roam-db-location "~/Documents/org-roam/org-roam.db")
+      org-roam-db-location "~/Documents/org-roam/org-roam.db")
 (org-roam-mode)
+(setq org-roam-capture-templates
+      '(("d" "default" plain #'org-roam-capture--get-point
+	 "%?"
+	 :file-name "%<%Y%m%d%H%M%S>-${slug}"
+	 :head "#+title: ${title}\n#+startup: indent\n#+roam_tags: "
+	 :unnarrowed t)))
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" plain #'org-roam-capture--get-point
+	 "%?"
+	 :file-name "%<%Y-%m-%d>"
+	 :head "#+title: %<%d %B %Y>\n#+startup: indent\n#+roam_tags: dailies\n"
+	 :unnarrowed t)))
 (global-set-key (kbd "C-c n r") 'org-roam-buffer-toggle-display)
 (global-set-key (kbd "C-c n i") 'org-roam-insert)
 (global-set-key (kbd "C-c n /") 'org-roam-find-file)
