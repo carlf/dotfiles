@@ -199,8 +199,7 @@
 	  org-latex-packages-alist '(("" "minted"))
 	  org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 (add-to-list 'org-modules 'org-habit)
-(straight-use-package 'org-alert)
-(setq alert-default-style 'libnotify)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  (append org-babel-load-languages
