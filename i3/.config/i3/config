@@ -56,12 +56,7 @@ font pango:Cascadia Code Regular 12
 floating_modifier $mod
 
 # Set up gaps
-gaps inner 10
-
-# Rounded corners
-smart_borders on
-smart_borders no_gaps
-border_radius 2
+# gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec kitty
