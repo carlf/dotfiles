@@ -51,8 +51,7 @@
                                      ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
                                      "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
                                      "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                     "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                     "\\" "://"))
+                                     "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"))
 (global-ligature-mode)
 
 ;; Use a fancy dashboard
@@ -62,8 +61,7 @@
 (dashboard-setup-startup-hook)
 
 ;; powerline
-(straight-use-package
- '(powerline :type git :flavor melpa :host github :repo "carlf/powerline" :branch "focus_in_hook_deprecated"))
+(straight-use-package 'powerline)
 (powerline-default-theme)
 
 ;; minimap
