@@ -4,6 +4,9 @@
 ;;; No commentary
 
 ;;; Code:
+;; Turn up gc threshold
+(setq gc-cons-threshold (* 50 1000 1000))
+
 ;; Load the server
 (server-start)
 
@@ -29,6 +32,9 @@
 (straight-use-package 'dracula-theme)
 (setq dracula-enlarge-headings nil)
 (load-theme 'dracula t)
+
+;; all-the-icons
+(straight-use-package 'all-the-icons)
 
 ;; Clean up the style of emacs
 (set-frame-font "CascadiaCode-12")
@@ -57,7 +63,12 @@
 ;; Use a fancy dashboard
 (straight-use-package 'dashboard)
 (defvar dashboard-startup-banner)
-(setq dashboard-startup-banner 'logo)
+(setq dashboard-startup-banner 2)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-items '((recents . 5)
+			(bookmarks . 5)
+			(projects . 5)
+			(agenda . 10)))
 (dashboard-setup-startup-hook)
 
 ;; powerline
@@ -272,4 +283,7 @@
 ;; YAML mode
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; Turn the gc threshold back down
+(setq gc-cons-threshold (* 2 1000 1000))
 ;;; init.el ends here
