@@ -199,7 +199,7 @@
 	  org-default-notes-file "~/Documents/org/inbox.org"
 	  org-agenda-files '("~/Documents/org")
 	  org-log-done 'time
-	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p!)" "|" "CANCELLED(c@)" "DELEGATED(d@)" "FINISHED(f!)"))
+	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p!)" "|" "CANCELLED(c@)" "DELEGATED(d@)" "FINISHED(f@)"))
 	  org-log-into-drawer t
 	  org-capture-templates '(("t" "Todo" entry (file "")
 				   "* TODO %?"))
