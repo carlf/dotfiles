@@ -14,3 +14,4 @@ xclip -selection clipboard -t image/png < "$FILENAME"
 if [ "$1" != "-s" ]; then
     rm "$FILENAME"
 fi
+
