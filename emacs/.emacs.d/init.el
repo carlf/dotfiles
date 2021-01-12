@@ -286,4 +286,8 @@
 
 ;; Turn the gc threshold back down
 (setq gc-cons-threshold (* 2 1000 1000))
+
+;; Password manager integration
+(straight-use-package 'pass)
+
 ;;; init.el ends here

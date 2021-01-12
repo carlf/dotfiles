@@ -55,8 +55,8 @@ font pango:Cascadia Code Regular 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Set up gaps
-# gaps inner 10
+# Enable gaps
+gaps inner 10
 
 # start a terminal
 bindsym $mod+Return exec kitty
