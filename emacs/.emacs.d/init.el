@@ -290,4 +290,4 @@
 ;; Password manager integration
 (straight-use-package 'pass)
 
-;;; init.el ends here
+;;; Init.el ends here
