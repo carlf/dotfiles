@@ -290,4 +290,5 @@
 ;; Password manager integration
 (straight-use-package 'pass)
 
+(straight-use-package 'dockerfile-mode)
 ;;; Init.el ends here
