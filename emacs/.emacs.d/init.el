@@ -290,5 +290,10 @@
 ;; Password manager integration
 (straight-use-package 'pass)
 
+;; Dockerfile support
 (straight-use-package 'dockerfile-mode)
+
+;; editorconfig
+(straight-use-package 'editorconfig)
+(editorconfig-mode 1)
 ;;; Init.el ends here
