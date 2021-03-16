@@ -128,7 +128,7 @@
       (substring string 0 (- len 1)))
      (t string))))
 (setenv "SSH_AUTH_SOCK" (cf/string-trim-final-newline
-                         (shell-command-to-string "/usr/bin/gpgconf --list-dirs agent-ssh-socket")))
+                         (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
 
 ;; Use xdg-open
 (defun cf/xdg-open-shim (url &optional new-window)
