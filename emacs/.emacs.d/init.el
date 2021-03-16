@@ -24,6 +24,18 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; Path hackery for OSX
+(defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell.
+    This is particularly useful under Mac OSX, where GUI apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+(set-exec-path-from-shell-PATH)
+(setq default-directory "~/")
+(setq command-line-default-directory "~/")
+
 ;; Stash custom variables
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -37,7 +49,7 @@
 (straight-use-package 'all-the-icons)
 
 ;; Clean up the style of emacs
-(set-frame-font "CascadiaCode-12")
+(set-frame-font "Cascadia Code-14")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -195,9 +207,9 @@
 (setq org-refile-targets
 	  '((org-agenda-files :maxlevel . 2))
 	  org-export-with-sub-superscripts nil
-	  org-directory "~/Documents/org"
-	  org-default-notes-file "~/Documents/org/inbox.org"
-	  org-agenda-files '("~/Documents/org")
+	  org-directory "~/Nextcloud/Documents/org"
+	  org-default-notes-file "~/Nextcloud/Documents/org/inbox.org"
+	  org-agenda-files '("~/Nextcloud/Documents/org")
 	  org-log-done 'time
 	  org-todo-keywords '((sequence "TODO(t)" "PROGRESS(p!)" "|" "CANCELLED(c@)" "DELEGATED(d@)" "FINISHED(f@)"))
 	  org-log-into-drawer t
@@ -206,7 +218,8 @@
 	  org-src-fontify-natively t
 	  org-latex-listings 'minted
 	  org-latex-packages-alist '(("" "minted"))
-	  org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+	  org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f" "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+	  org-startup-indented t)
 (add-to-list 'org-modules 'org-habit)
 
 (org-babel-do-load-languages
@@ -217,14 +230,14 @@
 
 ;; Org Roam
 (straight-use-package 'org-roam)
-(setq org-roam-directory "~/Documents/org-roam"
-      org-roam-db-location "~/Documents/org-roam/org-roam.db")
+(setq org-roam-directory "~/Nextcloud/Documents/org-roam"
+      org-roam-db-location "~/Nextcloud/Documents/org-roam/org-roam.db")
 (org-roam-mode)
 (setq org-roam-capture-templates
       '(("d" "default" plain #'org-roam-capture--get-point
 	 "%?"
 	 :file-name "%<%Y%m%d%H%M%S>-${slug}"
-	 :head "#+title: ${title}\n#+startup: indent\n#+roam_tags: "
+	 :head "#+title: ${title}\n#+roam_tags: "
 	 :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" plain #'org-roam-capture--get-point
@@ -237,7 +250,7 @@
 (global-set-key (kbd "C-c n /") 'org-roam-find-file)
 (global-set-key (kbd "C-c n b") 'org-roam-switch-to-buffer)
 (global-set-key (kbd "C-c n d") 'org-roam-find-directory)
-(global-set-key (kbd "C-c n n") 'org-roam-dailies-today)
+(global-set-key (kbd "C-c n n") 'org-roam-dailies-find-today)
 
 ;; Flycheck
 (straight-use-package 'flycheck)
@@ -296,4 +309,8 @@
 ;; editorconfig
 (straight-use-package 'editorconfig)
 (editorconfig-mode 1)
+
+;; Terraform mode
+(straight-use-package 'terraform-mode)
+
 ;;; Init.el ends here
