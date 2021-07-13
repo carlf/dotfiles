@@ -1,8 +1,8 @@
-(use-package mode-line-bell
-  :straight t
-  :ensure t
-  :config
-  (mode-line-bell-mode))
+(defun cf/flash-mode-line ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.5 nil 'invert-face 'mode-line))
+(setq-default
+ ring-bell-function 'cf/flash-mode-line)
 
 (use-package counsel
   :straight t
