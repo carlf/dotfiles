@@ -1,3 +1,9 @@
+(use-package mode-line-bell
+  :straight t
+  :ensure t
+  :config
+  (mode-line-bell-mode))
+
 (use-package counsel
   :straight t
   :after ivy
@@ -37,3 +43,7 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
 	aw-dispatch-always t)
   :bind ("M-o" . ace-window))
+
+(use-package company
+  :straight t
+  :hook (prog-mode . company-mode))
