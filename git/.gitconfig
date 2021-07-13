@@ -4,8 +4,8 @@
 	signingkey = 50F1A8D452B5C094A656CE6AAC084C5EEC19856D
 [commit]
 	gpgsign = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
 [pull]
 	rebase = false
 [github]

@@ -8,6 +8,7 @@ format = """\
   $git_state\
   $git_status\
   $python\
+  $ruby \
   $line_break\
   $character\
   """
@@ -21,3 +22,7 @@ disabled = false
 [character]
 success_symbol = "[ζ](bold green)"
 error_symbol = "[ζ](bold red)"
+
+[directory]
+truncation_length = 7
+truncate_to_repo = true

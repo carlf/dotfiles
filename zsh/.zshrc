@@ -10,6 +10,7 @@ setopt EXTENDED_HISTORY
 autoload -U zmv
 
 zplug "plugins/git",                       from:oh-my-zsh
+zplug "plugins/gh",                       from:oh-my-zsh
 zplug "plugins/golang",                    from:oh-my-zsh
 zplug "plugins/systemd",                   from:oh-my-zsh
 zplug "plugins/rbenv",                     from:oh-my-zsh
@@ -33,6 +34,8 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+export PATH=~/go/bin:$PATH
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 eval $(starship init zsh)
