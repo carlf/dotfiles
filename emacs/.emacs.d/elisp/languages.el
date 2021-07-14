@@ -13,3 +13,7 @@
 (use-package terraform-mode
   :straight t
   :mode ("\\.tf\\'"))
+
+(use-package geiser-racket
+  :straight t
+  :mode "\\.scm'")
