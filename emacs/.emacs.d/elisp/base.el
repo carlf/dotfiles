@@ -6,6 +6,8 @@
       kept-old-versions 2
       version-control t)
 
+(setq vc-follow-symlinks t)
+
 ;; Set the path to match my shell
 (use-package exec-path-from-shell
   :straight t
