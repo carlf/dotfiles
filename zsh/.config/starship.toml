@@ -3,6 +3,7 @@ add_newline = true
 format = """\
   $kubernetes\
   $directory\
+  $gcloud\
   $git_branch\
   $git_commit\
   $git_state\
@@ -26,3 +27,6 @@ error_symbol = "[ζ](bold red)"
 [directory]
 truncation_length = 7
 truncate_to_repo = true
+
+[gcloud]
+format = 'on [$symbol$account(\($project\))]($style) '
