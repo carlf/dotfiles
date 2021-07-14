@@ -1,3 +1,9 @@
+(defun cf/jira-get-ticket (url)
+  (let ((path (url-filename (url-generic-parse-url url)))
+        (ticket-rx "\\(?:/[^/]+\\)+/\\([^?]+\\).*\\'"))
+    (string-match ticket-rx path)
+    (concat "[[" url "][" (match-string 1 path) "]]")))
+
 (use-package org
   :straight t
   :init
@@ -6,7 +12,12 @@
 	org-refile-targets '((org-agenda-files :maxlevel . 2))
 	org-directory "~/Nextcloud/Documents/org"
 	org-log-into-drawer t
-	org-startup-indented t)
+	org-startup-indented t
+	org-capture-templates
+	'(("t" "Todo" entry (file+headline "~/Nextcloud/Documents/org/inbox.org" "Inbox")
+           "* TODO %?\nCREATED: %U")
+          ("j" "Jira" entry (file+headline "~/Nextcloud/Documents/org/inbox.org" "Inbox")
+           "* TODO %? %(cf/jira-get-ticket \"%c\")\nCREATED: %U")))
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)))
 

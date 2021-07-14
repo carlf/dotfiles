@@ -17,3 +17,11 @@
 (use-package geiser-racket
   :straight t
   :mode "\\.scm'")
+
+(use-package lsp-haskell
+  :straight t
+  :mode "\\.hs'")
+
+(use-package haskell-mode
+  :straight t
+  :mode "\\.hs'")

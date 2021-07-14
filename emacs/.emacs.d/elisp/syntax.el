@@ -1,5 +1,6 @@
 (use-package flycheck
   :straight t
+  :defer t
   :init
   (add-hook 'prog-mode-hook #'flycheck-mode)
   (add-hook 'yaml-mode-hook #'flycheck-mode))

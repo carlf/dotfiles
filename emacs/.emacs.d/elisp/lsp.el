@@ -4,6 +4,7 @@
   (setq lsp-keymap-prefix "C-c l")
   :commands (lsp lsp-deferred)
   :hook ((go-mode . lsp)
+	 (haskell-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 

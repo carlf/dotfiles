@@ -23,10 +23,10 @@
 (setenv "SSH_AUTH_SOCK" (cf/string-trim-final-newline
                          (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
 
-(customize-set-variable 'tramp-ssh-controlmaster-options
-			(concat
-			 "-o ControlPath=~/.ssh/master-%%r@%%h:%%p "
-			 "-o ControlMaster=auto -o ControlPersist=yes"))
+(setq tramp-ssh-controlmaster-options
+      (concat
+       "-o ControlPath=~/.ssh/master-%%r@%%h:%%p "
+       "-o ControlMaster=auto -o ControlPersist=yes"))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)

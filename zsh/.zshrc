@@ -35,7 +35,5 @@ fi
 
 zplug load
 
-export PATH=~/go/bin:$PATH
-
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 eval $(starship init zsh)
