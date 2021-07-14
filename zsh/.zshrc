@@ -1,39 +1,28 @@
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source ~/.zgen/zgen.zsh
+
+if ! zgen saved; then
+    zgen oh-my-zsh
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/gh
+    zgen oh-my-zsh plugins/golang
+    zgen oh-my-zsh plugins/systemd
+    zgen oh-my-zsh plugins/rbenv
+    zgen oh-my-zsh plugins/pyenv
+    zgen oh-my-zsh plugins/fzf
+    zgen oh-my-zsh plugins/fasd
+    zgen oh-my-zsh plugins/gcloud
+    zgen load carlf/zsh-plugins emacs
+    zgen load carlf/zsh-plugins edit-command-line
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load dracula/zsh
+    zgen save
+fi
 
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
-
-autoload -U zmv
-
-zplug "plugins/git",                       from:oh-my-zsh
-zplug "plugins/gh",                       from:oh-my-zsh
-zplug "plugins/golang",                    from:oh-my-zsh
-zplug "plugins/systemd",                   from:oh-my-zsh
-zplug "plugins/rbenv",                     from:oh-my-zsh
-zplug "plugins/pyenv",                     from:oh-my-zsh
-zplug "plugins/fzf",                       from:oh-my-zsh
-zplug "plugins/fasd",                      from:oh-my-zsh
-zplug "plugins/tmux-cssh",                 from:oh-my-zsh
-zplug "plugins/gcloud",                    from:oh-my-zsh
-zplug "carlf/zsh-plugins",                 use:"emacs/*.zsh"
-zplug "carlf/zsh-plugins",                 use:"edit-command-line/*.zsh"
-zplug "ahmetb/kubectl-aliases",            use:".kubectl_aliases"
-zplug "mafredri/zsh-async",                from:github
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "dracula/zsh",                       as:theme
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 eval $(starship init zsh)
