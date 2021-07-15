@@ -1,0 +1,14 @@
+session_name: default
+windows:
+  - window_name: nnn
+    panes:
+      - nnn
+  - window_name: weechat
+    panes:
+      - weechat
+  - window_name: olympus
+    panes:
+      - ssh -D 1234 -AY olympus.carlf.io
+  - window_name: scratch
+    panes:
+      - ''
