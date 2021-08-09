@@ -39,3 +39,5 @@
   :config
   (require 'smartparens-config)
   :hook ((prog-mode . smartparens-strict-mode)))
+
+(put 'erase-buffer 'disabled nil)
