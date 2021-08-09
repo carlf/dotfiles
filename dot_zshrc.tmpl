@@ -5,7 +5,9 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/gh
     zgen oh-my-zsh plugins/golang
+{{- if ne .chezmoi.os "darwin" }}
     zgen oh-my-zsh plugins/systemd
+{{- end }}
     zgen oh-my-zsh plugins/rbenv
     zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/fzf
