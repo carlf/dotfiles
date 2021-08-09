@@ -13,21 +13,23 @@ brew "jq"
 brew "weechat"
 brew "aria2"
 brew "atool"
+brew "ykman"
 EOF
 {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
 sudo apt install -y \
-git \
-gpg \
-golang \
-kitty \
-ripgrep \
-pinentry-gnome3 \
-weechat \
-aria2 \
-jq \
-nnn \
-atool \
-tmux \
-tmuxp \
-pwgen
+     git \
+     gpg \
+     golang \
+     kitty \
+     ripgrep \
+     pinentry-gnome3 \
+     weechat \
+     aria2 \
+     jq \
+     nnn \
+     atool \
+     tmux \
+     tmuxp \
+     pwgen \
+     yubikey-manager
 {{- end -}}
