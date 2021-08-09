@@ -2,4 +2,6 @@
 # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
 enable-ssh-support
 ttyname $GPG_TTY
+{{ if eq .chezmoi.os "darwin" -}}
 pinentry-program /usr/local/bin/pinentry-mac
+{{ end -}}

@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "gnupg"
+brew "pinentry"
+brew "pinentry-mac"
+brew "gopass"
+brew "pwgen"
+brew "tmux"
+brew "tmuxp"
+brew "starship"
+brew "nnn"
+brew "jq"
+brew "weechat"
+EOF
+
+if [[ ! -d ~/.zgen ]]; then
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+fi
+{{ end -}}
