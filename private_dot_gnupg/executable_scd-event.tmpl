@@ -1,3 +1,4 @@
+{{- if ne .chezmoi.os "darwin" -}}
 #!/bin/sh
 
 state=$8
@@ -5,3 +6,4 @@ state=$8
 if [ "$state" = "NOCARD" ]; then
   pkill -9 scdaemon
 fi
+{{- end -}}
