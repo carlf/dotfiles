@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+if [ -x /usr/libexec/path_helper ]; then
+    eval $(/usr/libexec/path_helper -s)
+fi
+{{- end }}
+export PATH=~/go/bin:$PATH
