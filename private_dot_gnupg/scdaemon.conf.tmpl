@@ -1,2 +1,4 @@
 reader-port "Yubico YubiKey OTP+FIDO+CCID"
+{{ if eq .chezmoi.os "darwin" -}}
 disable-ccid
+{{ end -}}
