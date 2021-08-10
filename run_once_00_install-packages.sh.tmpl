@@ -16,6 +16,11 @@ brew "atool"
 brew "ykman"
 EOF
 {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
+sudo apt-key adv --keyserver hkps://keys.openpgp.org \
+     --recv-keys 11E9DE8848F2B65222AA75B8D1820DB22A11534E
+echo "deb https://weechat.org/ubuntu hirsute main" | sudo tee /etc/apt/sources.list.d/weechat.list
+echo "deb-src https://weechat.org/ubuntu hirsute main" | sudo tee -a /etc/apt/sources.list.d/weechat.list
+sudo apt update
 sudo apt install -y \
      git \
      gpg \
@@ -23,7 +28,7 @@ sudo apt install -y \
      kitty \
      ripgrep \
      pinentry-gnome3 \
-     weechat \
+     weechat-curses \
      aria2 \
      jq \
      nnn \
