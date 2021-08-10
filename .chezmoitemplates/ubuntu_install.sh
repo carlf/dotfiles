@@ -26,4 +26,8 @@ sudo apt install -y \
      tmuxp \
      pwgen \
      yubikey-manager \
-     zsh
+     zsh \
+     fonts-jetbrains-mono \
+     fonts-firacode \
+     fonts-cascadia-code \
+     fonts-ibm-plex
