@@ -4,7 +4,7 @@ font_family JetBrains Mono
 bold_font JetBrains Mono Bold
 italic_font JetBrains Mono Italic
 bold_italic_fond JetBrains Mono Bold Italic
-font_size 14.0
+font_size {{ template "font-size.tmpl" . }}
 disable_ligatures never
 
 shell /bin/zsh --login
