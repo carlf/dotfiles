@@ -1,25 +1,25 @@
-source ~/.zgen/zgen.zsh
+source ~/.zgenom/zgenom.zsh
 
-if ! zgen saved; then
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/gh
-    zgen oh-my-zsh plugins/golang
+if ! zgenom saved; then
+    zgenom ohmyzsh
+    zgenom ohmyzsh plugins/git
+    zgenom ohmyzsh plugins/gh
+    zgenom ohmyzsh plugins/golang
 {{- if ne .chezmoi.os "darwin" }}
-    zgen oh-my-zsh plugins/systemd
+    zgenom ohmyzsh plugins/systemd
 {{- end }}
-    zgen oh-my-zsh plugins/rbenv
-    zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh plugins/fzf
-    zgen oh-my-zsh plugins/fasd
-    zgen oh-my-zsh plugins/gcloud
-    zgen load carlf/zsh-plugins emacs
-    zgen load carlf/zsh-plugins edit-command-line
-    zgen load carlf/zsh-plugins gopass
-    zgen load carlf/zsh-plugins chezmoi
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load dracula/zsh
-    zgen save
+    zgenom ohmyzsh plugins/rbenv
+    zgenom ohmyzsh plugins/pyenv
+    zgenom ohmyzsh plugins/fzf
+    zgenom ohmyzsh plugins/fasd
+    zgenom ohmyzsh plugins/gcloud
+    zgenom load carlf/zsh-plugins emacs
+    zgenom load carlf/zsh-plugins edit-command-line
+    zgenom load carlf/zsh-plugins gopass
+    zgenom load carlf/zsh-plugins chezmoi
+    zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load dracula/zsh
+    zgenom save
 fi
 
 HISTFILE=~/.zsh_history
