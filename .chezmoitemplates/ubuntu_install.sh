@@ -31,3 +31,5 @@ sudo apt install -y \
      fonts-firacode \
      fonts-cascadia-code \
      fonts-ibm-plex
+sudo snap install slack
+sudo snap install signal-desktop
