@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ ! -f /usr/local/bin/brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 brew tap homebrew/cask-fonts
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "gnupg"
