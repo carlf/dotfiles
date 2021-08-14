@@ -9,11 +9,10 @@
   :straight t
   :ensure t)
 
-(use-package dracula-theme
+(use-package nord-theme
   :straight t
   :init
-  (setq dracula-enlarge-headings nil)
-  (load-theme 'dracula t))
+  (load-theme 'nord t))
 
 (use-package ligature
   :straight (ligature :type git :host github :repo "mickeynp/ligature.el")
