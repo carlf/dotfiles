@@ -24,8 +24,8 @@ function needs_font {
 function get_font {
     font_name=$1
     dest=$(get_font_dir)
-    url="https://raw.githubusercontent.com/domtronn/all-the-icons.el/master/fonts/font_name.ttf"
-    curl -o "${dest}/${font_name}.ttf" "$url"
+    url="https://raw.githubusercontent.com/domtronn/all-the-icons.el/master/fonts/${font_name}.ttf"
+    curl -s -o "${dest}/${font_name}.ttf" "$url"
 }
 
 FONTS=(all-the-icons file-icons fontawesome material-design-icons octicons weathericons)
