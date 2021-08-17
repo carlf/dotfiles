@@ -30,6 +30,12 @@ sudo apt install -y \
      fonts-jetbrains-mono \
      fonts-firacode \
      fonts-cascadia-code \
-     fonts-ibm-plex
+     fonts-ibm-plex \
+     cmake \
+     make \
+     fd-find \
+     pandoc \
+     graphviz \
+     shellcheck
 sudo snap install slack
 sudo snap install signal-desktop
