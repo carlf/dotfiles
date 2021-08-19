@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo mkdir /root/.gnupg
 sudo gpg --no-default-keyring --keyring \
      /usr/share/keyrings/weechat-archive-keyring.gpg \
      --keyserver hkps://keys.openpgp.org \
@@ -12,34 +13,35 @@ echo "$debsrc $repo" | sudo tee -a /etc/apt/sources.list.d/weechat.list
 sudo add-apt-repository ppa:regolith-linux/release
 sudo apt update
 sudo apt install -y \
+     aria2 \
+     atool \
+     cmake \
+     fd-find \
+     fonts-cascadia-code \
+     fonts-firacode \
+     fonts-ibm-plex \
+     fonts-jetbrains-mono \
+     fzf \
+     git \
+     golang-go \
+     gpg \
+     graphviz \
+     jq \
+     kitty \
+     make \
+     nnn \
+     pandoc \
+     pinentry-gnome3 \
+     pwgen \
      regolith-desktop-standard \
      regolith-look-nord \
-     git \
-     gpg \
-     golang \
-     kitty \
      ripgrep \
-     pinentry-gnome3 \
-     weechat-curses \
-     aria2 \
-     jq \
-     nnn \
-     atool \
+     shellcheck \
      tmux \
      tmuxp \
-     pwgen \
+     weechat-curses \
      yubikey-manager \
-     zsh \
-     fonts-jetbrains-mono \
-     fonts-firacode \
-     fonts-cascadia-code \
-     fonts-ibm-plex \
-     cmake \
-     make \
-     fd-find \
-     pandoc \
-     graphviz \
-     shellcheck
-sudo snap install slack
+     zsh
+sudo snap install slack --classic
 sudo snap install signal-desktop
 regolith-look set nord
