@@ -8,7 +8,7 @@ if [[ $os == "Darwin" ]]; then
     fi
 elif [[ $os == "Linux" ]]; then
     distro=$(lsb_release -is)
-    if [[ $distro == "Ubuntu" ]];
+    if [[ $distro == "Ubuntu" ]]; then
        if [[ ! -x /snap/bin/emacs ]]; then
            sudo snap install emacs --edge --classic
        fi
