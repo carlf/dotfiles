@@ -5,12 +5,12 @@ sudo gpg --no-default-keyring --keyring \
      /usr/share/keyrings/weechat-archive-keyring.gpg \
      --keyserver hkps://keys.openpgp.org \
      --recv-keys 11E9DE8848F2B65222AA75B8D1820DB22A11534E
-deb="deb [signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg]"
+deb="deb [arch=amd64 signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg]"
 debsrc="deb-src [signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg]"
 repo="https://weechat.org/ubuntu $(lsb_release -cs) main"
 echo "$deb $repo" | sudo tee /etc/apt/sources.list.d/weechat.list
 echo "$debsrc $repo" | sudo tee -a /etc/apt/sources.list.d/weechat.list
-sudo add-apt-repository ppa:regolith-linux/release
+sudo add-apt-repository -y ppa:regolith-linux/release
 sudo apt update
 sudo apt install -y \
      aria2 \
