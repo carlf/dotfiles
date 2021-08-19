@@ -39,4 +39,3 @@ sudo apt install -y \
      shellcheck
 sudo snap install slack
 sudo snap install signal-desktop
-sudo snap install emacs --edge --classic
