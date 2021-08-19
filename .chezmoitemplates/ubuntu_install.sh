@@ -9,8 +9,11 @@ debsrc="deb-src [signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg]"
 repo="https://weechat.org/ubuntu $(lsb_release -cs) main"
 echo "$deb $repo" | sudo tee /etc/apt/sources.list.d/weechat.list
 echo "$debsrc $repo" | sudo tee -a /etc/apt/sources.list.d/weechat.list
+sudo add-apt-repository ppa:regolith-linux/release
 sudo apt update
 sudo apt install -y \
+     regolith-desktop-standard \
+     regolith-look-nord \
      git \
      gpg \
      golang \
@@ -39,3 +42,4 @@ sudo apt install -y \
      shellcheck
 sudo snap install slack
 sudo snap install signal-desktop
+regolith-look set nord
