@@ -30,6 +30,10 @@ function get_font {
 
 FONTS=(all-the-icons file-icons fontawesome material-design-icons octicons weathericons)
 
+if [[ ! -d $(get_font_dir) ]]; then
+    mkdir -p $(get_font_dir)
+fi
+
 for font in "${FONTS[@]}"; do
     if needs_font "$font"; then
         get_font "$font"
