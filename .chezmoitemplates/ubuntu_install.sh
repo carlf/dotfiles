@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo mkdir /root/.gnupg
+sudo mkdir -p /root/.gnupg
 sudo chmod 700 /root/.gnupg
 sudo gpg --no-default-keyring --keyring \
      /usr/share/keyrings/weechat-archive-keyring.gpg \
@@ -47,3 +47,4 @@ sudo snap install slack --classic
 sudo snap install signal-desktop
 regolith-look set nord
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
