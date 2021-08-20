@@ -46,6 +46,7 @@
 (setenv "SSH_AUTH_SOCK" (string-trim-final-newline
                          (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
 
+(setq emojify-download-emojis-p t)
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
