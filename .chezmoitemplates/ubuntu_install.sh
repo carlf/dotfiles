@@ -41,6 +41,7 @@ sudo apt install -y \
      tmux \
      tmuxp \
      weechat-curses \
+     xclip \
      yubikey-manager \
      zsh
 sudo snap install slack --classic
