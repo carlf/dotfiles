@@ -4,7 +4,7 @@ os=$(uname -s)
 if [[ $os == "Darwin" ]]; then
     if [[ ! -x /usr/local/bin/emacs ]]; then
         brew tap d12frosted/emacs-plus
-        brew install emacs-plus@28 --with-native-comp
+        brew install emacs-plus@27
     fi
 
     daemon_status=$(brew services list | grep emacs | awk '{print $2}')
