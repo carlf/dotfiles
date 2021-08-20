@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo mkdir /root/.gnupg
+sudo chmod 700 /root/.gnupg
 sudo gpg --no-default-keyring --keyring \
      /usr/share/keyrings/weechat-archive-keyring.gpg \
      --keyserver hkps://keys.openpgp.org \
