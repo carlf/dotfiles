@@ -45,3 +45,4 @@ sudo apt install -y \
 sudo snap install slack --classic
 sudo snap install signal-desktop
 regolith-look set nord
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"

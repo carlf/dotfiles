@@ -3,3 +3,4 @@
 {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
 {{ template "ubuntu_install.sh"}}
 {{- end -}}
+{{ template "gopass_install.sh" }}
