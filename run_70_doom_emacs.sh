@@ -14,13 +14,8 @@ if [[ $os == "Darwin" ]]; then
 elif [[ $os == "Linux" ]]; then
     distro=$(lsb_release -is)
     if [[ $distro == "Ubuntu" ]]; then
-       if [[ ! -x /snap/bin/emacs ]]; then
-           sudo snap install emacs --edge --classic
-       fi
-
-       if [[ ! -f ~/.config/systemd/user/emacs.service ]]; then
-           mkdir -p ~/.config/systemd/user
-           cp /snap/emacs/current/usr/lib/systemd/user/emacs.service ~/.config/systemd/user/
+       if [[ ! -x /usr/bin/emacs ]]; then
+           sudo apt install emacs
        fi
 
        systemctl --quiet --user is-enabled emacs.service
