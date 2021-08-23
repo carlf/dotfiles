@@ -34,6 +34,7 @@ sudo apt install -y \
      pandoc \
      pinentry-gnome3 \
      pwgen \
+     racket \
      regolith-desktop-standard \
      regolith-look-nord \
      ripgrep \
