@@ -11,7 +11,7 @@ elif [[ $os == "Linux" ]]; then
     distro=$(lsb_release -is)
     if [[ $distro == "Ubuntu" ]]; then
         if [[ ! -x /usr/bin/emacs ]]; then
-            sudo apt install emacs
+            sudo apt install -y emacs
         fi
     fi
 fi
