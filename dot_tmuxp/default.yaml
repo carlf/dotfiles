@@ -1,8 +1,5 @@
 session_name: default
 windows:
-  - window_name: nnn
-    panes:
-      - nnn
   - window_name: weechat
     panes:
       - weechat
