@@ -1,2 +1,2 @@
-#include "/etc/regolith/styles/dracula/root"
+#include "/etc/regolith/styles/nord/root"
 i3-wm.gaps.focus_follows_mouse: true
