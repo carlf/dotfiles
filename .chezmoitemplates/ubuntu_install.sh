@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 sudo mkdir -p /root/.gnupg
 sudo chmod 700 /root/.gnupg
 sudo gpg --no-default-keyring --keyring \
