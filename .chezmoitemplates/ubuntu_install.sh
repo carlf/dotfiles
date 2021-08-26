@@ -31,6 +31,8 @@ sudo apt install -y \
     nnn \
     pandoc \
     pinentry-gnome3 \
+    pcsc-tools \
+    pcscd \
     pwgen \
     racket \
     regolith-desktop-standard \
@@ -49,3 +51,5 @@ sudo snap install signal-desktop
 regolith-look set nord
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
 sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
+sudo systemctl enable pcscd
+sudo systemctl start pcscd
