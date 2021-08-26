@@ -1,3 +1,2 @@
-#include "/etc/regolith/styles/nord/root"
+#include "/etc/regolith/styles/dracula/root"
 i3-wm.gaps.focus_follows_mouse: true
-i3-wm.bar.font: "pango:JetBrains Mono 14, FontAwesome 14"

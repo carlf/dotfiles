@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 {{ if eq .chezmoi.os "darwin" -}}
 {{ template "macos_install.sh" }}
 {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
