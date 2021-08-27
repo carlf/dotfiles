@@ -1,3 +1,4 @@
 {{ if eq .chezmoi.os "darwin" }}
 .Xresources-regolith
+.config/regolith/Xresources
 {{ end }}
