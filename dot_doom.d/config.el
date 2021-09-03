@@ -9,6 +9,20 @@
 (setq user-full-name "Carl Flippin"
       user-mail-address "carlf@carlf.io")
 
+(setq sendmail-program "/usr/bin/msmtp"
+      send-mail-function #'smtpmail-send-it
+      message-sendmail-f-is-evil t
+      message-sendmail-extra-arguments '("--read-envelope-from")
+      message-send-mail-function #'message-send-mail-with-sendmail)
+
+(set-email-account! "fastmail"
+                    '((mu4e-sent-folder . "/Sent")
+                      (mu4e-drafts-folder . "/Drafts")
+                      (mu4e-trash-folder . "/Trash")
+                      (mu4e-refile-folder . "/Archive"))
+                    t)
+
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
