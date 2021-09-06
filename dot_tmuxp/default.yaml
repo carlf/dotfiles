@@ -1,11 +1,11 @@
 session_name: default
 windows:
-  - window_name: weechat
+  - window_name: irc
     panes:
       - weechat
   - window_name: olympus
     panes:
       - ssh -D 1234 -AY olympus.carlf.io
-  - window_name: scratch
+  - window_name: x
     panes:
       - ''
