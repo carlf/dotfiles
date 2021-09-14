@@ -8,3 +8,5 @@
 	rebase = false
 [github]
 	user = carlf
+[init]
+	defaultBranch = main
