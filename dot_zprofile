@@ -1,6 +1,5 @@
-{{- if eq .chezmoi.os "darwin" -}}
 if [ -x /usr/libexec/path_helper ]; then
     eval $(/usr/libexec/path_helper -s)
 fi
-{{- end }}
 export PATH=~/bin:~/go/bin:~/.cargo/bin:$PATH
+export SHELL=$(which zsh)

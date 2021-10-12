@@ -27,7 +27,7 @@ os=$(uname -s)
 if [[ $os == "Darwin" ]]; then
     daemon_status=$(brew services list | grep emacs | awk '{print $2}')
     if [[ ! $daemon_status == "started" ]]; then
-        brew services start emacs-plus@27
+        brew services start emacs-plus@28
     fi
 elif [[ $os == "Linux" ]]; then
     distro=$(lsb_release -is)

@@ -1,32 +1,14 @@
 add_newline = true
-
-format = """\
-  $kubernetes\
-  $directory\
-  $gcloud\
-  $git_branch\
-  $git_commit\
-  $git_state\
-  $git_status\
-  $python\
-  $ruby \
-  $line_break\
-  $character\
-  """
-  
-[aws]
-disabled = true
-
-[kubernetes]
-disabled = false
+format = "$hostname$directory$gcloud$git_branch$git_commit$git_state$line_break$character"
 
 [character]
-success_symbol = "[ζ](bold green)"
 error_symbol = "[ζ](bold red)"
+success_symbol = "[ζ](bold green)"
 
 [directory]
-truncation_length = 7
-truncate_to_repo = true
+truncate_to_repo = "true"
+truncation_length = 3
 
-[gcloud]
-format = 'on [$symbol$account(\($project\))]($style) '
+[hostname]
+ssh_only = "true"
+trim_at = "."
