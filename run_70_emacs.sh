@@ -16,13 +16,6 @@ elif [[ $os == "Linux" ]]; then
     fi
 fi
 
-# Install doom
-if [[ ! -f ~/.emacs.d/bin/doom ]]; then
-    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install --no-config --no-fonts --no-env
-    ~/.emacs.d/bin/doom env
-fi
-
 os=$(uname -s)
 if [[ $os == "Darwin" ]]; then
     daemon_status=$(brew services list | grep emacs | awk '{print $2}')

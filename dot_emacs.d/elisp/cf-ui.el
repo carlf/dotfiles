@@ -67,5 +67,16 @@
 ;; Disable bell on C-g
 (setq ring-bell-function 'ignore)
 
+;; Use avy for quick jumps
+(use-package avy
+  :straight t
+  :bind
+  (("C-'" . avy-goto-char-timer)))
+
+(use-package ace-window
+  :straight t
+  :bind
+  (("M-o" . ace-window)))
+
 (provide 'cf-ui)
 ;;; cf-ui.el ends here
