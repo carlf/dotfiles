@@ -1,0 +1,598 @@
+#+title: Init File
+#+author: Carl Flippin
+#+startup: show2levels
+* init.el
+** Opening comments
+Emacs has a pretty verbose comment style. This make flycheck happy.
+#+begin_src emacs-lisp :tangle yes
+  ;;; config.el --- My central Emacs config -*- lexical-binding: t -*-
+
+  ;; Author: Carl Flippin
+  ;; Maintainer: Carl Flippin
+  ;; Version: 0.1.0
+  ;; Homepage: https://carlf.io
+  ;; Keywords: init
+
+  ;;; Commentary:
+  ;; This is the file used to configure my Emacs
+
+  ;;; Code:
+#+end_src
+** Base config
+*** Load straight
+This loads the straight package manager and configures use-package to
+use it for package installation. Straight is preferred because it
+handles bare git repos easily and handles native compilation
+seamlessly.
+#+begin_src emacs-lisp :tangle yes
+  (defvar bootstrap-version)
+  (defvar straight-check-for-modifications '(check-on-save))
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+  (require 'straight)
+  (straight-use-package 'use-package)
+#+end_src
+*** Load use-package for flycheck
+This is so flycheck doesn't puke on the use-package macro. If
+use-package is loaded at compile time, flycheck can read the macro and
+expand it without throwing errors about undefined variables and the
+like.
+#+begin_src emacs-lisp :tangle yes
+  (eval-when-compile
+    (require 'use-package))
+#+end_src
+*** Load the [[https://gitlab.com/koral/gcmh][Garbage Collector Magic Hack]]
+This package handle garbage collection much more intelligently. In
+early-init.el you can set the gc threshold to basically infinity and
+GCMH will happily garbage collect at idle and prevent long
+pauses. Don't leave home without it.
+#+begin_src emacs-lisp :tangle yes
+  (use-package gcmh
+    :straight t
+    :init
+    (gcmh-mode 1))
+#+end_src
+*** Load the [[https://github.com/jschaf/esup][Emacs Start Up Profiler]]
+This lets you easily check your startup performance. If you run =M-x
+esup= it will start up a new instance of Emacs and profile the startup
+time. It has been hugely helpful in keeping startup time sane with a
+large-ish Emacs config.
+#+begin_src emacs-lisp :tangle yes
+  (use-package esup
+    :straight t
+    :ensure t)
+#+end_src
+*** Stash custom variables
+Emacs will happily shove things into your init.el when you call
+customize. It doesn't get called much but I want to keep my init.el
+derived strictly from this org file so I put them in =custom.el= and
+load it at startup. It should always be empty. Anything that needs
+configuring is done via =use-package=.
+#+begin_src emacs-lisp :tangle yes
+  (setq custom-file "~/.emacs.d/custom.el")
+  (load custom-file)
+#+end_src
+*** Stash backups
+Emacs tends to leave backup file droppings all over the place. This
+keeps them all in a single directory and keeps a few versions around
+just in case.
+#+begin_src emacs-lisp :tangle yes
+  (let ((cf-backup-dir (concat user-emacs-directory "backups")))
+    (setq backup-directory-alist `(("." . ,cf-backup-dir))
+          backup-by-copying t
+          version-control t
+          delete-old-versions t
+          kept-new-versions 5
+          kept-old-versions 2)
+    (if (not (file-exists-p cf-backup-dir))
+        (make-directory cf-backup-dir)))
+#+end_src
+*** Always follow symlinks
+Emacs, by default, asks if you want to follow a symlink any time you
+open a file that is a symlink. I cannot recall a single time I
+answered no to this question and the prompt is annoying. More context
+for this setting is [[https://www.gnu.org/software/emacs/manual/html_node/emacs/General-VC-Options.html][here]].
+#+begin_src emacs-lisp :tangle yes
+  (setq vc-follow-symlinks t)
+#+end_src
+*** Also let me just say y
+This is another "shut up Emacs" setting. Emacs will sometimes ask you
+to type the full "yes" or "no". This is inconsistent and doesn't
+really add much safety. This just makes every yes-or-no a y-or-n.
+#+begin_src emacs-lisp :tangle yes
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+*** Also stop beeping
+The infernal beeping every time I press =C-g= was working my last
+nerve. This finally makes Emacs shut up.
+#+begin_src emacs-lisp :tangle yes
+  (setq ring-bell-function 'ignore)
+#+end_src
+*** Set my path
+On MacOS, the path is pretty bare if you open an app via the GUI or as
+a launchd service. Here we set the path to something fairly
+sensible. We also set the exec-path to match which is handy for
+finding things like LSP servers and the like.
+#+begin_src emacs-lisp :tangle yes
+  ;; Set my path correctly
+  (let ((my-path '("/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/"
+                  "~/bin/"
+                  "~/go/bin/"
+                  "/usr/local/bin/"
+                  "/usr/bin/"
+                  "/bin/"
+                  "/usr/sbin/"
+                  "/sbin/"
+                  "/Library/TeX/texbin/"
+                  "/opt/X11/bin/"
+                  "/Library/Apple/usr/bin/"
+                  "/usr/local/Cellar/emacs-plus@28/28.0.50/libexec/emacs/28.0.60/x86_64-apple-darwin20.6.0/")))
+    (setenv "PATH"
+            (mapconcat #'identity my-path ":"))
+    (setq exec-path my-path))
+#+end_src
+*** Silence warnings on compile
+Emacs will give you warnings about relatively innocuous things like
+docstrings being too long. These messages are generally in a package
+we don't have control over so we suppress them here.
+#+begin_src emacs-lisp :tangle yes
+  (setq warning-minimum-level :error
+        warning-minimum-log-level :error)
+#+end_src
+*** Enable recentf mode
+With recentf-mode, I can easily find recently opened files.
+#+begin_src emacs-lisp :tangle yes
+  (use-package recentf
+    :straight t
+    :config
+    (setq recentf-max-saved-items 25
+          recentf-save-file (concat user-emacs-directory ".recentf.el"))
+    (recentf-mode t))
+#+end_src
+** UI Settings
+*** Base UI Settings
+This disables the scroll bar, the menu bar, and the tool bar. It also
+sets the font as required. This is done by making settings on the
+default-frame-alist because it was somehow significantly faster than
+calling the functions directly. Since I always start as a daemon, I
+see no real difference between this and functions like =menu-bar-mode=
+and =set-frame-font=. We also set Emacs to allow you to scale in units
+smaller than a single character as you get unsightly gaps on tiling
+window managers or even fullscreen in some cases.
+#+begin_src emacs-lisp :tangle yes
+  (push '(menu-bar-lines . 0) default-frame-alist)
+  (push '(tool-bar-lines . 0) default-frame-alist)
+  (push '(vertical-scroll-bars) default-frame-alist)
+  (push '(font . "JetBrains Mono-12") default-frame-alist)
+  (setq menu-bar-mode nil
+        tool-bar-mode nil
+        scroll-bar-mode nil
+        frame-resize-pixelwise t)
+#+end_src
+*** Load theme
+Here we use the [[https://github.com/rougier/nano-theme][NΛNO theme]] which is a nice combination of Nord colors
+but simpler and clearer than the Nord theme that Arctic Ice
+provides. We also load the [[https://github.com/rougier/nano-modeline/][NΛNO modeline]] which is very clean and
+simple. I'm really loving what [[https://github.com/rougier][rougier]] is doing with styling in Emacs.
+#+begin_src emacs-lisp :tangle yes
+  (use-package nano-theme
+    :straight (nano-theme
+               :type git
+               :host github
+               :repo "rougier/nano-theme")
+    :config
+    (nano-dark))
+  (use-package nano-modeline
+    :straight (nano-modeline
+               :type git
+               :host github
+               :repo "rougier/nano-modeline")
+    :custom
+    (nano-modeline-position 'bottom)
+    :config
+    (nano-modeline-mode))
+#+end_src
+*** Handle theme in daemon mode
+I have found that most themes have a problem when opening an initial
+frame when started in daemon mode. I've seen some indications that
+this might be a problem with the theme but I like the theme enough
+that I'm willing to accept this jank to make it work.
+#+begin_src emacs-lisp :tangle yes
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                (lambda (frame)
+                  (select-frame frame)
+                  (load-theme 'nano-dark t)))
+    (load-theme 'nano-dark t))
+#+end_src
+*** Splash screen
+The emacs splash screen is kind of unsightly and busy. Make it not
+show up.
+#+begin_src emacs-lisp :tangle yes
+  (setq inhibit-splash-screen t)
+#+end_src
+*** which-key
+I'm unsure if this belongs in the UI section or somewhere else. The
+[[https://github.com/justbur/emacs-which-key][which-key]] package gives you a handy popup when you are mid-keystroke
+to show you possible completions of the keystrokes you have typed. For
+example, if I hit =C-c p= it will show me the projectile map. Very
+handy for complex sets of keybindings.
+#+begin_src emacs-lisp :tangle yes
+  (use-package which-key
+    :straight t
+    :defer 1
+    :config
+    (which-key-mode))
+#+end_src
+** Movement
+*** Load avy
+[[https://github.com/abo-abo/avy][Avy]] is a powerful movement tool allowing you to jump to anywhere in a
+buffer with just a few keystrokes. I pretty much just use
+=avy-goto-char-timer= but it's a huge time-saver.
+#+begin_src emacs-lisp :tangle yes
+  (use-package avy
+    :straight t
+    :bind
+    (("C-'" . avy-goto-char-timer)))
+#+end_src
+*** Load ace-window
+I use [[https://github.com/abo-abo/ace-window][ace-window]] to manage and move between windows. With a single
+keybinding, it can handle most tasks. The alternative approach here is
+[[https://github.com/dimitri/switch-window][switch-window]] but my muscle memory already has this in place.
+#+begin_src emacs-lisp :tangle yes
+  (use-package ace-window
+    :straight t
+    :bind
+    (("M-o" . ace-window)))
+#+end_src
+** Org Mode
+*** Utility function for Jira todos
+This is a handy function for creating a todo that references a Jira
+ticket. It is used in the jira capture template below.
+#+begin_src emacs-lisp :tangle yes
+  (defun cf/jira-get-ticket (url)
+    "Generate org-mode link to a Jira ticket"
+    (let ((path (url-filename (url-generic-parse-url url)))
+          (ticket-rx "\\(?:/[^/]+\\)+/\\([^?]+\\).*\\'"))
+      (string-match ticket-rx path)
+      (concat "[[" url "][" (match-string 1 path) "]]")))
+#+end_src
+*** Load org-mode
+[[https://orgmode.org/][Org mode]] is half the reason I use emacs. It is a very powerful
+outlining and text editing framework. Indeed, this config file is
+written in org format and is export to bare elisp using tangle. It is
+also a powerful todo manager. It can even be used as a knowledge base
+and presentation system. A few things to note here. I am making some
+handy templates relevant to my work. The Jira template makes keeping
+tickets linked to my work Jira very simple. Also note the custom todo
+keywords that variously record timestamps or notes as appropriate.
+#+begin_src emacs-lisp :tangle yes
+  (use-package org
+    :straight t
+    :custom
+    (org-modules '(org-habit))
+    :init
+    (setq org-agenda-files '("~/Nextcloud/Documents/org")
+          org-todo-keywords '((sequence "TODO(t!)" "PROGRESS(p!)" "VERIFY(v@)" "BLOCKED(b@)" "|" "CANCELLED(c@)" "DONE(d@)" "DELEGATED(e@)"))
+          org-refile-targets '((org-agenda-files :maxlevel . 2))
+          org-directory "~/Nextcloud/Documents/org"
+          org-log-into-drawer t
+          org-startup-indented t
+          org-capture-templates
+          '(("t" "Todo" entry (file+headline "~/Nextcloud/Documents/org/inbox.org" "Inbox")
+             "* TODO %?\nCREATED: %U")
+            ("j" "Jira" entry (file+headline "~/Nextcloud/Documents/org/inbox.org" "Inbox")
+             "* TODO %? %(cf/jira-get-ticket \"%c\")\nCREATED: %U")))
+    :bind (("C-c a" . org-agenda)
+           ("C-c c" . org-capture)))
+#+end_src
+*** Load org-roam
+The [[https://www.orgroam.com/][org-roam]] package is an add-on to org that allows quick recording
+and searching of notes. I have a fairly large web of notes in org-roam
+and finding the note I need based on title or tag is trivial. Note
+also that I am on the v2 version with updated functionality to allow
+org-roam entries on branches rather than just on files.
+#+begin_src emacs-lisp :tangle yes
+  (use-package org-roam
+    :straight t
+    :custom
+    (org-roam-directory "~/Nextcloud/Documents/org-roam")
+    :init
+    (setq org-roam-v2-ack t)
+    :bind
+    (("C-c n i" . org-roam-insert)
+     ("C-c n /" . org-roam-node-find))
+    :config
+    (org-roam-setup))
+#+end_src
+** Git
+*** Magit
+This is the other half of the reason I use Emacs. [[https://magit.vc/][Magit]] is a powerful
+git interface built right into emacs. It knows about projects and will
+handle things like rebase and stashes more easily than the command
+line tool. A must have if you are doing anything with git.
+#+begin_src emacs-lisp :tangle yes
+  (use-package magit
+    :straight t
+    :bind
+    ("C-x g" . magit-status))
+#+end_src
+*** Git-gutter
+This is just a nice to have package that shows where the changes are
+in a buffer. It makes it easy to see which lines were changed or
+removed without having to open magit to check the diff. A real time
+saver. The strange lists of numbers are to set the symbols used in the
+fringe for git-gutter.
+#+begin_src emacs-lisp :tangle yes
+  (use-package git-gutter
+    :straight t
+    :defer t
+    :hook
+    ((markdown-mode . git-gutter-mode)
+     (prog-mode . git-gutter-mode)
+     (conf-mode . git-gutter-mode))
+    :custom
+    (git-gutter:disabled-modes '(org-mode asm-mode image-mode))
+    (git-gutter:update-interval 1)
+    (git-gutter:window-width 2)
+    (git-gutter:ask-p nil))
+
+  (use-package git-gutter-fringe
+    :straight t
+    :diminish git-gutter-mode
+    :after git-gutter
+    :demand fringe-helper
+    :config
+    (setq-default fringes-outside-margins t)
+    (define-fringe-bitmap 'git-gutter-fr:added
+      [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+      nil nil 'center)
+    (define-fringe-bitmap 'git-gutter-fr:modified
+      [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+      nil nil 'center)
+    (define-fringe-bitmap 'git-gutter-fr:deleted
+      [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
+      nil nil 'center))
+
+#+end_src
+** Projects
+*** Load projectile
+The standard choice is [[https://projectile.mx/][projectile]] for handling projects and tracking
+their root folders for things like ripgrep. I gave [[https://github.com/emacs-mirror/emacs/blob/master/lisp/progmodes/project.el][project.el]] a shot
+for a while because it wasn't easy to get marginalia to work with
+projectile but that proved no easier with project.el so back to
+projectile it is.
+#+begin_src emacs-lisp :tangle yes
+  (use-package projectile
+    :straight t
+    :bind-keymap
+    ("C-c p" . projectile-command-map))
+#+end_src
+*** org-projectile
+This add-on for projectile makes it trivial to record todos for
+projects. By default, they go into todo.org in the toplevel of the
+project. This is disabled for now because it was causing problems with
+org-mode and I haven't had a chance to dig in deeper.
+#+begin_src emacs-lisp :tangle yes
+  ;; (use-package org-projectile
+  ;;   :straight t
+  ;;   :after org
+  ;;   :bind (("C-c n p" . org-projectile-project-todo-completing-read))
+  ;;   :config
+  ;;   (setq org-projectile-per-project-filepath "todo.org"
+  ;;         org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+  ;;   :init
+  ;;   (org-projectile-per-project))
+#+end_src
+** Completing Read
+*** Vertico
+[[https://github.com/minad/vertico][Vertico]] is a replacement for the default completing-read
+implementation. It is lightweight and flexible.
+#+begin_src emacs-lisp :tangle yes
+  (use-package vertico
+    :straight t
+    :init
+    (vertico-mode))
+#+end_src
+*** Orderless
+The [[https://github.com/oantolin/orderless][orderless]] package gives a nice way of sorting candidates when
+searching through vertico. This could probably be configured more
+completely but it's doing what I need for now.
+#+begin_src emacs-lisp :tangle yes
+  (use-package orderless
+    :straight t
+    :init
+    ;; Configure a custom style dispatcher (see the Consult wiki)
+    ;; (setq orderless-style-dispatchers '(+orderless-dispatch))
+    (setq completion-styles '(orderless)
+          completion-category-defaults nil
+          completion-category-overrides '((file (styles partial-completion)))))
+#+end_src
+*** Marginalia
+The [[https://github.com/minad/marginalia][marginalia]] package provides more context when searching through
+candidates in vertico. This is partly eye-candy and partly just nice
+to have.
+#+begin_src emacs-lisp :tangle yes
+  (use-package marginalia
+    :straight t
+    :after vertico
+    :bind (("M-a" . marginalia-cycle))
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :init
+    (marginalia-mode))
+#+end_src
+*** Embark
+The [[https://github.com/oantolin/embark][embark]] package gives a richer set of actions on candidates in
+vertico. You can, for instance, find a file and then decide to open it
+as sudo. This relies on marginalia to tell it what kind of candidates
+it is looking at to get a sensible set of possible actions.
+#+begin_src emacs-lisp :tangle yes
+  (use-package embark
+    :straight t
+    :ensure t
+    :bind
+    (("C-." . embark-act)
+     ("C-;" . embark-dwim)
+     ("C-h B" . embark-bindings))
+    :init
+    (setq prefix-help-command #'embark-prefix-help-command))
+#+end_src
+*** Consult
+The [[https://github.com/minad/consult][consult]] package gives a lot of nice replacements for built-in
+functions that play nicely with vertico. There's a lot of keybindings
+here but it's only the tip of the iceberg. Note, also, that consult is
+relying on projectile to find the root of the project for things like
+consult-ripgrep.
+#+begin_src emacs-lisp :tangle yes
+  (use-package consult
+    :straight t
+    :bind
+    (("C-c h" . consult-history)
+     ("C-c m" . consult-mode-command)
+     ("C-c b" . consult-bookmark)
+     ("C-x b" . consult-buffer)
+     ("C-x C-r" . consult-recent-file)
+     ("C-x 4 b" . consult-buffer-other-window)
+     ("C-x 5 b" . consult-buffer-other-frame)
+     ("M-#" . consult-register-load)
+     ("M-'" . consult-register-store)
+     ("C-M-#" . consult-register)
+     ("M-g g" . consult-goto-line)
+     ("M-s f" . consult-find)
+     ("M-s F" . consult-locate)
+     ("M-s g" . consult-grep)
+     ("M-s G" . consult-git-grep)
+     ("M-s r" . consult-ripgrep)
+     ("M-s l" . consult-line)
+     ("M-s L" . consult-line-multi)
+     ("M-s m" . consult-multi-occur)
+     ("M-s k" . consult-keep-lines)
+     ("M-s u" . consult-focus-lines)
+     ("M-s l" . consult-line))
+    :config
+    (autoload 'projectile-project-root "projectile")
+    (setq consult-project-root-function #'projectile-project-root))
+#+end_src
+** Auto-completion
+*** Corfu
+The [[https://github.com/minad/corfu][corfu]] package provides a simpler auto-completion experience than
+the standard company-mode. I found company-mode was always getting in
+my way and getting this working the way I want was just way
+simpler. It support capf and dabbrev and LSP which covers all my use
+cases.
+#+begin_src emacs-lisp :tangle yes
+  (use-package corfu
+    :straight t
+    :hook ((prog-mode . corfu-mode)))
+#+end_src
+*** yasnippet
+The [[http://joaotavora.github.io/yasnippet/][yasnippet]] package provides handy snippets for all kinds of
+modes. Not we also load the yasnippit-snippets package which includes
+a bunch of handy snippets out of the box. For example, all the elisp
+code boxes in this org document were created by just typing =elisp_=
+and pressing TAB.
+#+begin_src emacs-lisp :tangle yes
+  (use-package yasnippet
+    :straight t
+    :hook ((prog-mode . yas-minor-mode)
+           (markdown-mode . yas-minor-mode)
+           (org-mode . yas-minor-mode)))
+
+  (use-package yasnippet-snippets
+    :straight t
+    :after yasnippet
+    :config
+    (yasnippet-snippets-initialize))
+#+end_src
+** General Code
+*** Flycheck
+The [[https://www.flycheck.org/en/latest/][flycheck]] package makes interfacing with various checkers very
+easy. If you have a linter or checker installed, flycheck will
+generally find it and use it and give you nice error messages for any
+code problems. I don't do much configuration of it as the defaults
+have worked for me thus far.
+#+begin_src emacs-lisp :tangle yes
+  ;; Load flycheck
+  (use-package flycheck
+    :straight t
+    :custom
+    (flycheck-emacs-lisp-load-path 'inherit)
+    :hook ((prog-mode . flycheck-mode)))
+#+end_src
+*** Smartparens
+The [[https://github.com/Fuco1/smartparens][smartparens]] package in strict mode forces you to keep your
+parentheses balanced. It can sometimes be a hassle if you typo
+something but the advantages outweigh the disadvantages.
+#+begin_src emacs-lisp :tangle yes
+  (use-package smartparens
+    :straight t
+    :config
+    (require 'smartparens-config)
+    :hook ((prog-mode . smartparens-strict-mode)))
+#+end_src
+*** LSP
+The [[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] package provides generic support for the Language Server
+Protocol and integrates nicely with packages like corfu. I really only
+use it in go for now but the list is sure to grow.
+#+begin_src emacs-lisp :tangle yes
+  (use-package lsp-mode
+    :straight t
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :hook
+    (go-mode . lsp-deferred)
+    (lsp-mode . lsp-enable-which-key-integration))
+
+  (use-package lsp-ui
+    :straight t
+    :commands lsp-ui-mode)
+#+end_src
+** Specific Languages
+*** Go
+Go is probably my most used language at this point. We load go-mode
+and integrate with LSP. Right now, go is the only language with LSP on
+by default.
+#+begin_src emacs-lisp :tangle yes
+  (use-package go-mode
+    :straight t
+    :mode "\\.go\\'"
+    :interpreter "go"
+    :hook
+    ((before-save . lsp-format-buffer)
+     (before-save . lsp-organize-imports)))
+#+end_src
+*** YAML
+Everything is YAML now. Running kubernetes is really just yaml-ops at
+this point. This just gives some basic syntax highlighting which might
+catch some bugs.
+#+begin_src emacs-lisp :tangle yes
+  (use-package yaml-mode
+    :straight t
+    :mode ("\\.yml\\'" "\\.yaml\\'"))
+#+end_src
+*** Shell Scripts
+This loads the builtin sh-mode which handles sh/bash/zsh just fine. If
+your script doesn't end in, for example, .sh you may need to use a
+file-local variable to set the mode.
+#+begin_src emacs-lisp :tangle yes
+  (use-package sh-script
+    :straight t
+    :mode ("\\.sh\\'" "\\.zsh\\'"))
+#+end_src
+** Closing comments
+Flycheck wants you to declare what the package provides and an
+explicit comment indicating the end.
+#+begin_src emacs-lisp :tangle yes
+  (provide 'config)
+  ;;; config.el ends here
+#+end_src

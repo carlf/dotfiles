@@ -1,69 +1,43 @@
-;;; init.el --- My central Emacs config
+;;; init.el --- Stub to load org based config -*- lexical-binding: t -*-
+
+;; Author: Carl Flippin
+;; Maintainer: Carl Flippin
+;; Version: 0.1.0
+;; Homepage: https://carlf.io
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 
 ;;; Commentary:
-;; This is the init.el used to configure my Emacs
+
+;; This is a simple stub that checks if the tangled version of my
+;; config is out of date and regenerates if it is.
 
 ;;; Code:
-;; Load straight.el and use-package
-(defvar bootstrap-version)
-(defvar straight-check-for-modifications '(check-on-save))
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-(require 'straight)
-(straight-use-package 'use-package)
 
-;; This is so flycheck can understand the use-package macro
-(require 'use-package)
 
-;; A nice hack for faster garbage collection
-(use-package gcmh
-  :straight t
-  :init
-  (gcmh-mode 1))
+(defvar config-org-file (concat user-emacs-directory "config.org"))
+(defvar config-el-file (concat user-emacs-directory "config.el"))
 
-;; Emacs Start Up Profiler
-(use-package esup
-  :straight t
-  :ensure t)
+(when (file-newer-than-file-p config-org-file config-el-file)
+  (require 'org)
+  (org-babel-tangle-file config-org-file))
 
-;; Stash custom variables in custom.el
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
-;; Configure backups
-(let ((cf-backup-dir (concat user-emacs-directory "backups")))
-  (setq backup-directory-alist `(("." . ,cf-backup-dir))
-	backup-by-copying t
-	version-control t
-	delete-old-versions t
-	kept-new-versions 5
-	kept-old-versions 2)
-  (if (not (file-exists-p cf-backup-dir))
-      (make-directory cf-backup-dir)))
-
-;; Follow links be default
-(setq vc-follow-symlinks t)
-
-;; Load the rest of the config
-(add-to-list 'load-path "~/.emacs.d/elisp")
-(require 'cf-env)
-(require 'cf-ui)
-(require 'cf-git)
-(require 'cf-project)
-(require 'cf-completion)
-(require 'cf-org)
-(require 'cf-code)
-(require 'cf-lsp)
-(require 'cf-lang)
+(add-to-list 'load-path user-emacs-directory)
+(require 'config)
 
 (provide 'init)
 ;;; init.el ends here
