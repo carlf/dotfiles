@@ -1,6 +1,12 @@
 #+title: Init File
 #+author: Carl Flippin
 #+startup: show2levels
+* Todo
+** TODO Get marginalia working with projectile
+** TODO Get org-projectile configured
+** TODO Set up magit forge
+** TODO Find a dashboard of some sort
+** TODO Look into prescient
 * config.el
 ** Opening comments
 Emacs has a pretty verbose comment style. This make flycheck happy.
@@ -308,13 +314,14 @@ org-roam entries on branches rather than just on files.
     :straight t
     :custom
     (org-roam-directory "~/Nextcloud/Documents/org-roam")
+    (org-roam-db-location "~/Nextcloud/Documents/org-roam/org-roam.db")
     :init
     (setq org-roam-v2-ack t)
     :bind
     (("C-c n i" . org-roam-insert)
      ("C-c n /" . org-roam-node-find))
     :config
-    (org-roam-setup))
+    (org-roam-db-autosync-mode))
 #+end_src
 ** Git
 *** Magit
@@ -337,7 +344,6 @@ fringe for git-gutter.
 #+begin_src emacs-lisp :tangle yes
   (use-package git-gutter
     :straight t
-    :defer t
     :hook
     ((markdown-mode . git-gutter-mode)
      (prog-mode . git-gutter-mode)
@@ -376,8 +382,11 @@ projectile it is.
 #+begin_src emacs-lisp :tangle yes
   (use-package projectile
     :straight t
-    :bind-keymap
-    ("C-c p" . projectile-command-map))
+    :defer 1
+    :config
+    (projectile-mode +1)
+    :bind (:map projectile-mode-map
+                ("C-c p" . projectile-command-map)))
 #+end_src
 *** org-projectile
 This add-on for projectile makes it trivial to record todos for
