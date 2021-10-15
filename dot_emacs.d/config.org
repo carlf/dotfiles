@@ -1,7 +1,7 @@
 #+title: Init File
 #+author: Carl Flippin
 #+startup: show2levels
-* init.el
+* config.el
 ** Opening comments
 Emacs has a pretty verbose comment style. This make flycheck happy.
 #+begin_src emacs-lisp :tangle yes
