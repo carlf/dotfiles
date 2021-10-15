@@ -440,6 +440,10 @@ to have.
     :custom
     (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
     :init
+    (setq marginalia-command-categories
+          '((projectile-find-file . project-file)
+            (projectile-find-dir . project-file)
+            (projectile-switch-project . file)))
     (marginalia-mode))
 #+end_src
 *** Embark
