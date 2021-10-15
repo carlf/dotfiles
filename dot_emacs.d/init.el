@@ -32,9 +32,14 @@
 (defvar config-org-file (concat user-emacs-directory "config.org"))
 (defvar config-el-file (concat user-emacs-directory "config.el"))
 
+(defun cf/tangle-emacs-config ()
+  "Function to generate the elisp config from the literate config."
+  (progn
+    (require 'org)
+    (org-babel-tangle-file config-org-file)))
+
 (when (file-newer-than-file-p config-org-file config-el-file)
-  (require 'org)
-  (org-babel-tangle-file config-org-file))
+  (cf/tangle-emacs-config))
 
 (add-to-list 'load-path user-emacs-directory)
 (require 'config)

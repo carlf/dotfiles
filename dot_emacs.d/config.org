@@ -155,7 +155,8 @@ With recentf-mode, I can easily find recently opened files.
     :straight t
     :config
     (setq recentf-max-saved-items 25
-          recentf-save-file (concat user-emacs-directory ".recentf.el"))
+          recentf-save-file (concat user-emacs-directory ".recentf.el")
+          recentf-auto-cleanup 60)
     (recentf-mode t))
 #+end_src
 ** UI Settings
@@ -292,6 +293,7 @@ keywords that variously record timestamps or notes as appropriate.
              "* TODO %?\nCREATED: %U")
             ("j" "Jira" entry (file+headline "~/Nextcloud/Documents/org/inbox.org" "Inbox")
              "* TODO %? %(cf/jira-get-ticket \"%c\")\nCREATED: %U")))
+    (add-to-list 'recentf-exclude org-agenda-files)
     :bind (("C-c a" . org-agenda)
            ("C-c c" . org-capture)))
 #+end_src
