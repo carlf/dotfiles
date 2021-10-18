@@ -12,7 +12,11 @@
 - State "CANCELLED"  from "TODO"       [2021-10-18 Mon 10:42] \\
   Ditched projectile so this is moot
 :END:
-** TODO Set up magit forge
+** DONE Set up magit forge
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2021-10-18 Mon 15:06] \\
+  Got it working for github and ghosthub
+:END:
 ** TODO Find a dashboard of some sort
 ** TODO Look into prescient
 ** DONE Switch to project.el
@@ -356,6 +360,12 @@ things that command line tools like =gh= do for you.
   (use-package forge
     :straight t
     :ensure t
+    :config
+    (add-to-list 'forge-alist
+                 '("ghosthub.corp.blizzard.net"
+                   "ghosthub.corp.blizzard.net/api/v3"
+                   "ghosthub.corp.blizzard.net"
+                   forge-github-repository))
     :after magit)
 #+end_src
 *** Git-gutter
