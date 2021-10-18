@@ -2,11 +2,24 @@
 #+author: Carl Flippin
 #+startup: show2levels
 * Todo
-** TODO Get marginalia working with projectile
-** TODO Get org-projectile configured
+** CANCELLED Get marginalia working with projectile
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-10-15 Fri 15:33] \\
+  Gave up. Projectile doesn't play nice.
+:END:
+** CANCELLED Get org-projectile configured
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2021-10-18 Mon 10:42] \\
+  Ditched projectile so this is moot
+:END:
 ** TODO Set up magit forge
 ** TODO Find a dashboard of some sort
 ** TODO Look into prescient
+** DONE Switch to project.el
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2021-10-15 Fri 15:56] \\
+  Working fine for my purposes.
+:END:
 * config.el
 ** Opening comments
 Emacs has a pretty verbose comment style. This make flycheck happy.
@@ -335,6 +348,16 @@ line tool. A must have if you are doing anything with git.
     :bind
     ("C-x g" . magit-status))
 #+end_src
+*** Forge
+This is an add-on for magit that allows you to easily interact with
+github / github enterprise / gitlab. It lets you do a lot of the
+things that command line tools like =gh= do for you.
+#+begin_src emacs-lisp :tangle yes
+  (use-package forge
+    :straight t
+    :ensure t
+    :after magit)
+#+end_src
 *** Git-gutter
 This is just a nice to have package that shows where the changes are
 in a buffer. It makes it easy to see which lines were changed or
@@ -373,36 +396,13 @@ fringe for git-gutter.
 
 #+end_src
 ** Projects
-*** Load projectile
-The standard choice is [[https://projectile.mx/][projectile]] for handling projects and tracking
-their root folders for things like ripgrep. I gave [[https://github.com/emacs-mirror/emacs/blob/master/lisp/progmodes/project.el][project.el]] a shot
-for a while because it wasn't easy to get marginalia to work with
-projectile but that proved no easier with project.el so back to
-projectile it is.
+*** Load project.el
+Initially this was using projectile but it seems to not play nicely
+with marginalia. Instead, we use project.el.
 #+begin_src emacs-lisp :tangle yes
-  (use-package projectile
+  (use-package project
     :straight t
-    :defer 1
-    :config
-    (projectile-mode +1)
-    :bind (:map projectile-mode-map
-                ("C-c p" . projectile-command-map)))
-#+end_src
-*** org-projectile
-This add-on for projectile makes it trivial to record todos for
-projects. By default, they go into todo.org in the toplevel of the
-project. This is disabled for now because it was causing problems with
-org-mode and I haven't had a chance to dig in deeper.
-#+begin_src emacs-lisp :tangle yes
-  ;; (use-package org-projectile
-  ;;   :straight t
-  ;;   :after org
-  ;;   :bind (("C-c n p" . org-projectile-project-todo-completing-read))
-  ;;   :config
-  ;;   (setq org-projectile-per-project-filepath "todo.org"
-  ;;         org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
-  ;;   :init
-  ;;   (org-projectile-per-project))
+    :bind-keymap ("C-x p" . project-prefix-map))
 #+end_src
 ** Completing Read
 *** Vertico
@@ -437,13 +437,11 @@ to have.
     :straight t
     :after vertico
     :bind (("M-a" . marginalia-cycle))
-    :custom
-    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
     :init
     (setq marginalia-command-categories
-          '((projectile-find-file . project-file)
-            (projectile-find-dir . project-file)
-            (projectile-switch-project . file)))
+          '((project-switch-project . file)
+            (project-find-file . project-file)
+            (project-find-dir . project-file)))
     (marginalia-mode))
 #+end_src
 *** Embark
@@ -495,8 +493,10 @@ consult-ripgrep.
      ("M-s u" . consult-focus-lines)
      ("M-s l" . consult-line))
     :config
-    (autoload 'projectile-project-root "projectile")
-    (setq consult-project-root-function #'projectile-project-root))
+    (setq consult-project-root-function
+          (lambda ()
+            (when-let (project (project-current))
+              (car (project-roots project))))))
 #+end_src
 ** Auto-completion
 *** Corfu
@@ -510,7 +510,8 @@ cases.
     :straight t
     :custom
     (corfu-auto t)
-    :hook ((prog-mode . corfu-mode)))
+    :hook ((prog-mode . corfu-mode)
+           (lsp-mode . corfu-mode)))
 #+end_src
 *** yasnippet
 The [[http://joaotavora.github.io/yasnippet/][yasnippet]] package provides handy snippets for all kinds of
@@ -565,7 +566,8 @@ use it in go for now but the list is sure to grow.
   (use-package lsp-mode
     :straight t
     :init
-    (setq lsp-keymap-prefix "C-c l")
+    (setq lsp-keymap-prefix "C-c l"
+          lsp-completion-provider :none)
     :hook
     (go-mode . lsp-deferred)
     (lsp-mode . lsp-enable-which-key-integration))
