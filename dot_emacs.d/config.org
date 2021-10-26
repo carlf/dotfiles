@@ -74,6 +74,21 @@ like.
   (eval-when-compile
     (require 'use-package))
 #+end_src
+*** Load blackout
+This will keep minor modes quiet if we don't need reminding about
+them. Note that we have to load this early so that things like GCMH
+can be silenced too.
+#+begin_src emacs-lisp :tangle yes
+  (use-package blackout
+    :straight t
+    :config
+    (with-eval-after-load 'which-key
+      (blackout 'which-key-mode))
+    (with-eval-after-load 'gcmh
+      (blackout 'gcmh-mode))
+    (with-eval-after-load 'yasnippet
+      (blackout 'yas-minor-mode)))
+#+end_src
 *** Load the [[https://gitlab.com/koral/gcmh][Garbage Collector Magic Hack]]
 This package handle garbage collection much more intelligently. In
 early-init.el you can set the gc threshold to basically infinity and
