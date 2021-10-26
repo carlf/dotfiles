@@ -6,7 +6,7 @@
 	gpgsign = true
 [pull]
 	rebase = false
-[github]
-	user = carlf
 [init]
 	defaultBranch = main
+[github "ghosthub.corp.blizzard.net/api/v3"]
+	user = cflippin

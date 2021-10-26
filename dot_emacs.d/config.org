@@ -19,6 +19,7 @@
 :END:
 ** TODO Find a dashboard of some sort
 ** TODO Look into prescient
+** TODO Get diminish working
 ** DONE Switch to project.el
 :LOGBOOK:
 - State "DONE"       from "TODO"       [2021-10-15 Fri 15:56] \\
@@ -203,27 +204,12 @@ window managers or even fullscreen in some cases.
         frame-resize-pixelwise t)
 #+end_src
 *** Load theme
-Here we use the [[https://github.com/rougier/nano-theme][NΛNO theme]] which is a nice combination of Nord colors
-but simpler and clearer than the Nord theme that Arctic Ice
-provides. We also load the [[https://github.com/rougier/nano-modeline/][NΛNO modeline]] which is very clean and
-simple. I'm really loving what [[https://github.com/rougier][rougier]] is doing with styling in Emacs.
+We use the nord theme which matches the theme used on my other
+programs. I tried the Nano theme for a bit but it was a little too
+minimalist even for me.
 #+begin_src emacs-lisp :tangle yes
-  (use-package nano-theme
-    :straight (nano-theme
-               :type git
-               :host github
-               :repo "rougier/nano-theme")
-    :config
-    (nano-dark))
-  (use-package nano-modeline
-    :straight (nano-modeline
-               :type git
-               :host github
-               :repo "rougier/nano-modeline")
-    :custom
-    (nano-modeline-position 'bottom)
-    :config
-    (nano-modeline-mode))
+  (use-package nord-theme
+    :straight t)
 #+end_src
 *** Handle theme in daemon mode
 I have found that most themes have a problem when opening an initial
@@ -235,8 +221,30 @@ that I'm willing to accept this jank to make it work.
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (select-frame frame)
-                  (load-theme 'nano-dark t)))
-    (load-theme 'nano-dark t))
+                  (load-theme 'nord t)))
+    (load-theme 'nord t))
+#+end_src
+*** Load modeline theme
+I'm using telephone line for maximum control. It lets you set
+arbitrary segments and configure all the colors and separators however
+you like.
+#+begin_src emacs-lisp :tangle yes
+  (use-package telephone-line
+    :straight t
+    :init
+    (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
+          telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
+          telephone-line-primary-right-separator 'telephone-line-cubed-right
+          telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right
+          telephone-line-lhs '((evil . (telephone-line-buffer-modified-segment))
+                               (accent . (telephone-line-vc-segment))
+                               (nil . (telephone-line-minor-mode-segment
+                                       telephone-line-buffer-segment)))
+          telephone-line-rhs '((nil . (telephone-line-misc-info-segment))
+                               (accent . (telephone-line-major-mode-segment))
+                               (evil . (telephone-line-airline-position-segment))))
+    :config
+    (telephone-line-mode t))
 #+end_src
 *** Splash screen
 The emacs splash screen is kind of unsightly and busy. Make it not
@@ -389,7 +397,6 @@ fringe for git-gutter.
 
   (use-package git-gutter-fringe
     :straight t
-    :diminish git-gutter-mode
     :after git-gutter
     :demand fringe-helper
     :config
@@ -617,6 +624,14 @@ file-local variable to set the mode.
   (use-package sh-script
     :straight t
     :mode ("\\.sh\\'" "\\.zsh\\'"))
+#+end_src
+*** Nix
+This is to support the Nix language for NixOS and hopefully for my Mac
+as well once I have that figured out.
+#+begin_src emacs-lisp :tangle yes
+  (use-package nix-mode
+    :straight t
+    :mode "\\.nix\\'")
 #+end_src
 ** Closing comments
 Flycheck wants you to declare what the package provides and an
