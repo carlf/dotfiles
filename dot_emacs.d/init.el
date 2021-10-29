@@ -29,8 +29,8 @@
 ;;; Code:
 
 
-(defvar config-org-file (concat user-emacs-directory "config.org"))
-(defvar config-el-file (concat user-emacs-directory "config.el"))
+(defvar config-org-file (concat user-emacs-directory "lisp/config.org"))
+(defvar config-el-file (concat user-emacs-directory "lisp/config.el"))
 
 (defun cf/tangle-emacs-config ()
   "Function to generate the elisp config from the literate config."
@@ -41,7 +41,7 @@
 (when (file-newer-than-file-p config-org-file config-el-file)
   (cf/tangle-emacs-config))
 
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'config)
 
 (provide 'init)

@@ -43,27 +43,22 @@ Emacs has a pretty verbose comment style. This make flycheck happy.
   ;;; Code:
 #+end_src
 ** Base config
-*** Load straight
-This loads the straight package manager and configures use-package to
-use it for package installation. Straight is preferred because it
-handles bare git repos easily and handles native compilation
-seamlessly.
+*** Load use-package
+I switched to bare use-package for maximal nix compatibility. I
+suspect startup time will be slightly slower but I use the daemon so
+who cares?
 #+begin_src emacs-lisp :tangle yes
-  (defvar bootstrap-version)
-  (defvar straight-check-for-modifications '(check-on-save))
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
-  (require 'straight)
-  (straight-use-package 'use-package)
+  (require 'package)
+  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (eval-and-compile
+    (setq use-package-always-ensure t
+          use-package-expand-minimally t))
 #+end_src
 *** Load use-package for flycheck
 This is so flycheck doesn't puke on the use-package macro. If
@@ -80,7 +75,6 @@ them. Note that we have to load this early so that things like GCMH
 can be silenced too.
 #+begin_src emacs-lisp :tangle yes
   (use-package blackout
-    :straight t
     :config
     (with-eval-after-load 'which-key
       (blackout 'which-key-mode))
@@ -96,7 +90,6 @@ GCMH will happily garbage collect at idle and prevent long
 pauses. Don't leave home without it.
 #+begin_src emacs-lisp :tangle yes
   (use-package gcmh
-    :straight t
     :init
     (gcmh-mode 1))
 #+end_src
@@ -107,7 +100,6 @@ time. It has been hugely helpful in keeping startup time sane with a
 large-ish Emacs config.
 #+begin_src emacs-lisp :tangle yes
   (use-package esup
-    :straight t
     :ensure t)
 #+end_src
 *** Stash custom variables
@@ -191,7 +183,6 @@ we don't have control over so we suppress them here.
 With recentf-mode, I can easily find recently opened files.
 #+begin_src emacs-lisp :tangle yes
   (use-package recentf
-    :straight t
     :config
     (setq recentf-max-saved-items 25
           recentf-save-file (concat user-emacs-directory ".recentf.el")
@@ -223,8 +214,7 @@ We use the nord theme which matches the theme used on my other
 programs. I tried the Nano theme for a bit but it was a little too
 minimalist even for me.
 #+begin_src emacs-lisp :tangle yes
-  (use-package nord-theme
-    :straight t)
+  (use-package nord-theme)
 #+end_src
 *** Handle theme in daemon mode
 I have found that most themes have a problem when opening an initial
@@ -245,7 +235,6 @@ arbitrary segments and configure all the colors and separators however
 you like.
 #+begin_src emacs-lisp :tangle yes
   (use-package telephone-line
-    :straight t
     :init
     (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
           telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
@@ -275,7 +264,6 @@ example, if I hit =C-c p= it will show me the projectile map. Very
 handy for complex sets of keybindings.
 #+begin_src emacs-lisp :tangle yes
   (use-package which-key
-    :straight t
     :defer 1
     :config
     (which-key-mode))
@@ -287,7 +275,6 @@ buffer with just a few keystrokes. I pretty much just use
 =avy-goto-char-timer= but it's a huge time-saver.
 #+begin_src emacs-lisp :tangle yes
   (use-package avy
-    :straight t
     :bind
     (("C-'" . avy-goto-char-timer)))
 #+end_src
@@ -297,7 +284,6 @@ keybinding, it can handle most tasks. The alternative approach here is
 [[https://github.com/dimitri/switch-window][switch-window]] but my muscle memory already has this in place.
 #+begin_src emacs-lisp :tangle yes
   (use-package ace-window
-    :straight t
     :bind
     (("M-o" . ace-window)))
 #+end_src
@@ -324,7 +310,6 @@ tickets linked to my work Jira very simple. Also note the custom todo
 keywords that variously record timestamps or notes as appropriate.
 #+begin_src emacs-lisp :tangle yes
   (use-package org
-    :straight t
     :custom
     (org-modules '(org-habit))
     :init
@@ -351,7 +336,6 @@ also that I am on the v2 version with updated functionality to allow
 org-roam entries on branches rather than just on files.
 #+begin_src emacs-lisp :tangle yes
   (use-package org-roam
-    :straight t
     :custom
     (org-roam-directory "~/Nextcloud/Documents/org-roam")
     (org-roam-db-location "~/Nextcloud/Documents/org-roam/org-roam.db")
@@ -371,7 +355,6 @@ handle things like rebase and stashes more easily than the command
 line tool. A must have if you are doing anything with git.
 #+begin_src emacs-lisp :tangle yes
   (use-package magit
-    :straight t
     :bind
     ("C-x g" . magit-status))
 #+end_src
@@ -381,7 +364,6 @@ github / github enterprise / gitlab. It lets you do a lot of the
 things that command line tools like =gh= do for you.
 #+begin_src emacs-lisp :tangle yes
   (use-package forge
-    :straight t
     :ensure t
     :config
     (add-to-list 'forge-alist
@@ -399,7 +381,6 @@ saver. The strange lists of numbers are to set the symbols used in the
 fringe for git-gutter.
 #+begin_src emacs-lisp :tangle yes
   (use-package git-gutter
-    :straight t
     :hook
     ((markdown-mode . git-gutter-mode)
      (prog-mode . git-gutter-mode)
@@ -411,7 +392,6 @@ fringe for git-gutter.
     (git-gutter:ask-p nil))
 
   (use-package git-gutter-fringe
-    :straight t
     :after git-gutter
     :demand fringe-helper
     :config
@@ -433,7 +413,6 @@ Initially this was using projectile but it seems to not play nicely
 with marginalia. Instead, we use project.el.
 #+begin_src emacs-lisp :tangle yes
   (use-package project
-    :straight t
     :bind-keymap ("C-x p" . project-prefix-map))
 #+end_src
 ** Completing Read
@@ -442,7 +421,6 @@ with marginalia. Instead, we use project.el.
 implementation. It is lightweight and flexible.
 #+begin_src emacs-lisp :tangle yes
   (use-package vertico
-    :straight t
     :init
     (vertico-mode))
 #+end_src
@@ -452,7 +430,6 @@ searching through vertico. This could probably be configured more
 completely but it's doing what I need for now.
 #+begin_src emacs-lisp :tangle yes
   (use-package orderless
-    :straight t
     :init
     ;; Configure a custom style dispatcher (see the Consult wiki)
     ;; (setq orderless-style-dispatchers '(+orderless-dispatch))
@@ -466,7 +443,6 @@ candidates in vertico. This is partly eye-candy and partly just nice
 to have.
 #+begin_src emacs-lisp :tangle yes
   (use-package marginalia
-    :straight t
     :after vertico
     :bind (("M-a" . marginalia-cycle))
     :init
@@ -483,7 +459,6 @@ as sudo. This relies on marginalia to tell it what kind of candidates
 it is looking at to get a sensible set of possible actions.
 #+begin_src emacs-lisp :tangle yes
   (use-package embark
-    :straight t
     :ensure t
     :bind
     (("C-." . embark-act)
@@ -500,7 +475,6 @@ relying on projectile to find the root of the project for things like
 consult-ripgrep.
 #+begin_src emacs-lisp :tangle yes
   (use-package consult
-    :straight t
     :bind
     (("C-c h" . consult-history)
      ("C-c m" . consult-mode-command)
@@ -539,7 +513,6 @@ simpler. It support capf and dabbrev and LSP which covers all my use
 cases.
 #+begin_src emacs-lisp :tangle yes
   (use-package corfu
-    :straight t
     :custom
     (corfu-auto t)
     :hook ((prog-mode . corfu-mode)
@@ -553,13 +526,11 @@ code boxes in this org document were created by just typing =elisp_=
 and pressing TAB.
 #+begin_src emacs-lisp :tangle yes
   (use-package yasnippet
-    :straight t
     :hook ((prog-mode . yas-minor-mode)
            (markdown-mode . yas-minor-mode)
            (org-mode . yas-minor-mode)))
 
   (use-package yasnippet-snippets
-    :straight t
     :after yasnippet
     :config
     (yasnippet-snippets-initialize))
@@ -574,7 +545,6 @@ have worked for me thus far.
 #+begin_src emacs-lisp :tangle yes
   ;; Load flycheck
   (use-package flycheck
-    :straight t
     :custom
     (flycheck-emacs-lisp-load-path 'inherit)
     :hook ((prog-mode . flycheck-mode)))
@@ -585,7 +555,6 @@ parentheses balanced. It can sometimes be a hassle if you typo
 something but the advantages outweigh the disadvantages.
 #+begin_src emacs-lisp :tangle yes
   (use-package smartparens
-    :straight t
     :config
     (require 'smartparens-config)
     :hook ((prog-mode . smartparens-strict-mode)))
@@ -596,7 +565,6 @@ Protocol and integrates nicely with packages like corfu. I really only
 use it in go for now but the list is sure to grow.
 #+begin_src emacs-lisp :tangle yes
   (use-package lsp-mode
-    :straight t
     :init
     (setq lsp-keymap-prefix "C-c l"
           lsp-completion-provider :none)
@@ -605,7 +573,6 @@ use it in go for now but the list is sure to grow.
     (lsp-mode . lsp-enable-which-key-integration))
 
   (use-package lsp-ui
-    :straight t
     :commands lsp-ui-mode)
 #+end_src
 ** Specific Languages
@@ -615,7 +582,6 @@ and integrate with LSP. Right now, go is the only language with LSP on
 by default.
 #+begin_src emacs-lisp :tangle yes
   (use-package go-mode
-    :straight t
     :mode "\\.go\\'"
     :interpreter "go"
     :hook
@@ -628,7 +594,6 @@ this point. This just gives some basic syntax highlighting which might
 catch some bugs.
 #+begin_src emacs-lisp :tangle yes
   (use-package yaml-mode
-    :straight t
     :mode ("\\.yml\\'" "\\.yaml\\'"))
 #+end_src
 *** Shell Scripts
@@ -637,7 +602,6 @@ your script doesn't end in, for example, .sh you may need to use a
 file-local variable to set the mode.
 #+begin_src emacs-lisp :tangle yes
   (use-package sh-script
-    :straight t
     :mode ("\\.sh\\'" "\\.zsh\\'"))
 #+end_src
 *** Nix
@@ -645,7 +609,6 @@ This is to support the Nix language for NixOS and hopefully for my Mac
 as well once I have that figured out.
 #+begin_src emacs-lisp :tangle yes
   (use-package nix-mode
-    :straight t
     :mode "\\.nix\\'")
 #+end_src
 ** Closing comments
